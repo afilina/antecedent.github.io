@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patchwork</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        @import url(http://fonts.googleapis.com/css?family=Merriweather);
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            font-family: Merriweather, Georgia, serif;
+            font-size: 75px;
+            font-weight: normal;
+            background: url(bracket.png) no-repeat 425px 5px;
+            color: #333;
+        }
+        
+        body {
+            padding-top: 20px;
+        }
+        
+        #main {
+            margin-left: 260px;
+            padding-left: 30px;
+            border-left: 1px solid #CDD;
+            max-width: 800px;
+            padding-bottom: 10px;
+        }
+        
+        #aside {
+            position: absolute;
+            left: 50px;
+            width: 200px;
+            padding-right: 10px;
+            top: 20px;
+            padding-top: 100px;
+            border-right: 1px solid #CDD;
+            padding-bottom: 20px;
+        }
+        
+        #aside ul {
+            list-style: none;
+        }
+        
+        #aside ul li {
+            background: #aaa;
+            margin-right: 20px;
+            font-family: Corbel, 'Segoe UI', Arial, sans-serif;
+            font-size: 11pt;
+            color: white;
+            margin-bottom: 7px;
+        }
+        
+        #aside ul li.current {
+            background: #b49ae1;
+        }
+        
+        #aside ul li.current {
+            background: #9ad34d;
+        }
+        
+        #aside ul li a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            padding: 5px;            
+        }
+        
+        #aside ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        #main p {
+            margin: 5px;
+            font: 11pt Arial;
+        }
+        
+        h2 {
+            color: #6bacff;
+            font: 20pt Helvetica, Arial, sans-serif;
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-bottom: 0px;
+            font-weight: normal;
+        }
+        
+        h2 em {
+            font-style: normal;
+            color: #a49aff;
+        }
+        
+        #subheading {
+            font: 17pt Helvetica, Arial, sans-serif;
+            color: #999;
+            margin: 5px 0px 15px 5px;
+        }
+        
+        .post .heading {
+            overflow: auto;
+        }
+        
+        .post {
+            border: 1px solid #DDD;
+            background: #EEE;
+            font-family: Arial, sans-serif;
+            font-size: 11pt;
+            padding: 10px;
+            color: #333;
+            margin-top: 10px;
+        }
+        
+        .post h3 {
+            font: bold 13pt Arial, sans-serif;
+            margin-left: 5px;
+            float: left;        
+        }
+        
+        .post .timestamp {
+            float: right;
+            margin-right: 5px;
+            font: 8pt Verdana, sans-serif;
+            border: 1px solid #D6D6D6;
+            background: #DDD;
+            padding: 2px;
+            color: #777;
+        }
+        
+        .post p {
+            text-align: justify;
+        }
+        
+        #main a {
+            color: #606af0;
+            text-decoration: none;
+        }
+        
+        #main a:hover {
+            text-decoration: underline;
+        }
+        
+        #main a:visited {
+            color: #c06ae0;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h1>Patchwork</h1>
+        <h2>A library that lets you <em>redefine</em> user-defined methods in PHP.</h2>
+        <div id="subheading">Written in pure PHP 5.3 code. No extensions required.</div>
+        <div class="post">
+            <div class="heading">
+                <h3>Nothing happened again</h3>
+                <div class="timestamp">2010-12-24</div>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et arcu arcu, eu sollicitudin nibh. Mauris vel risus eu enim elementum euismod id nec elit. Donec hendrerit neque eu diam faucibus id mollis orci sagittis. Aliquam eget ligula ac orci adipiscing rhoncus in sed nulla. Nulla vitae ante eget nisi congue pellentesque. Refer to the <a href="http://example.com/">changelog</a>. Aliquam erat volutpat. Praesent facilisis commodo enim eget congue. In semper porta tellus ac luctus. Sed a hendrerit velit. Aenean dignissim dolor eget urna luctus id viverra lacus facilisis. Pellentesque at justo sit amet odio eleifend molestie malesuada in orci. Morbi fringilla, leo ac convallis porttitor, neque orci malesuada tellus, in sollicitudin sem est id ante. Nulla facilisi.</p>        
+        </div>
+        <div class="post">
+            <div class="heading">
+                <h3>Nothing happened</h3>
+                <div class="timestamp">2010-12-24</div>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et arcu arcu, eu sollicitudin nibh. Mauris vel risus eu enim elementum euismod id nec elit. Donec hendrerit neque eu diam faucibus id mollis orci sagittis. Aliquam eget ligula ac orci adipiscing rhoncus in sed nulla. Nulla vitae ante eget nisi congue pellentesque. Refer to the <a href="http://example.com/">changelog</a>. Aliquam erat volutpat. Praesent facilisis commodo enim eget congue. In semper porta tellus ac luctus. Sed a hendrerit velit. Aenean dignissim dolor eget urna luctus id viverra lacus facilisis. Pellentesque at justo sit amet odio eleifend molestie malesuada in orci. Morbi fringilla, leo ac convallis porttitor, neque orci malesuada tellus, in sollicitudin sem est id ante. Nulla facilisi.</p>        
+        </div>        
+    </div>
+    <div id="aside">
+        <ul>
+            <li class="current"><a href="index.html">News</a></li>
+            <li><a href="purpose.html">Purpose</a></li>
+            <li><a href="getting-started.html">Getting Started</a></li>
+            <li><a href="examples.html">Examples</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="license.html">License</a></li>
+            <li><a href="download.html">Download</a></li>
+        </ul>
+    </div>
+    <a href="http://github.com/antecedent/patchwork"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://assets0.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85?repo=&amp;url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_gray_6d6d6d.png&amp;path=" alt="Fork me on GitHub"></a> 
+</body>
+</html>
