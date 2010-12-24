@@ -9,15 +9,60 @@
     <div id="main">
         <h1>Patchwork</h1>
         <h2>A native PHP library that lets you <em>redefine</em> user-defined functions.</h2>
-        <h3>Overview</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et arcu arcu, eu sollicitudin nibh. Mauris vel risus eu enim elementum euismod id nec elit. Donec hendrerit neque eu diam faucibus id mollis orci sagittis. Aliquam eget ligula ac orci adipiscing rhoncus in sed nulla. Nulla vitae ante eget nisi congue pellentesque. Refer to the <a href="http://example.com/">changelog</a>. Aliquam erat volutpat. Praesent facilisis commodo enim eget congue. In semper porta tellus ac luctus. Sed a hendrerit velit. Aenean dignissim dolor eget urna luctus id viverra lacus facilisis. Pellentesque at justo sit amet odio eleifend molestie malesuada in orci. Morbi fringilla, leo ac convallis porttitor, neque orci malesuada tellus, in sollicitudin sem est id ante. Nulla facilisi.</p>      
+        <p>Have you ever wanted to overwrite an existing method or function in PHP? Albeit rarely necessary, that would be incredibly useful in certain tasks, such as unit testing and debugging.</p>
+		<h3>Possible Uses in Unit Testing</h3>
+		<p>Unit testing emphasizes separation and isolation of components that need to be tested. This is often achieved by replacing the component's dependencies with <a href="http://en.wikipedia.org/wiki/Test_Double">test doubles</a>.</p>
+		<p>When each of these dependencies is represented by an object, it is quite easy to replace them. We can simply take advantage of class inheritance and extend the class under test, replacing some of its methods with stubs:</p>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; background:#ffffe8; '>&lt;?php</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000084; background:#ffffe8; font-weight:bold; '>class</span><span style='color:#000000; background:#ffffe8; '> CacheForTests </span><span style='color:#000084; background:#ffffe8; font-weight:bold; '>extends</span><span style='color:#000000; background:#ffffe8; '> Cache</span>
+<span style='color:#000000; background:#ffffe8; '>{</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#000084; background:#ffffe8; font-weight:bold; '>function</span><span style='color:#000000; background:#ffffe8; '> fetch</span><span style='color:#000000; background:#ffffe8; '>(</span><span style='color:#000000; background:#ffffe8; '>$key</span><span style='color:#000000; background:#ffffe8; '>,</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#000000; background:#ffffe8; '>&amp;</span><span style='color:#000000; background:#ffffe8; '>$value</span><span style='color:#000000; background:#ffffe8; '>)</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#000000; background:#ffffe8; '>{</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#808080; background:#ffffe8; '># Always "fetch" null</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#000000; background:#ffffe8; '>$value</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#000000; background:#ffffe8; '>=</span><span style='color:#000000; background:#ffffe8; '> null</span><span style='color:#000000; background:#ffffe8; '>;</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#000084; background:#ffffe8; font-weight:bold; '>return</span><span style='color:#000000; background:#ffffe8; '> </span><span style='color:#000084; background:#ffffe8; font-weight:bold; '>true</span><span style='color:#000000; background:#ffffe8; '>;</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#000000; background:#ffffe8; '>}</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;</span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#000084; background:#ffffe8; font-weight:bold; '>function</span><span style='color:#000000; background:#ffffe8; '> store</span><span style='color:#000000; background:#ffffe8; '>(</span><span style='color:#000000; background:#ffffe8; '>)</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#000000; background:#ffffe8; '>{</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#808080; background:#ffffe8; '># Do nothing</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>&#xa0;&#xa0;&#xa0;&#xa0;</span><span style='color:#000000; background:#ffffe8; '>}</span><span style='color:#000000; background:#ffffe8; '></span>
+<span style='color:#000000; background:#ffffe8; '>}</span><span style='color:#000000; background:#ffffe8; '></span>
+</pre>
+<p>Now, no matter what cache driver the original <kbd>Cache</kbd> class uses, nor what core extensions it depends on, the above replacement class will work on any platform, yielding predictable results. And, of course, an instance of <kbd>CacheForTests</kbd> will fit everywhere where a <kbd>Cache</kbd> instance is expected, since the former is a subclass of the latter:</p>
+<pre>
+Some code.
+</pre>
+<p>This practice is very widespread in the unit testing of object-oriented components, and is automated by numerous test double frameworks like <a href="https://github.com/padraic/mockery">Mockery</a>, <a href="https://github.com/mlively/Phake">Phake</a>, and the <a href="http://www.phpunit.de/manual/3.6/en/test-doubles.html#test-doubles.mock-objects">PHPUnit Mock Objects API</a>, to name a few from the PHP universe.</p>
+<p>Unfortunately, none of them can deal with non-object dependencies. For example, if the methods of the <kbd>Cache</kbd> class were static (and called statically), we would no longer be able to "feed" the dependent <kbd>CachingReader</kbd> class a dummy instance of it.</p>
+<p>In such cases, refactoring should be the preferred option. Static dependencies can be transformed into instance dependencies, making the dependent components "testable".</p>
+<p>However, there will always be some cases where refactoring would simply make no sense. For example, if the static dependency is deeply rooted into some third-party library, trying to rework the whole library would probably lead to even more problems.</p>
+<p>In these cases, method redefinition would come in handy. Since Patchwork is meant exactly for this, why not use it?</p>
+<pre>
+Patchwork\replace("Cache::fetch", function($key, &amp;$value)
+{
+    $value = null;
+    return Cache::SUCCESS;
+});
+</pre>
+<!-- Antonym: undo -->
+	<p>Problem solved. We have replaced the body of the <kbd>fetch</kbd> method with an anonymous function. In other words, we have <a href="http://en.wikipedia.org/wiki/Monkey_patch">patched</a> the method. This is equivalent to the previous example involving inheritance, except that it would no longer work if the method were indeed static.</p>
+	<p>So, Patchwork can redefine static methods. But that is not all. Actually, it can redefine <strong>any</strong> function or method that is written in PHP (i.e., not internal). That includes:</p>
+	<ul>
+		<li>global functions,</li>
+		<li>anonymous functions,</li>
+		<li>static methods,</li>
+		<li>protected methods,</li>
+		<li>private methods,</li>
+		<li>final methods.</li>
+	</ul>
     </div> 
     <div id="aside">
         <ul>
             <li class="current"><a href="index.html">Overview</a></li>
             <li><a href="getting-started.html">Getting Started</a></li>
-            <li><a href="examples.html">Examples</a></li>
-            <li><a href="reference.html">Reference</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
             <li><a href="license.html">License</a></li>
             <li><a href="https://github.com/antecedent/patchwork/archives/master">Download</a></li>
         </ul>

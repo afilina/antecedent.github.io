@@ -5,11 +5,23 @@
     padding: 0;
 }
 
+#main {
+    font: 11pt Arial; 
+}
+
+#main ul {
+	margin: 10px 0px;
+}
+
+#main ul li {
+	margin-left: 30px;
+	margin-bottom: 2px;
+}
+
 p, pre {
     max-width: 800px;
     min-width: 300px;
-    text-align: justify;
-    font: 11pt Arial;   
+    text-align: justify;  
     margin-top: 10px;         
 }
 
@@ -19,7 +31,6 @@ pre {
     background: #EEE;
     color: #333;
     padding: 10px;
-    float: left;
 }
 
 #main {
@@ -104,7 +115,7 @@ h2 em {
 h3 {
     font: 17pt Helvetica, Arial, sans-serif;
     color: #999;
-    margin: 5px 0px 15px 0px;
+    margin: 15px 0px 15px 0px;
 }
 
 #main a {
