@@ -4,51 +4,49 @@
     <title>Patchwork</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style type="text/css">
+    
         @import url(http://fonts.googleapis.com/css?family=Merriweather);
         
         * {
             margin: 0;
             padding: 0;
         }
-        
-        h1 {
-            font-family: Merriweather, Georgia, serif;
-            font-size: 75px;
-            font-weight: normal;
-            background: url(bracket.png) no-repeat 425px 5px;
-            color: #333;
-        }
-        
-        body {
-            padding-top: 20px;
+
+        p {
+            max-width: 800px;
+            min-width: 300px;
+            text-align: justify;
+            font: 11pt Arial;            
         }
         
         #main {
-            margin-left: 260px;
+            margin-top: 30px;
+            margin-left: 200px;
             padding-left: 30px;
+            margin-right: 30px;
             border-left: 1px solid #CDD;
-            max-width: 800px;
+            margin-bottom: 30px;
             padding-bottom: 10px;
+            padding-top: 5px;
         }
         
         #aside {
             position: absolute;
-            left: 50px;
-            width: 200px;
-            padding-right: 10px;
-            top: 20px;
-            padding-top: 100px;
+            left: 30px;
+            top: 30px;            
+            width: 170px;
+            padding-top: 90px;
             border-right: 1px solid #CDD;
-            padding-bottom: 20px;
+            padding-bottom: 10px;
         }
-        
+    
         #aside ul {
             list-style: none;
         }
         
         #aside ul li {
             background: #aaa;
-            margin-right: 20px;
+            margin-right: 30px;
             font-family: Corbel, 'Segoe UI', Arial, sans-serif;
             font-size: 11pt;
             color: white;
@@ -74,18 +72,24 @@
             text-decoration: underline;
         }
         
-        #main p {
-            margin: 5px;
-            font: 11pt Arial;
-        }
-        
+        h1 {
+            font-family: Merriweather, Georgia, serif;
+            font-size: 75px;
+            font-weight: normal;
+            background: url(bracket.png) no-repeat 425px 0px;
+            color: #333;
+            line-height: 1em;
+            height: 75px;
+            padding-top: 10px;
+        }        
+                
         h2 {
             color: #6bacff;
             font: 20pt Helvetica, Arial, sans-serif;
             margin-top: 5px;
-            margin-left: 5px;
-            margin-bottom: 0px;
+            margin-bottom: 15px;
             font-weight: normal;
+            letter-spacing: -1px;
         }
         
         h2 em {
@@ -93,44 +97,10 @@
             color: #a49aff;
         }
         
-        #subheading {
+        h3 {
             font: 17pt Helvetica, Arial, sans-serif;
             color: #999;
-            margin: 5px 0px 15px 5px;
-        }
-        
-        .post .heading {
-            overflow: auto;
-        }
-        
-        .post {
-            border: 1px solid #DDD;
-            background: #EEE;
-            font-family: Arial, sans-serif;
-            font-size: 11pt;
-            padding: 10px;
-            color: #333;
-            margin-top: 10px;
-        }
-        
-        .post h3 {
-            font: bold 13pt Arial, sans-serif;
-            margin-left: 5px;
-            float: left;        
-        }
-        
-        .post .timestamp {
-            float: right;
-            margin-right: 5px;
-            font: 8pt Verdana, sans-serif;
-            border: 1px solid #D6D6D6;
-            background: #DDD;
-            padding: 2px;
-            color: #777;
-        }
-        
-        .post p {
-            text-align: justify;
+            margin: 5px 0px 15px 0px;
         }
         
         #main a {
@@ -146,33 +116,18 @@
             color: #c06ae0;
         }
         
-        
     </style>
 </head>
 <body>
     <div id="main">
         <h1>Patchwork</h1>
-        <h2>A library that lets you <em>redefine</em> user-defined methods in PHP.</h2>
-        <div id="subheading">Written in pure PHP 5.3 code. No extensions required.</div>
-        <div class="post">
-            <div class="heading">
-                <h3>Nothing happened again</h3>
-                <div class="timestamp">2010-12-24</div>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et arcu arcu, eu sollicitudin nibh. Mauris vel risus eu enim elementum euismod id nec elit. Donec hendrerit neque eu diam faucibus id mollis orci sagittis. Aliquam eget ligula ac orci adipiscing rhoncus in sed nulla. Nulla vitae ante eget nisi congue pellentesque. Refer to the <a href="http://example.com/">changelog</a>. Aliquam erat volutpat. Praesent facilisis commodo enim eget congue. In semper porta tellus ac luctus. Sed a hendrerit velit. Aenean dignissim dolor eget urna luctus id viverra lacus facilisis. Pellentesque at justo sit amet odio eleifend molestie malesuada in orci. Morbi fringilla, leo ac convallis porttitor, neque orci malesuada tellus, in sollicitudin sem est id ante. Nulla facilisi.</p>        
-        </div>
-        <div class="post">
-            <div class="heading">
-                <h3>Nothing happened</h3>
-                <div class="timestamp">2010-12-24</div>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et arcu arcu, eu sollicitudin nibh. Mauris vel risus eu enim elementum euismod id nec elit. Donec hendrerit neque eu diam faucibus id mollis orci sagittis. Aliquam eget ligula ac orci adipiscing rhoncus in sed nulla. Nulla vitae ante eget nisi congue pellentesque. Refer to the <a href="http://example.com/">changelog</a>. Aliquam erat volutpat. Praesent facilisis commodo enim eget congue. In semper porta tellus ac luctus. Sed a hendrerit velit. Aenean dignissim dolor eget urna luctus id viverra lacus facilisis. Pellentesque at justo sit amet odio eleifend molestie malesuada in orci. Morbi fringilla, leo ac convallis porttitor, neque orci malesuada tellus, in sollicitudin sem est id ante. Nulla facilisi.</p>        
-        </div>        
-    </div>
+        <h2>A native PHP library that lets you <em>redefine</em> user-defined functions.</h2>
+        <h3>Overview</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et arcu arcu, eu sollicitudin nibh. Mauris vel risus eu enim elementum euismod id nec elit. Donec hendrerit neque eu diam faucibus id mollis orci sagittis. Aliquam eget ligula ac orci adipiscing rhoncus in sed nulla. Nulla vitae ante eget nisi congue pellentesque. Refer to the <a href="http://example.com/">changelog</a>. Aliquam erat volutpat. Praesent facilisis commodo enim eget congue. In semper porta tellus ac luctus. Sed a hendrerit velit. Aenean dignissim dolor eget urna luctus id viverra lacus facilisis. Pellentesque at justo sit amet odio eleifend molestie malesuada in orci. Morbi fringilla, leo ac convallis porttitor, neque orci malesuada tellus, in sollicitudin sem est id ante. Nulla facilisi.</p>      
+    </div> 
     <div id="aside">
         <ul>
-            <li class="current"><a href="index.html">News</a></li>
-            <li><a href="purpose.html">Purpose</a></li>
+            <li class="current"><a href="index.html">Overview</a></li>
             <li><a href="getting-started.html">Getting Started</a></li>
             <li><a href="examples.html">Examples</a></li>
             <li><a href="reference.html">Reference</a></li>
