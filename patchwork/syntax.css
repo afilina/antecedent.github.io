@@ -1,0 +1,21 @@
+.CodeRay {
+    overflow: auto;
+}
+
+.CodeRay .r, .pd, .pt {
+    color: #1b5caf;
+}
+
+.CodeRay .s {
+    color: #387d94;
+}
+
+.CodeRay .hl {
+    border: 1px solid #a49aff;
+    border-radius: 3pt;
+    cursor: help;
+}
+
+.CodeRay .hl:hover {
+    background: #b4baff;
+}

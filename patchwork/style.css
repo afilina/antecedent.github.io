@@ -1,3 +1,4 @@
+@import "syntax.css";
 @import url(http://fonts.googleapis.com/css?family=Merriweather);
 
 * {
@@ -29,8 +30,9 @@ pre {
     font: 11pt Consolas, 'Courier New', Courier, monospace;
     border: 1px solid #DDD;
     background: #EEE;
-    color: #333;
+    color: #111;
     padding: 10px;
+    max-width: 780px;
 }
 
 #main {
@@ -119,14 +121,10 @@ h3 {
 }
 
 #main a {
-    color: #606af0;
+    color: #6c71b4;
     text-decoration: none;
 }
 
 #main a:hover {
     text-decoration: underline;
-}
-
-#main a:visited {
-    color: #c06ae0;
 }
