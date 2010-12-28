@@ -7,56 +7,70 @@
 </head>
 <body>
     <div id="main">
-        <h1>Patchwork</h1>
+        <h1>Patchwork<img src="bracket.png"></h1>
         <h2>Redefine <em>user-defined</em> PHP functions at runtime. No extensions required.</h2>
-        <p>Believe it or not, being able to redefine existing functions is enough to make even the most evil <a href="http://sebastian-bergmann.de/archives/865-Untestable-Code.html">untestable code</a> perfectly suitable for unit testing. Of course, it means treating the symptoms instead of the cause, but sometimes there is simply no other way out. Huge chunks of old or simply horrible code may still be waiting to be tested, and what if refactoring it (read: rewriting it from scratch) is not an option?</p>
-        <p>Regular testing utilities, most often written in pure PHP, will be of no help if the code is littered with <a href="http://googletesting.blogspot.com/2008/12/static-methods-are-death-to-testability.html">static method calls</a>, <a href="http://googletesting.blogspot.com/2008/05/tott-using-dependancy-injection-to.html">singletons</a>, and <a href="http://googletesting.blogspot.com/2008/10/to-new-or-not-to-new.html">objects constructed in the wrong places</a>. In such cases, you have to choose between refactoring the code and resorting to tools more brutal, like <a href="http://php.net/manual/en/book.runkit.php">runkit</a> or <a href="https://github.com/sebastianbergmann/php-test-helpers">php-test-helpers</a>. However, they are both core extensions to PHP, so if you decide to go for them instead of refactoring, your unit tests will become essentially non-portable.</p>
-        <p>And this is why Patchwork exists. Even though it sacrifices the possibility to overload internal PHP functions and methods (e.g. <a href="http://php.net/strtolower">strtolower</a> and <a href="http://php.net/DateTime.diff">DateTime::diff</a>), it still allows for full-featured <a href="http://en.wikipedia.org/wiki/Monkey_patch">monkey patching</a> of user-defined functions and methods. But what is much more important, it is written in regular PHP, with no dependencies on any non-standard core extensions.</p>
-        <p>Patchwork does not care if a method is static, nor if it is visible or not. It can even be final and protected at the same time. If it is defined in PHP code and has a concrete implementation, Patchwork can redefine it.</p>
-        <p>Now let's put it into some real work. Here is a function that is supposed to get everyone's passwords as an associative array, indexed by login name. However, it suffers from a testability problem: it depends on a static ORM method that is used to retrieve user records as an array (think ActiveRecord).</p>
-<pre class="CodeRay"><span class="r">function</span> <span class="fu">getAllPasswords</span>()
-{
-    <span class="lv">$passwords</span> = <span class="pd">array</span>();
-    <span class="r">foreach</span> (<span class="hl" title="The offending dependency"><span class="co">User</span>::findAll()</span> <span class="r">as</span> <span class="lv">$user</span>) {
-        <span class="lv">$passwords</span>[<span class="lv">$user</span>-&gt;login] = <span class="lv">$user</span>-&gt;password;
-    }
-    <span class="r">return</span> <span class="lv">$passwords</span>;
-}
-</pre>
+        
+        <div class="demos">
+        
+            <pre class="box top left">
+<span class="comment"># 1. Define a function</span>
 
-<p>So, in order to test this function, we just replace the problematic ORM method with something truly predictable:</p>
+<span class="keyword">function</span> size<span class="bracket">(</span>$x<span class="bracket">)</span>
+<span class="bracket">{</span>
+    <span class="keyword">return</span> count<span class="bracket">(</span>$x<span class="bracket">)</span>;
+<span class="bracket">}</span>
 
-<pre class="CodeRay">
-<span class="co">Patchwork</span>\replace(<span class="s">&quot;User::findAll&quot;</span>, <span class="r">function</span>()
-{
-    <span class="r">return</span> <span class="pd">array</span>(
-        (<span class="pt">object</span>) <span class="pd">array</span>(<span class="s">&quot;login&quot;</span> =&gt; <span class="s">&quot;admin&quot;</span>, <span class="s">&quot;password&quot;</span> =&gt; <span class="s">&quot;admin&quot;</span>),
-        (<span class="pt">object</span>) <span class="pd">array</span>(<span class="s">&quot;login&quot;</span> =&gt; <span class="s">&quot;h4x0r&quot;</span>, <span class="s">&quot;password&quot;</span> =&gt; <span class="s">&quot;31337&quot;</span>),
-    );
-});
-</pre>
+size<span class="bracket">(</span><span class="keyword">array</span><span class="bracket">(</span>1, 2<span class="bracket">)</span><span class="bracket">)</span>; <span class="comment"># =&gt; 2</span>
+            </pre>
+            <pre class="box top">
+<span class="comment"># 2. Replace it with a new one</span>
 
-<p>Now that the dependency is gone, let's proceed to the testing:</p>
+<span class="keyword">use</span> Patchwork <span class="keyword">as</span> p;
 
-<pre class="CodeRay">
-<span class="pd">assert</span>(getAllPasswords() === <span class="pd">array</span>(
-    <span class="s">&quot;admin&quot;</span> =&gt; <span class="s">&quot;admin&quot;</span>,
-    <span class="s">&quot;h4x0r&quot;</span> =&gt; <span class="s">&quot;31337&quot;</span>
-));</pre>
+p\replace<span class="bracket">(</span><span class="string">"size"</span>, <span class="keyword">function</span><span class="bracket">(</span>$x<span class="bracket">)</span>
+<span class="bracket">{</span>
+    <span class="keyword">return</span> <span class="string">"huge"</span>;
+<span class="bracket">}</span><span class="bracket">)</span>;
 
-<p>That's it. For more information, please refer to the <a href="documentation.php">documentation</a>.</p>
+size<span class="bracket"><span class="bracket">(</span></span><span class="keyword">array</span><span class="bracket">(</span>1, 2<span class="bracket">)</span><span class="bracket">)</span>; <span class="comment"># =&gt; "huge"</span>
+            </pre>
+            <pre class="box top right">
+<span class="comment"># 3. Undo the replacement</span>
+    
+p\undo<span class="bracket">(</span><span class="bracket">)</span>;
 
-<p>Thank you for your interest!</p>
+size<span class="bracket">(</span><span class="keyword">array</span><span class="bracket">(</span>1, 2<span class="bracket">)</span><span class="bracket">)</span>; <span class="comment"># => 2</span>
 
-    </div> 
-    <div id="aside">
-        <ul>
-            <li class="current"><a href="index.html">Overview</a></li>
-            <li><a href="documentation.html">Documentation</a></li>
-            <li><a href="license.html">License</a></li>
-            <li><a href="https://github.com/antecedent/patchwork/archives/master">Download</a></li>
-        </ul>
+<span class="comment"># Note that all of these steps</span>
+<span class="comment"># occur at the same runtime!</span>
+            </pre>
+        
+        </div>
+        
+        <div class="box top left">
+            <h3>So what does Patchwork do?</h3>
+            <p>It lets you replace the definition of any user-defined function or method at runtime. This is illustrated in the above example.</p>
+        </div>
+        <div class="box top">
+            <h3>Can't I do that by myself?</h3>
+            <p>Placeholder.</p>
+        </div>
+        <div class="box top right">
+            <h3>Isn't that what Runkit is for?</h3>
+            <p>Placeholder.</p>
+        </div>
+        <div class="box bottom left">
+            <h3>What could that be useful for?</h3>
+            <p>Placeholder.</p>
+        </div>
+        <div class="box bottom">
+            <h3>Okay, so where do I get it?</h3>
+            <p>Placeholder.</p>
+        </div>
+        <div class="box bottom right">
+            <h3>Hey, it doesn't work!</h3>
+            <p>Placeholder.</p>
+        </div>
     </div>
-    <a href="http://github.com/antecedent/patchwork"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://assets0.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85?repo=&amp;url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_gray_6d6d6d.png&amp;path=" alt="Fork me on GitHub"></a> 
 </body>
 </html>
