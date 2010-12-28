@@ -9,44 +9,7 @@
     <div id="main">
         <h1>Patchwork</h1>
         <h2>Redefine <em>user-defined</em> PHP functions at runtime. No extensions required.</h2>
-        <p>Believe it or not, being able to redefine existing functions is enough to make even the most evil <a href="http://sebastian-bergmann.de/archives/865-Untestable-Code.html">untestable code</a> perfectly suitable for unit testing. Of course, it means treating the symptoms instead of the cause, but sometimes there is simply no other way out. Huge chunks of old or simply horrible code may still be waiting to be tested, and what if refactoring it (read: rewriting it from scratch) is not an option?</p>
-        <p>Regular testing utilities, most often written in pure PHP, will be of no help if the code is littered with <a href="http://googletesting.blogspot.com/2008/12/static-methods-are-death-to-testability.html">static method calls</a>, <a href="http://googletesting.blogspot.com/2008/05/tott-using-dependancy-injection-to.html">singletons</a>, and <a href="http://googletesting.blogspot.com/2008/10/to-new-or-not-to-new.html">objects constructed in the wrong places</a>. In such cases, you have to choose between refactoring the code and resorting to tools more brutal, like <a href="http://php.net/manual/en/book.runkit.php">runkit</a> or <a href="https://github.com/sebastianbergmann/php-test-helpers">php-test-helpers</a>. However, they are both core extensions to PHP, so if you decide to go for them instead of refactoring, your unit tests will become essentially non-portable.</p>
-        <p>And this is why Patchwork exists. Even though it sacrifices the possibility to overload internal PHP functions and methods (e.g. <a href="http://php.net/strtolower">strtolower</a> and <a href="http://php.net/DateTime.diff">DateTime::diff</a>), it still allows for full-featured <a href="http://en.wikipedia.org/wiki/Monkey_patch">monkey patching</a> of user-defined functions and methods. But what is much more important, it is written in regular PHP, with no dependencies on any non-standard core extensions.</p>
-        <p>Patchwork does not care if a method is static, nor if it is visible or not. It can even be final and protected at the same time. If it is defined in PHP code and has a concrete implementation, Patchwork can redefine it.</p>
-        <p>Now let's put it into some real work. Here is a function that is supposed to get everyone's passwords as an associative array, indexed by login name. However, it suffers from a testability problem: it depends on a static ORM method that is used to retrieve user records as an array (think ActiveRecord).</p>
-<pre class="CodeRay"><span class="r">function</span> <span class="fu">getAllPasswords</span>()
-{
-    <span class="lv">$passwords</span> = <span class="pd">array</span>();
-    <span class="r">foreach</span> (<span class="hl" title="The offending dependency"><span class="co">User</span>::findAll()</span> <span class="r">as</span> <span class="lv">$user</span>) {
-        <span class="lv">$passwords</span>[<span class="lv">$user</span>-&gt;login] = <span class="lv">$user</span>-&gt;password;
-    }
-    <span class="r">return</span> <span class="lv">$passwords</span>;
-}
-</pre>
 
-<p>So, in order to test this function, we just replace the problematic ORM method with something truly predictable:</p>
-
-<pre class="CodeRay">
-<span class="co">Patchwork</span>\replace(<span class="s">&quot;User::findAll&quot;</span>, <span class="r">function</span>()
-{
-    <span class="r">return</span> <span class="pd">array</span>(
-        (<span class="pt">object</span>) <span class="pd">array</span>(<span class="s">&quot;login&quot;</span> =&gt; <span class="s">&quot;admin&quot;</span>, <span class="s">&quot;password&quot;</span> =&gt; <span class="s">&quot;admin&quot;</span>),
-        (<span class="pt">object</span>) <span class="pd">array</span>(<span class="s">&quot;login&quot;</span> =&gt; <span class="s">&quot;h4x0r&quot;</span>, <span class="s">&quot;password&quot;</span> =&gt; <span class="s">&quot;31337&quot;</span>),
-    );
-});
-</pre>
-
-<p>Now that the dependency is gone, let's proceed to the testing:</p>
-
-<pre class="CodeRay">
-<span class="pd">assert</span>(getAllPasswords() === <span class="pd">array</span>(
-    <span class="s">&quot;admin&quot;</span> =&gt; <span class="s">&quot;admin&quot;</span>,
-    <span class="s">&quot;h4x0r&quot;</span> =&gt; <span class="s">&quot;31337&quot;</span>
-));</pre>
-
-<p>That's it. For more information, please refer to the <a href="documentation.php">documentation</a>.</p>
-
-<p>Thank you for your interest!</p>
 
     </div> 
     <div id="aside">
