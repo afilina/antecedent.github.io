@@ -49,27 +49,27 @@ size<span class="bracket">(</span><span class="keyword">array</span><span class=
         
         <div class="box top left">
             <h3>So what does Patchwork do?</h3>
-            <p>It lets you replace the definition of any user-defined function or method at runtime. This is illustrated in the above example.</p>
+            <p>It lets you replace the definition of any <a href="http://php.net/manual/en/functions.user-defined.php">user-defined</a> function or method at runtime. This is illustrated in the above example.</p>
         </div>
         <div class="box top">
             <h3>Can't I do that by myself?</h3>
-            <p>Placeholder.</p>
+            <p>Well, no. As of version 5.3.4, PHP won't let you compile multiple definitions of the same function, nor does its standard library have any facilities for modifying named functions at runtime.</p>
         </div>
         <div class="box top right">
             <h3>Isn't that what Runkit is for?</h3>
-            <p>Placeholder.</p>
+            <p>That's true, but unlike <a href="http://php.net/manual/en/book.runkit.php">Runkit</a>, Patchwork is not a core extension. Patchwork is written in pure PHP code for the sake of maximum portability. Sadly, it's also incapable of <a href="http://php.net/manual/en/runkit.configuration.php#ini.runkit.internal-override">redefining internal functions</a> for this exact reason.</p>
         </div>
         <div class="box bottom left">
             <h3>What could that be useful for?</h3>
-            <p>Placeholder.</p>
+            <p><a href="docs/articles/untestable-code.html">Testing all kinds of untestable code</a>. Other than that, not much. Tools like this should be your last resort.</p>
         </div>
         <div class="box bottom">
             <h3>Okay, so where do I get it?</h3>
-            <p>Placeholder.</p>
+            <p><a href="https://github.com/antecedent/patchwork/archives/master">Here</a>. And <a href="docs">here's the documentation</a>: be sure to at least skim through it before you start!</p>
         </div>
         <div class="box bottom right">
             <h3>Hey, it doesn't work!</h3>
-            <p>Placeholder.</p>
+            <p>Well, sorry about that. If the documentation is of no help about the problem, please <a href="https://github.com/antecedent/patchwork/issues">report it</a>.</p>
         </div>
     </div>
 </body>
