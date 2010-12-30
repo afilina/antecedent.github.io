@@ -27,7 +27,7 @@
         <h3>Requirements</h3>
         <p>Patchwork requires PHP <strong>5.3.0</strong> or higher to run. Furthermore, <strong>no opcode caches</strong> should be enabled when using Patchwork.</p>
         <h3>Importing Patchwork</h3>
-        <p>This step seems straightforward: all you have to do is include Patchwork.php. However, it must be included <strong>before</strong> all the files that define any of the functions and methods which may have to be redefined. Therefore, it is recommended to do so <strong>at the very entry point</strong> of your application.</p>
+        <p>This step seems straightforward: all you have to do is include Patchwork.php. However, it must be included <strong>before</strong> all the files that define any of the functions and methods which may have to be redefined. Therefore, it is recommended to do so <strong>at the very entry point</strong> of your application. Also, this means that any functions defined in the file from which Patchwork is included will not be eligible for redefinition.</p>
         <pre>
 <span class="comment"># Include Patchwork</span>
 <span class="keyword">require</span> __DIR__ . <span class="string">"/patchwork/Patchwork.php"</span>;
