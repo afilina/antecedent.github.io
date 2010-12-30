@@ -22,6 +22,11 @@ h1 {
     margin-bottom: 5px;
 }        
 
+#main h1 a, #main h1 a:hover {
+    text-decoration: none;
+    color: black;
+}
+
 h1 img {
     margin-left: 50px;
     position: relative;
@@ -48,10 +53,7 @@ h2 em {
     margin-bottom: 5px;
 }
 
-.box.left  { margin-left: 0; clear: both; }
-.box.right { margin-right: 0; }
-
-.box h3 {
+h3 {
     font: 15pt Helvetica, Arial, sans-serif;
     color: #888;
 }
@@ -103,7 +105,14 @@ pre .bracket {
 .demos {
     padding-bottom: 13px;
     overflow: auto;
+}
+
+.demos, h2.with-border {
     border-bottom: 1px solid #BCC;
+}
+
+h2.with-border {
+    margin-bottom: 15px;
 }
 
 #main a {
@@ -113,4 +122,26 @@ pre .bracket {
 
 #main a:hover {
     text-decoration: underline;
+}
+
+.breadcrumb {
+    font: 8pt Verdana, Tahoma, sans-serif;
+    color: white;
+    background: #a2bcbc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.column {
+    width: 415px;
+    float: left;
+    margin-right: 50px;
+}
+
+#main .left  { margin-left: 0; clear: both; }
+#main .right { margin-right: 0; }
+
+#main a.not-yet-written {
+    color: #AAA;
+    cursor: help;
 }
