@@ -145,3 +145,7 @@ h2.with-border {
     color: #AAA;
     cursor: help;
 }
+
+img {
+    border: none;
+}
