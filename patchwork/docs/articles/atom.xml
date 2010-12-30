@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+    
+  <id>http://antecedent.github.com/patchwork/docs/articles</id>
+  <title>Patchwork: Articles</title>
+  <updated>2010-12-30T18:18:00Z</updated>
+  <link rel="self" href="http://antecedent.github.com/patchwork/docs/articles" type="application/atom+xml" />
+
+  <author>
+    <name>Ignas Rudaitis</name>
+    <uri>http://antecedent.github.com</uri>
+    <email>ignas.rudaitis@gmail.com</email>
+  </author>
+
+</feed>
