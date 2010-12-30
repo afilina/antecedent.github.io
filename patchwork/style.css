@@ -56,6 +56,11 @@ h2 em {
 h3 {
     font: 15pt Helvetica, Arial, sans-serif;
     color: #888;
+    margin-top: 10px;
+}
+
+.box h3 {
+    margin-top: 0;
 }
 
 #main ul {
@@ -74,10 +79,10 @@ p {
 
 pre {
     font: 11pt Consolas, Inconsolata, 'Lucida Console', 'Courier New', Courier, monospace;
-    border: 1px solid #DDD;
-    background: #EEE;
-    color: #111;
     padding: 10px;
+    margin-top: 10px;
+    background: black;
+    color: #FFF;      
 }
 
 pre.box {
@@ -86,8 +91,6 @@ pre.box {
     padding: 10px;
     margin: 5px;
     margin-top: 0px;
-    background: black;
-    color: #FFF;  
 }
 
 pre .keyword {
@@ -111,9 +114,6 @@ pre .bracket {
     border-bottom: 1px solid #BCC;
 }
 
-h2.with-border {
-    margin-bottom: 15px;
-}
 
 #main a {
     color: #406fb0;
@@ -148,4 +148,9 @@ h2.with-border {
 
 img {
     border: none;
+}
+
+a.back {
+    display: block;
+    float: right;
 }
