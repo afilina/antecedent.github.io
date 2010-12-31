@@ -133,7 +133,7 @@ pre .bracket {
 }
 
 .column {
-    width: 415px;
+    width: 425px;
     float: left;
     margin-right: 50px;
 }
@@ -150,7 +150,31 @@ img {
     border: none;
 }
 
-a.back {
+a.forward {
     display: block;
     float: right;
+    margin-top: 5px;
+}
+
+#main #nav {
+    float: right;
+    list-style: none;
+    text-align: right;
+    font-size: 11pt;
+    margin-top: 5px;
+}
+
+#nav a {
+    color: #AAA;
+}
+
+#nav a:hover {
+    color: #406fb0;
+    text-decoration: none;
+}
+
+#disqus_thread {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #BCC;
 }
