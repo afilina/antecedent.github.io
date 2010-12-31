@@ -178,3 +178,9 @@ a.forward {
     padding-top: 20px;
     border-top: 1px solid #BCC;
 }
+
+#disqus_thread h3 {
+    font: bold 10pt Arial, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
