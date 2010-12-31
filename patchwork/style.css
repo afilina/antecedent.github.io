@@ -183,4 +183,6 @@ a.forward {
     font: bold 10pt Arial, sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase;
+    color: #111;
+    margin: 0;
 }
