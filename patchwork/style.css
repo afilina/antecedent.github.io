@@ -173,9 +173,10 @@ a.forward {
     text-decoration: none;
 }
 
-#disqus_thread {
+h3.comments {
     margin-top: 20px;
     padding-top: 20px;
+    margin-bottom: 5px;
     border-top: 1px solid #BCC;
 }
 
@@ -183,6 +184,10 @@ a.forward {
     font: bold 10pt Arial, sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #111;
-    margin: 0;
+    color: #333;
+    margin: 5px 0;
+}
+
+#dsq-global-toolbar {
+    margin-top: 0;
 }
