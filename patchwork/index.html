@@ -34,31 +34,31 @@
             <pre class="box top left">
 <span class="comment"># 1. Define a function</span>
 
-<span class="keyword">function</span> size<span class="bracket">(</span>$x<span class="bracket">)</span>
-<span class="bracket">{</span>
-    <span class="keyword">return</span> count<span class="bracket">(</span>$x<span class="bracket">)</span>;
-<span class="bracket">}</span>
+<span class="keyword">function</span> size<span class="noise">(</span>$x<span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">return</span> count<span class="noise">(</span>$x<span class="noise">)</span>;
+<span class="noise">}</span>
 
-size<span class="bracket">(</span><span class="keyword">array</span><span class="bracket">(</span>1, 2<span class="bracket">)</span><span class="bracket">)</span>; <span class="comment"># =&gt; 2</span>
+size<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span>1, 2<span class="noise">)</span><span class="noise">)</span>; <span class="comment"># =&gt; 2</span>
             </pre>
             <pre class="box top">
 <span class="comment"># 2. Replace it with a new one</span>
 
 <span class="keyword">use</span> Patchwork <span class="keyword">as</span> p;
 
-p\replace<span class="bracket">(</span><span class="string">"size"</span>, <span class="keyword">function</span><span class="bracket">(</span>$x<span class="bracket">)</span>
-<span class="bracket">{</span>
+p<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"size"</span>, <span class="keyword">function</span><span class="noise">(</span>$x<span class="noise">)</span>
+<span class="noise">{</span>
     <span class="keyword">return</span> <span class="string">"huge"</span>;
-<span class="bracket">}</span><span class="bracket">)</span>;
+<span class="noise">}</span><span class="noise">)</span>;
 
-size<span class="bracket"><span class="bracket">(</span></span><span class="keyword">array</span><span class="bracket">(</span>1, 2<span class="bracket">)</span><span class="bracket">)</span>; <span class="comment"># =&gt; "huge"</span>
+size<span class="noise"><span class="noise">(</span></span><span class="keyword">array</span><span class="noise">(</span>1, 2<span class="noise">)</span><span class="noise">)</span>; <span class="comment"># =&gt; "huge"</span>
             </pre>
             <pre class="box top right">
 <span class="comment"># 3. Undo the replacement</span>
     
-p\undoAll<span class="bracket">(</span><span class="bracket">)</span>;
+p<span class="noise">\</span>undoAll<span class="noise">(</span><span class="noise">)</span>;
 
-size<span class="bracket">(</span><span class="keyword">array</span><span class="bracket">(</span>1, 2<span class="bracket">)</span><span class="bracket">)</span>; <span class="comment"># => 2</span>
+size<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span>1, 2<span class="noise">)</span><span class="noise">)</span>; <span class="comment"># => 2</span>
 
 <span class="comment"># Note that all of these steps</span>
 <span class="comment"># occur at the same runtime!</span>

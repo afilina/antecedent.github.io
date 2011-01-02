@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patchwork</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="alternate" href="../articles/atom.xml" type="application/atom+xml">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20483190-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>    
+</head>
+<body>
+    <div id="main">
+        <ul id="nav">
+            <li><a href="..">Home</a></li>
+            <li><a href=".">Docs</a></li>
+            <li><a href="https://github.com/antecedent/patchwork">Source</a></li>
+            <li><a href="https://github.com/antecedent/patchwork/archives/master">Download</a></li>
+        </ul>         
+        <h1><a href="..">Patchwork</a><img src="../bracket.png" alt="Logo"></h1>
+        <h2 class="with-border">Public API</h2>  
+        <a href="." class="forward">Documentation Index &raquo;</a>
+        
+        
+        
+        <h3>Patchwork\replace</h3>
+        <p>This function is used to dynamically replace the definition of a named user-defined function or method. It takes two arguments: the function to redefine and its new definition. Both arguments must be valid PHP <a href="">callbacks</a>.</p>
+        <p>Technically, the "replacement" is just a function or method that is automatically invoked on each call received by the original function. The replacement function always receives the same arguments as the original one and is allowed to return any value on behalf of the original function. Unless <a href="#shift">explicitly requested</a>, Patchwork will never let the original definition regain control after the replacement has terminated.</p>        
+        <p>Examples:</p>
+        <pre>
+<span class="comment"># The original definition</span>
+
+<span class="keyword">function</span> getFoo<span class="noise">()</span>
+<span class="noise">{</span>
+    <span class="keyword">return</span> <span class="string">"foo"</span>;
+<span class="noise">}</span>
+
+getFoo<span class="noise">()</span>; <span class="comment"># => "foo"</span></pre>
+
+<pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"getFoo"</span>, function<span class="noise">()</span>
+<span class="noise">{</span>
+    <span class="keyword">return</span> <span class="string">"bar"</span>;
+<span class="noise">})</span>;
+
+getFoo<span class="noise">()</span>; <span class="comment"># => "bar"</span></pre>
+        <pre>
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"getFoo"</span>, <span class="string">"mt_rand"</span><span class="noise">)</span>;
+
+getFoo<span class="noise">()</span>; <span class="comment"># Does whatever mt_rand does</span></pre>
+        <pre>
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"getFoo"</span>, <span class="string">"getFoo"</span><span class="noise">)</span>;
+
+getFoo<span class="noise">()</span>; <span class="comment"># Infinite recursion</span></pre>
+        <p>As explained on the <a href="getting-started">Getting Started</a> page, Patchwork can only redefine those functions that are defined in preprocessed files. Also, intuitively, a function must have a previous definition in order to be redefined. <kbd>Patchwork\replace</kbd> warns about violations of these requirements by throwing an exception:</p>
+        
+        <pre>
+<span class="keyword">require</span> __DIR__ . <span class="string">"/lib/Cache.php"</span>;
+
+<span class="comment"># Cache.php is already included, and thus will remain unpreprocessed</span>
+<span class="keyword">require</span> __DIR__ . <span class="string">"/patchwork/Patchwork.php"</span>;
+
+<span class="comment"># Throws an instance of Patchwork\Exceptions\NotPreprocessed</span>
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"Cache::fetch"</span>, <span class="keyword">function</span><span class="noise">(</span>&amp;$result<span class="noise">)</span>
+<span class="noise">{</span>
+    $result = <span class="keyword">null</span>;
+    <span class="keyword">return</span> Cache::SUCCESS;
+<span class="noise">}</span><span class="noise">)</span>;</pre>        
+
+<pre>
+<span class="comment"># Throws an instance of Patchwork\Exceptions\NotDefined</span>
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"inexistentFunction"</span>, <span class="string">"pi"</span><span class="noise">)</span>;</pre>
+    
+    <div class="separator with-border"></div>
+        
+        
+        
+        <h3>Patchwork\replaceLater</h3>
+        
+        <h3>Patchwork\shift</h3>
+        
+        <h3>Patchwork\top</h3>
+        
+        <h3>Patchwork\topOffset</h3>        
+        
+        <h3>Patchwork\undo</h3>
+        
+        <h3>Patchwork\undoAll</h3>
+
+        
+        <h3 class="comments">Comments</h3>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'antecedentgithub';
+            var disqus_identifier = '/patchwork/docs/public-api.html';
+            var disqus_url = 'http://antecedent.github.com/patchwork/docs/public-api.html';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>        
+    </div>
+</body>
+</html>

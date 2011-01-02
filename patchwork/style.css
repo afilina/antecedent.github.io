@@ -77,8 +77,12 @@ p {
     margin-top: 10px;         
 }
 
+pre, kbd {
+    font-family: Consolas, Inconsolata, 'Lucida Console', 'Courier New', Courier, monospace;
+}
+
 pre {
-    font: 11pt Consolas, Inconsolata, 'Lucida Console', 'Courier New', Courier, monospace;
+    font-size: 11pt;
     padding: 10px;
     margin-top: 10px;
     background: black;
@@ -86,7 +90,7 @@ pre {
 }
 
 pre.box {
-    width: 271px;
+    width: 273px;
     height: 190px;
     padding: 10px;
     margin: 5px;
@@ -97,23 +101,27 @@ pre .keyword {
     color: #a5dd63;
 }
 
-pre .string, pre .comment {
-    color: #b2cccc;
+pre .string {
+    color: #cbc;
 }
 
-pre .bracket {
+pre .comment {
+    color: #acd;
+}
+
+pre .noise {
     color: #999;
+}
+
+.demos, .with-border {
+    border-bottom: 1px solid #BCC;
+    padding-bottom: 10px;
 }
 
 .demos {
     padding-bottom: 13px;
     overflow: auto;
 }
-
-.demos, h2.with-border {
-    border-bottom: 1px solid #BCC;
-}
-
 
 #main a {
     color: #406fb0;
@@ -190,4 +198,25 @@ h3.comments {
 
 #dsq-global-toolbar {
     margin-top: 0;
+}
+
+table.method {
+    width: 100%;
+}
+
+table.method th, table.method td {
+    padding: 10px 0;
+}
+
+table.method th {
+    width: 100px;
+    text-align: right;
+    font: bold 10pt Arial, sans-serif;
+    text-transform: uppercase;
+    vertical-align: center;
+    padding-right: 20px;
+}
+
+.method pre {
+    margin: 0;
 }
