@@ -65,6 +65,7 @@ h3 {
 
 #main ul {
 	margin: 10px 0px;
+	list-style: square;
 }
 
 #main ul li {
@@ -98,15 +99,15 @@ pre.box {
 }
 
 pre .keyword {
-    color: #a5dd63;
+    color: #9cc8ec; /* blue */    
 }
 
 pre .string {
-    color: #cbc;
+    color: #b5e583; /* green */
 }
 
 pre .comment {
-    color: #acd;
+    color: #cebde1; /* purple */    
 }
 
 pre .noise {
@@ -219,4 +220,8 @@ table.method th {
 
 .method pre {
     margin: 0;
+}
+
+.separator.with-border {
+    margin-bottom: 5px;
 }

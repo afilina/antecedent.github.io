@@ -2,10 +2,10 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom">
     
-  <id>http://antecedent.github.com/patchwork/docs/articles</id>
+  <id>http://antecedent.github.com/patchwork/articles</id>
   <title>Patchwork - Articles</title>
   <updated>2010-12-30T18:18:00Z</updated>
-  <link rel="self" href="http://antecedent.github.com/patchwork/docs/articles/atom.xml" type="application/atom+xml" />
+  <link rel="self" href="http://antecedent.github.com/patchwork/articles/atom.xml" type="application/atom+xml" />
 
   <author>
     <name>Ignas Rudaitis</name>

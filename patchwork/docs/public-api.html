@@ -31,11 +31,22 @@
         <h2 class="with-border">Public API</h2>  
         <a href="." class="forward">Documentation Index &raquo;</a>
         
+        <h3 id="contents">Contents</h3>
         
-        
-        <h3>Patchwork\replace</h3>
+        <ul class="with-border">
+            <li><kbd><a href="#replace">Patchwork\replace</a></kbd></li>
+            <li><kbd><a href="#replaceLater">Patchwork\replaceLater</a></kbd></li>
+            <li><kbd><a href="#shift">Patchwork\shift</a></kbd></li>
+            <li><kbd><a href="#top">Patchwork\top</a></kbd></li>
+            <li><kbd><a href="#topOffset">Patchwork\topOffset</a></kbd></li>
+            <li><kbd><a href="#undo">Patchwork\undo</a></kbd></li>
+            <li><kbd><a href="#undoAll">Patchwork\undoAll</a></kbd></li>
+        </ul>
+                
+        <a href="#contents" class="forward">Contents &uarr;</a>                
+        <h3 id="replace">Patchwork\replace</h3>        
         <p>This function is used to dynamically replace the definition of a named user-defined function or method. It takes two arguments: the function to redefine and its new definition. Both arguments must be valid PHP <a href="">callbacks</a>.</p>
-        <p>Technically, the "replacement" is just a function or method that is automatically invoked on each call received by the original function. The replacement function always receives the same arguments as the original one and is allowed to return any value on behalf of the original function. Unless <a href="#shift">explicitly requested</a>, Patchwork will never let the original definition regain control after the replacement has terminated.</p>        
+        <p>Technically, the "replacement" (also known as a <a href="http://en.wikipedia.org/wiki/Monkey_patch">monkey patch</a>) is just a function or method that is automatically invoked on each call received by the original function. The replacement function always receives the same arguments as the original one and is allowed to return any value on behalf of the original function. Unless <a href="#shift">explicitly requested</a>, Patchwork will never let the original definition regain control after the replacement has terminated.</p>        
         <p>Examples:</p>
         <pre>
 <span class="comment"># The original definition</span>
@@ -47,7 +58,7 @@
 
 getFoo<span class="noise">()</span>; <span class="comment"># => "foo"</span></pre>
 
-<pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"getFoo"</span>, function<span class="noise">()</span>
+<pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"getFoo"</span>, <span class="keyword">function</span><span class="noise">()</span>
 <span class="noise">{</span>
     <span class="keyword">return</span> <span class="string">"bar"</span>;
 <span class="noise">})</span>;
@@ -61,20 +72,14 @@ getFoo<span class="noise">()</span>; <span class="comment"># Does whatever mt_ra
 Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"getFoo"</span>, <span class="string">"getFoo"</span><span class="noise">)</span>;
 
 getFoo<span class="noise">()</span>; <span class="comment"># Infinite recursion</span></pre>
-        <p>As explained on the <a href="getting-started">Getting Started</a> page, Patchwork can only redefine those functions that are defined in preprocessed files. Also, intuitively, a function must have a previous definition in order to be redefined. <kbd>Patchwork\replace</kbd> warns about violations of these requirements by throwing an exception:</p>
+        <p>As explained on the <a href="getting-started.html#preprocessor">Getting Started</a> page, Patchwork can only redefine those functions that are defined in preprocessed files. Also, intuitively, a function must have a previous definition in order to be redefined. <kbd>Patchwork\replace</kbd> warns about violations of these requirements by throwing an exception:</p>
         
         <pre>
-<span class="keyword">require</span> __DIR__ . <span class="string">"/lib/Cache.php"</span>;
-
-<span class="comment"># Cache.php is already included, and thus will remain unpreprocessed</span>
+<span class="keyword">require</span> __DIR__ . <span class="string">"/lib/Cache.php"</span>; <span class="comment"># Included before Patchwork!</span>
 <span class="keyword">require</span> __DIR__ . <span class="string">"/patchwork/Patchwork.php"</span>;
 
 <span class="comment"># Throws an instance of Patchwork\Exceptions\NotPreprocessed</span>
-Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"Cache::fetch"</span>, <span class="keyword">function</span><span class="noise">(</span>&amp;$result<span class="noise">)</span>
-<span class="noise">{</span>
-    $result = <span class="keyword">null</span>;
-    <span class="keyword">return</span> Cache::SUCCESS;
-<span class="noise">}</span><span class="noise">)</span>;</pre>        
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"Cache::fetch"</span>, </span><span class="string">"Cache::pretendToFetch"</span><span class="noise">)</span>;</pre>        
 
 <pre>
 <span class="comment"># Throws an instance of Patchwork\Exceptions\NotDefined</span>
@@ -82,19 +87,82 @@ Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span cl
     
     <div class="separator with-border"></div>
         
+        <a href="#contents" class="forward">Contents &uarr;</a>                
+        <h3 id="replaceLater">Patchwork\replaceLater</h3>
+        
+        <div class="separator with-border"></div>
+        
+        <a href="#contents" class="forward">Contents &uarr;</a>             
+        <h3 id="shift">Patchwork\shift</h3>   
+        
+        <p>This function immediately stops the topmost currently running replacement function (if any) and lets the original implementation run instead:</p>
+        
+        <pre>
+function sayBar()
+{
+    echo "bar";
+}
+
+sayBar(); # prints "bar"
+
+Patchwork\replace("sayBar", function()
+{
+    echo "foo";
+    Patchwork\shift();
+    echo "This will never be printed";    
+});
+
+sayBar(); # prints "foobar"</pre>
+            
+        <div class="separator with-border"></div>
+        
+        <a href="#contents" class="forward">Contents &uarr;</a>
+        <h3 id="top">Patchwork\top</h3>
+        
+        <p>This function gets the details of the topmost current call that has been forwarded to a replacement function. The result is an associative array of call properties (<kbd>object</kbd>, <kbd>args</kbd>, etc.) as returned by <kbd><a href="http://php.net/debug_backtrace">debug_backtrace</a></kbd>.</p>
+        
+        <p>Additionally, <kbd>Patchwork\top</kbd> may be asked to return a specific element of the array by passing its key as an argument:</p>
+        
+        <pre>
+Patchwork\replace("Calculator::square", function($num)
+{
+    # Retrieve the Calculator object on which square() was called
+    $calc = Patchwork\top("object");
+    return $calc->multiply($num, $num);
+});</pre>
+        
+        <div class="separator with-border"></div>
+        
+        <a href="#contents" class="forward">Contents &uarr;</a>
+        <h3 id="topOffset">Patchwork\topOffset</h3>
+        
+        <p>Retrieves the offset of the topmost current call that has been forwarded to a replacement function, counting from the <strong>bottom</strong> of the call stack:</p>
+        
+        <pre>
+function getStackTrace()
+{
+    return debug_backtrace();
+}
+
+Patchwork\replace("getStackTrace", function()
+{
+    $backtrace = debug_backtrace(); # Also includes some intermediate calls done by Patchwork...
+    return array_slice($backtrace, count($backtrace) - Patchwork\topOffset()); # ...but now it does not.
+});
+
+getStackTrace(); # Yields the same result as the original definition
+</pre>
+
+        <div class="separator with-border"></div>
+        
+        <a href="#contents" class="forward">Contents &uarr;</a>
+        <h3 id="undo">Patchwork\undo</h3>
+        
+        <div class="separator with-border"></div>
         
         
-        <h3>Patchwork\replaceLater</h3>
-        
-        <h3>Patchwork\shift</h3>
-        
-        <h3>Patchwork\top</h3>
-        
-        <h3>Patchwork\topOffset</h3>        
-        
-        <h3>Patchwork\undo</h3>
-        
-        <h3>Patchwork\undoAll</h3>
+        <a href="#contents" class="forward">Contents &uarr;</a>
+        <h3 id="undoAll">Patchwork\undoAll</h3>
 
         
         <h3 class="comments">Comments</h3>

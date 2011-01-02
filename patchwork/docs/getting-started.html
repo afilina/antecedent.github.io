@@ -37,7 +37,7 @@
         <pre>
 <span class="keyword">require</span> __DIR__ . <span class="string">"/patchwork/Patchwork.php"</span>;</pre>
         <p>However, the exact place from where Patchwork is included makes a great difference. The next section explains this in more detail, but the general rule is to include Patchwork as early as possible.</p>
-        <h3>Your Code and the Preprocessor</h3>
+        <h3 id="preprocessor">Your Code and the Preprocessor</h3>
         <p>In order to make any kind of redefinition possible, Patchwork employs code preprocessing, meaning that every <kbd>include</kbd>, <kbd>require</kbd> and <kbd>eval</kbd> statement that is issued after importing Patchwork makes the included code go through an additional preprocessing layer.</p>
         <p>This layer injects some code into the beginning of every function. The injected code is responsible for forwarding the call to the replacement function when the called function is redefined. In essence, this means that only those functions that reside in preprocessed files (or dynamically evaluated portions of code) are eligible for redefinition.</p>
         <p>This leads to the following conclusions:</p>
@@ -47,7 +47,7 @@
             <li>Patchwork should be avoided in production environments because of the call interception overhead.</li>
         </ul>
         <h3>Further Steps</h3>
-        <p>After that, you may already start redefining functions:</p>
+        <p>You can already start redefining functions now:</p>
         <pre>
 Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"Post::delete"</span>, <span class="keyword">function</span><span class="noise">()</span>
 <span class="noise">{</span>
