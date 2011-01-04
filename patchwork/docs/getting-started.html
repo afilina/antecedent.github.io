@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Patchwork</title>
+    <title>Getting Started - Patchwork</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="alternate" href="../articles/atom.xml" type="application/atom+xml">
     <link rel="stylesheet" href="../style.css" type="text/css">
     <script type="text/javascript">
     
@@ -36,24 +35,16 @@
         <p>This step seems quite straightforward, as all you have to do is include <kbd>Patchwork.php</kbd>:</p>
         <pre>
 <span class="keyword">require</span> __DIR__ . <span class="string">"/patchwork/Patchwork.php"</span>;</pre>
-        <p>However, the exact place from where Patchwork is included makes a great difference. The next section explains this in more detail, but the general rule is to include Patchwork as early as possible.</p>
-        <h3 id="preprocessor">Your Code and the Preprocessor</h3>
-        <p>In order to make any kind of redefinition possible, Patchwork employs code preprocessing, meaning that every <kbd>include</kbd>, <kbd>require</kbd> and <kbd>eval</kbd> statement that is issued after importing Patchwork makes the included code go through an additional preprocessing layer.</p>
-        <p>This layer injects some code into the beginning of every function. The injected code is responsible for forwarding the call to the replacement function when the called function is redefined. In essence, this means that only those functions that reside in preprocessed files (or dynamically evaluated portions of code) are eligible for redefinition.</p>
-        <p>This leads to the following conclusions:</p>
-        <ul>
-            <li><kbd>Patchwork.php</kbd> must be included earlier than all files that contain functions or methods which may need to be redefined.</li>
-            <li>If the file from which <kbd>Patchwork.php</kbd> is included contains any functions or methods, Patchwork will not be able to redefine them.</li>
-            <li>Patchwork should be avoided in production environments because of the call interception overhead.</li>
-        </ul>
+        <p>However, the exact place from where Patchwork is included makes a great difference. The general rule is to do so at <strong>the very starting point</strong> of your application.</p>
+        <p>This is explained by the fact that Patchwork is unable to redefine any functions that are defined in files included earlier than <kbd>Patchwork.php</kbd> itself. These also include the file from which <kbd>Patchwork</kbd> is included, so any functions defined in it will not be eligible for redefinition either.</p>
         <h3>Further Steps</h3>
         <p>You can already start redefining functions now:</p>
         <pre>
 Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"Post::delete"</span>, <span class="keyword">function</span><span class="noise">()</span>
 <span class="noise">{</span>
-    <span class="keyword">die</span><span class="noise">(</span><span class="string">"Why would you want to do that?"</span><span class="noise">)</span>;
+    <span class="keyword">echo</span> <span class="string">"No, sorry. Won't do that. This post deserves to live."</span>;
 <span class="noise">})</span>;</pre>
-        <p>The generic redefinition API is described <a href="public-api.html">here</a>. Or, if you are going to use Patchwork with PHPUnit, you may want to use the <a href="phpunit-integration.html">PHPUnit integration layer</a> instead.
+        <p>While Patchwork barely gets any more difficult than this, you might still want to study some more <a href="examples.html">examples</a> before starting off.</p>
         <h3 class="comments">Comments</h3>
         <div id="disqus_thread"></div>
         <script type="text/javascript">
