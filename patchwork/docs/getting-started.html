@@ -36,7 +36,7 @@
         <pre>
 <span class="keyword">require</span> __DIR__ . <span class="string">"/patchwork/Patchwork.php"</span>;</pre>
         <p>However, the exact place from where Patchwork is included makes a great difference. The general rule is to do so at <strong>the very starting point</strong> of your application.</p>
-        <p>This is explained by the fact that Patchwork is unable to redefine any functions that are defined in files included earlier than <kbd>Patchwork.php</kbd> itself. These also include the file from which <kbd>Patchwork</kbd> is included, so any functions defined in it will not be eligible for redefinition either.</p>
+        <p>This is explained by the fact that Patchwork is unable to redefine any functions that are defined in files included earlier than <kbd>Patchwork.php</kbd> itself. These also include the file from which <kbd>Patchwork.php</kbd> is included, so any functions defined in it will not be eligible for redefinition either.</p>
         <h3>Further Steps</h3>
         <p>You can already start redefining functions now:</p>
         <pre>

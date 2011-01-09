@@ -7,11 +7,11 @@
 
 #main {
     width: 900px;
-    font: 11pt Arial;
+    color: #222;
+    font: 14px Arial, Helvetica, sans-serif;
     margin: 20px auto;
     overflow: auto;    
 }
-
 
 h1 {
     font-family: Merriweather, Georgia, serif;
@@ -56,7 +56,7 @@ h2 em {
 h3 {
     font: 15pt Helvetica, Arial, sans-serif;
     color: #888;
-    margin-top: 10px;
+    margin-top: 13px;
 }
 
 .box h3 {
@@ -64,7 +64,7 @@ h3 {
 }
 
 #main ul {
-	margin: 10px 0px;
+	margin-top: 13px;
 	list-style: square;
 }
 
@@ -75,7 +75,8 @@ h3 {
 
 p {
     text-align: justify;  
-    margin-top: 10px;         
+    margin-top: 13px;  
+    line-height: 18px;
 }
 
 pre, kbd {
@@ -85,8 +86,8 @@ pre, kbd {
 pre {
     font-size: 11pt;
     padding: 10px;
-    margin-top: 10px;
-    background: #000;
+    margin-top: 13px;
+    background: #111;
     color: #FFF;      
 }
 
@@ -99,15 +100,15 @@ pre.box {
 }
 
 pre .keyword {
-    color: #9cc8ec; /* blue */    
+    color: #85b7ff;
 }
 
 pre .string {
-    color: #b5e583; /* green */
+    color: #9ada43;
 }
 
-pre .comment {
-    color: #cebde1; /* purple */    
+pre .comment, pre .variable {
+    color: #c4d7fb;
 }
 
 pre .noise {
@@ -141,12 +142,6 @@ pre .noise {
     margin-bottom: 10px;
 }
 
-.column {
-    width: 425px;
-    float: left;
-    margin-right: 50px;
-}
-
 #main .left  { margin-left: 0; clear: both; }
 #main .right { margin-right: 0; }
 
@@ -159,9 +154,13 @@ img {
     border: none;
 }
 
-a.forward {
+a.forward, a.top {
     display: block;
     float: right;
+    margin-top: 8px;
+}
+
+a.top {
     margin-top: 5px;
 }
 
@@ -225,4 +224,12 @@ table.method th {
 .separator.with-border {
     padding-bottom: 15px;
     margin-bottom: 15px;
+}
+
+.snipt-embed-meta-container {
+    display: none;
+}
+
+.snipt-embed-code {
+    padding: 0 !important;
 }
