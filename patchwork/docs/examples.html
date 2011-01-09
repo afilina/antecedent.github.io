@@ -223,7 +223,7 @@ sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="com
         <div class="separator with-border"></div>
         <a class="top" href="#main">Contents &uarr;</a>
 
-        <h3>Magic Methods</h3>
+        <h3 id="magic-methods">Magic Methods</h3>
         
         <p>Method overloads dispatched in <kbd>__call</kbd> and <kbd>__callStatic</kbd> magic methods are not real named methods, so they cannot be redefined directly. In such cases, the respective "double-underscore" magic methods should be redefined instead.</p>
         
@@ -292,10 +292,10 @@ sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="com
 </span>
 <span class="variable">$censorship</span> = Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"sayBar"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="noise">)</span>
 <span class="noise">{</span>
-    <span class="keyword">echo</span> <span class="string">"*censored*"</span>;
+    <span class="keyword">echo</span> <span class="string">"censored"</span>;
 <span class="noise">}</span><span class="noise">)</span>;
 
-sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "*censored*"
+sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "censored"
 </span>
 Patchwork<span class="noise">\</span>undo<span class="noise">(</span><span class="variable">$censorship</span><span class="noise">)</span>;
 

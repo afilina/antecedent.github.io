@@ -100,11 +100,11 @@ pre.box {
 }
 
 pre .keyword {
-    color: #85b7ff;
+    color: #72b3ff;
 }
 
 pre .string {
-    color: #9ada43;
+    color: #abe050;
 }
 
 pre .comment, pre .variable {
@@ -226,10 +226,23 @@ table.method th {
     margin-bottom: 15px;
 }
 
-.snipt-embed-meta-container {
-    display: none;
+.blog-box {
+    background: #daffac;
+    border: 1px solid #cae5a8;
+    float: right;
+    width: 280px;
+    margin: 7px 0 25px 25px;
+    padding: 7px;
 }
 
-.snipt-embed-code {
-    padding: 0 !important;
+.blog-box h3 {
+    margin-top: 0px;
+}
+
+.feed {
+    float: right;
+}
+
+.date {
+    color: #777;
 }
