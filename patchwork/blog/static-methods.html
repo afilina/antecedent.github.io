@@ -88,7 +88,7 @@ Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span cl
     <span class="noise">}</span>      
 <span class="noise">}</span></pre>
 
-<p>Although our example with Active Record ends here, there is a lot more you can do with the help of monkey patching, like replacing singleton instances and stubbing instance methods on all instances of a class. However, you should always think twice before doing so. Monkey patching should only be considered when actually making the code testable requires unreasonable effort. In essence, monkey patching means making code testable "by force", and not by design, which is why it should only be a last-resort solution. And finally, <strong>please never, ever use it in production code</strong>. Monkey patching is hacky enough to be restricted to testing environments.</p>
+<p>Although our example with Active Record ends here, there is a lot more you can do with the help of monkey patching, like replacing singleton instances and stubbing instance methods on all instances of a class. However, you should always think twice before doing so. Monkey patching should only be considered in cases when actually making the code testable requires unreasonable effort. In essence, monkey patching means making code testable "by force", and not by design, which is why it should only be a last-resort solution. And finally, <strong>please never, ever use it in production code</strong>. Monkey patching is hacky enough to be restricted to testing environments.</p>
 
 <p>And that will probably be enough for now.</p>
 
