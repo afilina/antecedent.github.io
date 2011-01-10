@@ -86,7 +86,7 @@ babble<span class="noise">(</span><span class="noise">)</span>; <span class="com
 <pre>
 <span class="keyword">class</span> Greeter
 <span class="noise">{</span>
-    private <span class="variable">$name</span>;
+    <span class="keyword">private</span> <span class="variable">$name</span>;
     
     <span class="keyword">function</span> __construct<span class="noise">(</span><span class="variable">$name</span><span class="noise">)</span>
     <span class="noise">{</span>
@@ -225,7 +225,7 @@ sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="com
 
         <h3 id="magic-methods">Magic Methods</h3>
         
-        <p>Method overloads dispatched in <kbd>__call</kbd> and <kbd>__callStatic</kbd> magic methods are not real named methods, so they cannot be redefined directly. In such cases, the respective "double-underscore" magic methods should be redefined instead.</p>
+        <p>Method overloads, which are dispatched in <kbd>__call</kbd> and <kbd>__callStatic</kbd> magic methods, are not real named methods, so they cannot be redefined directly. In such cases, the respective "double-underscore" dispatchment methods should be redefined instead.</p>
         
         <pre>
 <span class="keyword">class</span> MagicEcho
@@ -239,7 +239,7 @@ sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="com
 
 <span class="variable">$echo</span> = <span class="keyword">new</span> MagicEcho;
 
-<span class="variable">$echo</span><span class="noise">-></span>foo<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "foo"
+<span class="variable">$echo</span><span class="noise">-></span>foo<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "foo "
 </span>
 Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span><span class="variable">$echo</span>, <span class="string">"__call"</span><span class="noise">)</span>, <span class="keyword">function</span><span class="noise">(</span><span class="variable">$method</span>, <span class="variable">$args</span><span class="noise">)</span> <span class="keyword">use</span> <span class="noise">(</span><span class="variable">$echo</span><span class="noise">)</span>
 <span class="noise">{</span>
@@ -250,7 +250,7 @@ Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span cl
     Patchwork<span class="noise">\</span>pass<span class="noise">(</span><span class="noise">)</span>;
 <span class="noise">}</span><span class="noise">)</span>;
 
-<span class="variable">$echo</span><span class="noise">-></span>I<span class="noise">(</span><span class="noise">)</span><span class="noise">-></span>am<span class="noise">(</span><span class="noise">)</span><span class="noise">-></span>not<span class="noise">(</span><span class="noise">)</span><span class="noise">-></span>redefined<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "I am redefined"
+<span class="variable">$echo</span><span class="noise">-></span>I<span class="noise">(</span><span class="noise">)</span><span class="noise">-></span>am<span class="noise">(</span><span class="noise">)</span><span class="noise">-></span>not<span class="noise">(</span><span class="noise">)</span><span class="noise">-></span>redefined<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "I am  redefined "
 </span>
 </pre>
 
@@ -286,6 +286,8 @@ sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="com
         <a class="top" href="#main">Contents &uarr;</a>
         
         <h3 id="undoing-a-single-redefinition">Undoing a Single Redefinition</h3>
+        
+        <p>Separate redefinitions can be undone by using the <kbd>Patchwork\undo</kbd> function.</p>
         
         <pre>
 sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "bar"

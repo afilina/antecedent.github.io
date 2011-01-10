@@ -79,6 +79,10 @@ p {
     line-height: 18px;
 }
 
+p.attached {
+    margin-top: 5px;
+}
+
 pre, kbd {
     font-family: Consolas, Inconsolata, 'Lucida Console', 'Courier New', Courier, monospace;
 }
@@ -104,7 +108,7 @@ pre .keyword {
 }
 
 pre .string {
-    color: #abe050;
+    color: #abe060;
 }
 
 pre .comment, pre .variable {

@@ -32,11 +32,11 @@
 
 <p>Because of the way PHP works, static method calls are often seen as a <a href="http://googletesting.blogspot.com/2008/12/static-methods-are-death-to-testability.html">major testability obstacle</a> in PHP code. Unlike in Ruby or JavaScript, classes in PHP are completely closed upon definition, so static methods cannot be stubbed (that is, replaced with test stubs) in any natural way. Therefore, any cross-class static method call is essentially a hardcoded dependency in PHP.</p>
 
-<p>In most cases, but by no means in all of them, hardcoded dependencies mean not only poor testability, but also bad component design, which is why <strong>public</strong> static methods should be avoided in object-oriented PHP code in general. Unfortunately, just avoiding them yourself will probably not make them disappear from your code altogether. Lots of third-party libraries have static methods in their public APIs as well, so simply using such libraries will inevitably result in a number of stubborn dependencies in your code.</p>
+<p>In most cases, but by no means in all of them, hardcoded dependencies mean not only poor testability, but also bad component design, which is why <strong>public</strong> static methods should be avoided in object-oriented PHP code in general. Unfortunately, just avoiding them yourself will probably not make them disappear from your code altogether. Lots of third-party libraries have static methods in their public APIs as well, so just using such libraries will inevitably result in a number of stubborn dependencies.</p>
 
-<p>Rails-inspired Active Record libraries, found in many web application frameworks, make for a perfect example. If you want a list of all users, just call <kbd>User::all()</kbd>. Call it from anywhere: controllers, logging callbacks, authentication layers, just anywhere. APIs like this shine with simplicity, yet they also tend to ruin the testability of any code that uses them.</p>
+<p>Rails-inspired <a href="http://ar.rubyonrails.org">Active Record</a> libraries, found in many web application frameworks, make for a perfect example. If you want a list of all users, just call <kbd>User::all()</kbd>. Call it from anywhere: controllers, logging callbacks, authentication layers, just anywhere. APIs like this shine with simplicity, yet they also tend to ruin the testability of any code that uses them.</p>
 
-<p>Fortunately, with the help of proper tools, testability and procedural APIs can still coexist in your code. One of such tools is the <a href="http://www.php.net/manual/en/book.runkit.php">Runkit</a> extension, or more specifically, the <kbd><a href="http://www.php.net/manual/en/function.runkit-method-redefine.php">runkit_method_redefine</a></kbd> function:</p>
+<p>Fortunately, with the help of proper tools, testability and procedural APIs can still coexist in your code. One of such tools is the <a href="http://www.php.net/manual/en/book.runkit.php">Runkit</a> extension, or more specifically, its <kbd><a href="http://www.php.net/manual/en/function.runkit-method-redefine.php">runkit_method_redefine</a></kbd> function:</p>
 
 <pre>runkit_method_redefine<span class="noise">(</span><span class="string">"User"</span>, <span class="string">"all"</span>, <span class="string">""</span>, <span class="string">"return array();"</span><span class="noise">)</span>;</pre>
 
@@ -88,19 +88,19 @@ Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span cl
     <span class="noise">}</span>      
 <span class="noise">}</span></pre>
 
-<!-- Briefly describe other uses and discourage use in production -->
+<p>Although our example with Active Record ends here, there is a lot more you can do with the help of monkey patching, like replacing singleton instances and stubbing instance methods on all instances of a class. However, you should always think twice before doing so. Monkey patching should only be considered when actually making the code testable requires unreasonable effort. In essence, monkey patching means making code testable "by force", and not by design, which is why it should only be a last-resort solution. And finally, <strong>please never, ever use it in production code</strong>. Monkey patching is hacky enough to be restricted to testing environments.</p>
 
-<p>Before finishing, let's make it clear that this article does not actually advocate monkey patching. Its only purpose is to demonstrate a possible practical use case for it. Monkey patching should <strong>only</strong> be considered when actually making the code testable requires unreasonable effort. Note that even in the case of Active Record, some libraries may have something in store for overcoming their own testability problems. For example, the <a href="http://lithify.me">Lithium</a> framework supports so-called <a href="http://lithify.me/docs/lithium/util/collection/Filters">method filters</a>, which can often be used to the same effect as method redefinition. Such options should always be preferred over monkey patching.</p>
+<p>And that will probably be enough for now.</p>
 
-<p>And that is probably enough for now. Happy testing!</p>
+<p>Happy testing!</p>
 
 
         <h3 class="comments">Comments</h3>
         <div id="disqus_thread"></div>
         <script type="text/javascript">
             var disqus_shortname = 'antecedentgithub';
-            var disqus_identifier = '/patchwork/articles/static-methods.html';
-            var disqus_url = 'http://antecedent.github.com/patchwork/articles/static-methods.html';
+            var disqus_identifier = '/patchwork/blog/static-methods.html';
+            var disqus_url = 'http://antecedent.github.com/patchwork/blog/static-methods.html';
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

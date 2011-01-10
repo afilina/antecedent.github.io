@@ -4,7 +4,7 @@
     
   <id>http://antecedent.github.com/patchwork/blog</id>
   <title>Patchwork</title>
-  <updated>2011-01-10T12:00:00Z</updated>
+  <updated>2011-01-10T15:00:00Z</updated>
   <link rel="self" href="http://antecedent.github.com/patchwork/blog/atom.xml" type="application/atom+xml" />
 
   <author>
@@ -16,7 +16,7 @@
   <entry>
     <title>Static Methods, Testability and Monkey Patching</title>
     <id>http://antecedent.github.com/patchwork/blog/static-methods.html</id>
-    <published>2011-01-10T12:00:00Z</published>
+    <published>2011-01-10T15:00:00Z</published>
     <link href="http://antecedent.github.com/patchwork/articles/static-methods.html"/>
     <content type="html"><![CDATA[
         <p>Because of the way PHP works, static method calls are often seen as a <a href="http://googletesting.blogspot.com/2008/12/static-methods-are-death-to-testability.html">major testability obstacle</a> in PHP code. Unlike in Ruby or JavaScript, classes in PHP are completely closed upon definition, so static methods cannot be stubbed (that is, replaced with test stubs) in any natural way. Therefore, any cross-class static method call is essentially a hardcoded dependency in PHP.</p>
