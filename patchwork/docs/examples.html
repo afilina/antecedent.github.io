@@ -189,14 +189,14 @@ size<span class="noise">(</span><span class="keyword">array</span><span class="n
     <span class="noise">}</span>
 <span class="noise">}</span>
 
-Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"A::__toString"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="noise">)</span><span class="noise">)</span>
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"A::__toString"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="noise">)</span>
 <span class="noise">{</span>
     <span class="keyword">return</span> <span class="string">"redefined"</span>;
 <span class="noise">}</span><span class="noise">)</span>;
 
 <span class="keyword">echo</span> <span class="keyword">new</span> A; <span class="comment"># prints "redefined"
 </span><span class="keyword">echo</span> <span class="keyword">new</span> B; <span class="comment"># prints "A"
-</span><span class="keyword">echo</span> <span class="keyword">new</span> C; <span class="comment"># prints "A"</span></pre>        
+</span><span class="keyword">echo</span> <span class="keyword">new</span> C; <span class="comment"># prints "C"</span></pre>        
 
         <div class="separator with-border"></div>
         <a class="top" href="#main">Contents &uarr;</a>
