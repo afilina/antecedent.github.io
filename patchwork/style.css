@@ -111,7 +111,7 @@ pre .string {
     color: #abe060;
 }
 
-pre .comment, pre .variable {
+pre .comment {
     color: #c4d7fb;
 }
 
