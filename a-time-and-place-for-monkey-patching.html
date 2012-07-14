@@ -48,7 +48,8 @@
 <p>Why is that, you might ask? The nature of unit testing is to verify the behavior
  of separate components &ndash; for example, functions &ndash;
  <em>in isolation</em>. In our case, we would want to isolate our code from the
-  <kbd>strtotime()</kbd>  function and the data model, represented by the <kbd>Post</kbd> class. 
+  <kbd>strtotime()</kbd>  function, which involves fetching the current time from the 
+  system clock, and the data model, represented by the <kbd>Post</kbd> class. 
   Inside a unit test, we would want to replace them with <em>test doubles</em> 
   &ndash; their fake counterparts that behave in a preset and predictable manner:</p>
 
