@@ -250,14 +250,3 @@ table.method th {
 .date {
     color: #777;
 }
-
-.blog-post-end-box {
-    margin: 10px 0;
-    padding: 15px;
-    border: 1px solid #BCC;
-    background: #DDE8EE;
-}
-    
-.blog-post-end-box p {
-    margin: 0;
-}
