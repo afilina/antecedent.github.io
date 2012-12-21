@@ -41,11 +41,6 @@ h2 {
     font-weight: normal;
 }
 
-h2 em {
-    font-style: normal;
-    color: #a49aff;
-}
-
 .box {
     width: 280px;
     float: left;
@@ -149,16 +144,11 @@ pre .noise {
 #main .left  { margin-left: 0; clear: both; }
 #main .right { margin-right: 0; }
 
-#main a.not-yet-written {
-    color: #AAA;
-    cursor: help;
-}
-
 img {
     border: none;
 }
 
-a.forward, a.top {
+a.top {
     display: block;
     float: right;
     margin-top: 8px;
@@ -230,23 +220,26 @@ table.method th {
     margin-bottom: 15px;
 }
 
-.blog-box {
-    background: #daffac;
-    border: 1px solid #cae5a8;
-    float: right;
-    width: 280px;
-    margin: 7px 0 25px 25px;
-    padding: 7px;
+#main a.document-link {
+    display: block;
+    color: inherit;
+    border-left: 5px solid #AAA;
+    padding: 7px 12px 7px 12px;
+    margin-top: 12px;
+    background: #EEE;
 }
 
-.blog-box h3 {
-    margin-top: 0px;
+#main a.document-link:hover {
+    text-decoration: none;
+    border-left-color: #6bacff;
+    background: #E5ECFF;
 }
 
-.feed {
-    float: right;
+#main a.document-link h3 {
+    margin: 0;
 }
 
-.date {
-    color: #777;
+#main a.document-link p {
+    margin-top: 3px;
+    text-align: left;
 }
