@@ -9,7 +9,8 @@
     width: 900px;
     color: #222;
     font: 14px Arial, Helvetica, sans-serif;
-    margin: 20px auto;
+    margin: 0px auto;
+    padding: 30px;
     overflow: auto;    
 }
 
@@ -20,6 +21,9 @@ h1 {
     color: #333;
     line-height: 1em; 
     margin-bottom: 5px;
+    height: 75px;
+    position: relative;
+    width: 500px;
 }        
 
 #main h1 a, #main h1 a:hover {
@@ -28,9 +32,9 @@ h1 {
 }
 
 h1 img {
-    margin-left: 50px;
-    position: relative;
-    top: 5px;
+    position: absolute;
+    left: 430px;
+    top: -10px;
 }
         
 h2 {
@@ -163,7 +167,7 @@ a.top {
     list-style: none;
     text-align: right;
     font-size: 11pt;
-    margin-top: 5px;
+    margin-top: 0;
 }
 
 #nav a {
