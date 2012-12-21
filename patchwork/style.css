@@ -226,7 +226,7 @@ table.method th {
 
 #main a.document-link {
     display: block;
-    color: inherit;
+    color: #222;
     border-left: 5px solid #AAA;
     padding: 7px 12px 7px 12px;
     margin-top: 12px;
