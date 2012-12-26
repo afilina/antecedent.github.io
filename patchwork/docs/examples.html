@@ -165,7 +165,7 @@ size<span class="noise">(</span><span class="keyword">array</span><span class="n
         
         <h3 id="methods-and-inheritance">Methods and Inheritance</h3>
 
-        <p>As of version 1.2.0, Patchwork <strong>follows</strong> inheritance when redefining methods. This means that if <kbd>Y extends X</kbd>, then redefining <kbd>X::foo</kbd> redefines <kbd>Y::foo</kbd>, <strong>unless</strong> the <kbd>foo</kbd> method is overridden in the <kbd>Y</kbd> class.
+        <p>As of version 1.2.0, Patchwork <strong>follows</strong> inheritance when redefining methods. This means that if <kbd>Y extends X</kbd>, then redefining <kbd>X::foo</kbd> also redefines <kbd>Y::foo</kbd>, <strong>unless</strong> the <kbd>foo</kbd> method is overridden in <kbd>Y</kbd>.
         
         <pre>
 <span class="keyword">class</span> A
