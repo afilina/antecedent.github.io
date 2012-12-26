@@ -247,3 +247,14 @@ table.method th {
     margin-top: 3px;
     text-align: left;
 }
+
+.changed-behavior-notice {
+    background: #CDD5E4;
+    border: 1px solid #ACB9D2;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.changed-behavior-notice p {
+    margin-top: 0;
+}
