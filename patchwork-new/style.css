@@ -1,0 +1,295 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather|Inconsolata);
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#top-outer {
+    padding-top: 30px;
+    background: #BEC6F4;
+}
+
+#top {
+    width: 896px;
+    height: 320px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#square-pattern, #header {
+    width: 896px;
+    height: 320px;
+    position: absolute;
+}
+
+h1 {
+    font-family: Merriweather, Georgia, serif;
+    font-weight: normal;
+    font-size: 100px;
+    color: white;
+    text-shadow: rgba(0, 0, 0, .3) 0 0 5px;
+    margin-top: 20px;
+    text-align: center;
+    height: 110px;
+}
+
+h2 {
+    color: #569; 
+    font-weight: normal;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+    line-height: 25px;
+}
+
+h2 span, h2 a {
+    color: #336;
+    text-decoration: none;
+}
+
+h2 a:hover {
+    text-decoration: underline;
+}
+
+a#download-button {
+    background: rgba(255, 255, 255, 0.3);
+    display: block;
+    width: 170px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 5px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #446;
+    border-radius: 7px;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+a#download-button .icon {
+    float: left;
+    font-size: 35px;
+    padding-right: 15px;
+    padding-left: 10px;
+}
+
+a#download-button .content {
+    text-align: center;
+    float: left;
+}
+
+a#download-button:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.6)), color-stop(100%, rgba(255, 255, 255, 0.3)));
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(255, 255, 255, 0.6)', endColorstr='rgba(255, 255, 255, 0.3)',GradientType=1 );
+}
+
+a#download-button h3 {
+    font-size: 22px;
+    font-weight: bold;
+    padding-bottom: 0;
+    margin-top: 0;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+a#download-button p {
+    font-size: 12px;
+    text-decoration: none;
+}
+
+#main-outer {
+    width: 896px;
+    margin: 0 auto;
+}
+
+#main {
+    padding: 20px;
+    padding-top: 0;
+    color: #444;
+    font-size: 15px;
+}
+
+#square-pattern {
+    overflow: auto;
+}
+
+#square-pattern div {
+    float: left;
+    height: 64px;
+    width: 64px;
+}
+
+#main h3 {
+    font-weight: bold;
+    font-size: 28px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#main .separator {
+    height: 1px;
+    background: #CCC;
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, white), color-stop(50%, #CCC), color-stop(100%, white));
+    background: -webkit-linear-gradient(left, white 0%, #CCC 50%, white 100%);
+    background: -o-linear-gradient(left, white 0%, #CCC 50%, white 100%);
+    background: -ms-linear-gradient(left, white 0%, #CCC 50%, white 100%);
+    background: -moz-linear-gradient(left, white 0%, #CCC 50%, white 100%);
+    background: -ms-linear-gradient(left, white 0%, #CCC 50%, white 100%);
+    background: linear-gradient(to right, white 0%, #CCC 50%, white 100%);
+    margin-top: 20px;
+}
+
+#main p {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: justify;
+}
+
+#main a {
+    color: #406fb0;
+    text-decoration: none;
+}
+
+#main a:hover {
+    text-decoration: underline;
+}
+
+#nav {
+    position: fixed;
+    background: #333;
+    color: white;
+    width: 100%;
+    font-size: 14px;
+    z-index: 100;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+#nav a {
+    display: inline-block;
+    padding: 10px;
+    padding-bottom: 5px;
+    text-decoration: none;
+    color: white;
+    border-bottom: 5px solid #333;
+}
+
+#nav a.first {
+    font-weight: bold;
+}
+
+#nav a:hover {
+    border-bottom-color: #0062FF;
+}
+
+#github-ribbon {
+    z-index: 200;
+}
+
+#example {
+    overflow: auto;
+    margin-top: 20px;
+}
+
+.example-box {
+    float: left;
+    width: 268px;
+    margin-right: 25px;
+    border-radius: 0 0 10px 10px;
+}
+
+.example-box.last {
+    margin-right: 0;
+}
+
+#main .example-box p {
+    border-radius: 0 0 10px 10px;
+    background: #1e5799;
+    background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8));
+    background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+    background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+    background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); 
+    background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
+    text-align: center;
+    margin-top: 0;
+    padding: 7px;
+    color: white;
+}
+
+.example-box pre, .example-box pre {
+    height: 140px;
+    background: #222;
+    color: white;
+    padding: 10px;
+}
+
+.example-box pre, .example-box pre span {
+    font-family: Consolas, Inconsolata, monospace;
+}
+
+pre .keyword {
+    color: #72b3ff;
+}
+
+pre .string {
+    color: #abe060;
+}
+
+pre .comment {
+    color: #c4d7fb;
+}
+
+pre .noise {
+    color: #999;
+}
+
+.caution-box {
+    overflow: auto;
+    padding: 10px;
+    border: 1px solid #CCC;
+    background: #EEE;
+    margin-top: 20px;
+    padding-top: 0;
+}
+
+.caution-box .icon {
+    font-size: 30px;
+    padding-right: 20px;
+    float: left;
+    padding-top: 10px;
+}
+
+.caution-box .content {
+    float: left;
+    width: 780px;
+}
+
+#main .caution-box .content p {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+#social {
+    text-align: center;
+    margin-top: 20px;
+    padding-left: 30px;
+}
+
+#footer p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#footer p.first {
+    margin-top: 20px;
+}
