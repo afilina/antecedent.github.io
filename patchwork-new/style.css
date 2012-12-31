@@ -54,6 +54,7 @@ h2 a:hover {
 }
 
 a#download-button {
+    background: #DEE6FF;
     background: rgba(255, 255, 255, 0.3);
     display: block;
     width: 170px;
@@ -71,13 +72,16 @@ a#download-button {
 a#download-button .icon {
     float: left;
     font-size: 35px;
+    width: 30px;
     padding-right: 15px;
     padding-left: 10px;
+    cursor: pointer;
 }
 
 a#download-button .content {
     text-align: center;
     float: left;
+    cursor: pointer;
 }
 
 a#download-button:hover {
@@ -87,7 +91,6 @@ a#download-button:hover {
     background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
     background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(255, 255, 255, 0.6)', endColorstr='rgba(255, 255, 255, 0.3)',GradientType=1 );
 }
 
 a#download-button h3 {
@@ -190,6 +193,10 @@ a#download-button p {
     border-bottom-color: #0062FF;
 }
 
+#nav a.more {
+    display: none;
+}
+
 #github-ribbon {
     z-index: 200;
 }
@@ -219,7 +226,6 @@ a#download-button p {
     background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
     background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); 
     background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 );
     text-align: center;
     margin-top: 0;
     padding: 7px;
@@ -267,6 +273,7 @@ pre .noise {
     padding-right: 20px;
     float: left;
     padding-top: 10px;
+    width: 30px;
 }
 
 .caution-box .content {

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 
+<!-- TODO: probably get rid of Font Awesome -->
+
 <head>
     <title>Patchwork</title>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -8,6 +10,26 @@
     <!--[if IE 7]>
         <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome-ie7.css">
     <![endif]-->
+    <script type="text/javascript">
+        // <!--
+        var fitTopMenu = function() {
+            var links = document.getElementById("nav").children;
+            links[links.length - 1].style.display = "none";
+            for (var i = links.length - 2; i >= 0; i--) {
+                links[i].style.display = "inline-block";
+            }
+            for (var i = links.length - 2; i >= 0; i--) {
+                var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+                if (links[i].offsetLeft > windowWidth - 250) {
+                    links[i].style.display = "none";
+                    links[links.length - 1].style.display = "inline-block";
+                }
+            }
+        };
+        window.onload = fitTopMenu;
+        window.onresize = fitTopMenu;
+        // -->
+    </script>
 </head>
 
 <body>
@@ -16,9 +38,11 @@
             <a class="first" href="#">Documentation:</a>
             <a href="#">Requirements</a>
             <a href="#">Setup</a>
-            <a href="#">Basic Usage</a>
+            <a href="#">Reference</a>
             <a href="#">Specifics of Method Redefinition</a>
             <a href="#">Changelog</a>
+            <a href="#">License</a>
+            <a class="more" href="#">&hellip;</a>
     </div>
     <div id="top-outer">
         <div id="top">
@@ -122,24 +146,7 @@
             </div>
              
             <div class="separator"></div>
-             
-            <div class="caution-box">
-                <div class="icon"><i class="icon-bullhorn"></i></div>
-                <div class="content">
-                    <p>We advise you to <strong>always think twice</strong> before using Patchwork for unit testing. It does provide an alternate way to achieve testability, but achieving it the conventional way, that is, by refactoring your code to introduce a looser coupling of components, which is inherently prevented by public static method calls, often results in better quality of code as well. We suggest only considering using Patchwork in cases where refactoring code for natural testability results in unreasonable complexity or consumes an unreasonable amount of resources.</p>
-                </div>
-            </div>
-            
-            <div class="caution-box">
-                <div class="icon"><i class="icon-bullhorn"></i></div>
-                <div class="content">
-                    <p>It is strongly recommended to limit the use of Patchwork to <strong>testing and development environments only</strong>. There are several reasons for that: firstly, Patchwork was never intended for use in production, which means it could have some undiscovered security concerns; secondly, redefined functions can quickly make code unmaintainable; and lastly, it will very likely have a noticeable impact on any application's performance.</p>
-                </div>
-            </div>
-            
-            <div class="separator"></div>
-              
-            <h3 class="first">Basic Example</h3>
+            <h3 class="first">Basic Usage</h3>
             <div id="example">
                 <div class="example-box">
                     <pre><span class="keyword">function</span> size<span class="noise">(</span><span class="variable">$x</span><span class="noise">)</span>
@@ -175,6 +182,23 @@ size<span class="noise">(</span><span class="keyword">array</span><span class="n
                 </div>
             </div>
             
+            <div class="separator"></div>            
+            <h3>Warnings</h3>
+
+            <div class="caution-box">
+                <div class="icon"><i class="icon-bullhorn"></i></div>
+                <div class="content">
+                    <p>We advise you to <strong>always think twice</strong> before using Patchwork for unit testing. It does provide an alternate way to achieve testability, but achieving it the conventional way, that is, by refactoring your code to introduce a looser coupling of components, which is inherently prevented by public static method calls, often results in better quality of code as well. We suggest only considering using Patchwork in cases where refactoring code for natural testability results in unreasonable complexity or consumes an unreasonable amount of resources.</p>
+                </div>
+            </div>
+            
+            <div class="caution-box">
+                <div class="icon"><i class="icon-bullhorn"></i></div>
+                <div class="content">
+                    <p>It is strongly recommended to limit the use of Patchwork to <strong>testing and development environments only</strong>. There are several reasons for that: firstly, Patchwork was never intended for use in production, which means it could have some undiscovered security concerns; secondly, redefined functions can quickly make code unmaintainable; and lastly, it will very likely have a noticeable impact on any application's performance.</p>
+                </div>
+            </div>
+            
             <div class="separator"></div>
             
             <h3>Further Reading</h3>
@@ -186,12 +210,6 @@ size<span class="noise">(</span><span class="keyword">array</span><span class="n
             <h3>Reporting Issues</h3>
             
             <p>If you encounter any Patchwork-related problems on which the documentation is of no help, please review the <a href="https://github.com/antecedent/patchwork/issues">currently open issues</a> on Patchwork's GitHub site, and if you find none that would explain your problem, please <a href="https://github.com/antecedent/patchwork/issues/new">open a new one</a>.</p>
-            
-            <div class="separator"></div>
-            
-            <h3>License</h3>
-            
-            <p>Patchwork is available under the MIT license, whose terms are available <a href="https://raw.github.com/antecedent/patchwork/master/LICENSE">here</a>. This license permits you to include Patchwork in any project, open-source or proprietary, given that a copy of this license is included in it.</p>
             
             <div class="separator"></div>
             
