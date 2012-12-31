@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Importing Patchwork - Patchwork</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.css" type="text/css">
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="../font-awesome/css/font-awesome-ie7.css" type="text/css">
+    <![endif]-->
+
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20483190-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>    
+</head>
+<body>
+
+    <div id="nav">
+        <a href="requirements.html">Requirements</a>
+        <a href="setup.html">Setup</a>
+        <a href="reference.html">Reference</a>
+        <a href="specifics-of-method-redefinition.html">Specifics of Method Redefinition</a>
+        <a href="applying-multiple-redefinitions.html">Applying Multiple Redefinitions</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="license.html">License</a>
+    </div>
+
+    <div id="top-outer" class="for-docs">
+        <div id="top">
+            <div id="square-pattern">
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,242);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+                <div style="background: rgb(191,195,245);"></div>
+                <div style="background: rgb(194,198,236);"></div>
+                <div style="background: rgb(184,192,249);"></div>
+                <div style="background: rgb(196,192,243);"></div>
+                <div style="background: rgb(184,200,249);"></div>
+                <div style="background: rgb(192,191,253);"></div>
+                <div style="background: rgb(193,192,245);"></div>
+                <div style="background: rgb(187,201,247);"></div>
+                <div style="background: rgb(188,197,246);"></div>
+                <div style="background: rgb(189,199,242);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,245);"></div>
+                <div style="background: rgb(187,200,243);"></div>
+                <div style="background: rgb(192,200,240);"></div>
+                <div style="background: rgb(192,201,250);"></div>
+                <div style="background: rgb(188,203,235);"></div>
+                <div style="background: rgb(185,195,250);"></div>
+                <div style="background: rgb(200,203,244);"></div>
+                <div style="background: rgb(181,195,243);"></div>
+                <div style="background: rgb(187,200,239);"></div>
+                <div style="background: rgb(187,197,238);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+            </div>
+            <div id="header">
+                <h1><a href="../">Patchwork</a></h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-outer">
+        <div id="main">
+            <h3>Setup</h3>  
+            
+            <div class="separator"></div>
+
+            <p>Technically, the process of integrating Patchwork into your code consists only of inserting a <kbd>require</kbd> statement somewhere in your code. However, it <strong>matters greatly where</strong> exactly this statement is placed.</p>
+            
+            <p>This is because Patchwork preprocesses PHP code, and only those functions and methods that come from preprocessed files will be redefinable. A rule for finding out which files will be preprocessed and which won't could be formulated as follows:</p>
+
+            <div class="important-box">
+                <div class="icon"><i class="icon-bullhorn"></i></div>
+                <div class="content">
+                    <ul>
+                        <li>The entry script <strong>will not</strong> be preprocessed.</li>
+                        <li>The file containing the statement that imports Patchwork <strong>will not</strong> be preprocessed.</li>
+                        <li>All files imported (using an <kbd>include</kbd>/<kbd>require</kbd> statement) earlier than Patchwork <strong>will not</strong> be preprocessed.</li>
+                        <li>All files imported after Patchwork <strong>will</strong> be preprocessed.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p>The following graphic, where preprocessed files are colored <span class="highlight" style="background: #CCFFB3;">green</span> and non-preprocessed ones <span class="highlight" style="background: #FFCCB3;">red</span>, should help you understand this rule. The only functions that would be redefinable in such a setup would be <kbd>eggs()</kbd> and <kbd>bacon()</kbd>.</p>
+            
+            <img src="importing/preprocessing.jpg" alt="Preprocessing rule graphic">
+            
+            <p>Now that you've carefully decided where to place that <kbd>require</kbd> statement, the question is which file to <kbd>require</kbd>. It's <kbd>Patchwork.php</kbd>. Here it's shown in the context of all Patchwork's root folder's contents:</p>
+            
+            <table class="files">
+                <tr><td class="icon"><i class="icon-folder-close"></i></td><td>lib</td></tr>
+                <tr><td class="icon"><i class="icon-folder-close"></i></td><td>tests</td></tr>
+                <tr><td class="icon"><i class="icon-file"></i></td><td>LICENSE</td></tr>
+                <tr class="highlight"><td class="icon"><i class="icon-file"></i></td><td>Patchwork.php</td></tr>
+                <tr><td class="icon"><i class="icon-file"></i></td><td>README.md</td></tr>
+            </table>
+            
+            <p>By now you should already be able to start redefining functions, and the <a href="redefinition-basics.html">Reference</a> is here to help you with that.</p>
+            
+            <p>If you, however, are having problems with importing Patchwork, please first check if your PHP installation meets the <a href="requirements.html">requirements</a>. If the problem turns out to be unrelated, please <a href="https://github.com/antecedent/patchwork/issues">report it on GitHub</a>. Thank you!</p>
+            
+            <div class="separator"></div>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'antecedentgithub';
+                var disqus_identifier = '/patchwork/docs/setup.html';
+                var disqus_url = 'http://antecedent.github.com/patchwork/docs/setup.html';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>        
+        </div>
+    </div>
+</body>
+</html>

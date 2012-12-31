@@ -10,39 +10,17 @@
     <!--[if IE 7]>
         <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome-ie7.css">
     <![endif]-->
-    <script type="text/javascript">
-        // <!--
-        var fitTopMenu = function() {
-            var links = document.getElementById("nav").children;
-            links[links.length - 1].style.display = "none";
-            for (var i = links.length - 2; i >= 0; i--) {
-                links[i].style.display = "inline-block";
-            }
-            for (var i = links.length - 2; i >= 0; i--) {
-                var windowWidth = window.innerWidth || document.documentElement.clientWidth;
-                if (links[i].offsetLeft > windowWidth - 250) {
-                    links[i].style.display = "none";
-                    links[links.length - 1].style.display = "inline-block";
-                }
-            }
-        };
-        window.onload = fitTopMenu;
-        window.onresize = fitTopMenu;
-        // -->
-    </script>
 </head>
 
 <body>
-    <a href="https://github.com/antecedent/patchwork"><img id="github-ribbon" style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
     <div id="nav">
-            <a class="first" href="#">Documentation:</a>
-            <a href="#">Requirements</a>
-            <a href="#">Setup</a>
-            <a href="#">Reference</a>
-            <a href="#">Specifics of Method Redefinition</a>
-            <a href="#">Changelog</a>
-            <a href="#">License</a>
-            <a class="more" href="#">&hellip;</a>
+        <a href="docs/requirements.html">Requirements</a>
+        <a href="docs/setup.html">Setup</a>
+        <a href="docs/reference.html">Reference</a>
+        <a href="docs/specifics-of-method-redefinition.html">Specifics of Method Redefinition</a>
+        <a href="docs/applying-multiple-redefinitions.html">Applying Multiple Redefinitions</a>
+        <a href="docs/changelog.html">Changelog</a>
+        <a href="docs/license.html">License</a>
     </div>
     <div id="top-outer">
         <div id="top">
@@ -121,13 +99,13 @@
             <div id="header">
                 <h1>Patchwork</h1>
                 <h2>Patchwork is a PHP library that makes it possible to <span>redefine</span> user-defined functions and methods <br>at runtime, replicating the functionality of <a href="http://php.net/runkit_function_redefine">runkit_function_redefine</a> in pure PHP 5.3 code, which,<br> among other things, enables you to replace <span>static and private</span> methods with test doubles.</h2>
-                <a id="download-button" href="http://https://github.com/antecedent/patchwork/archive/1.2.0.zip">
+                <a id="download-button" href="http://https://github.com/antecedent/patchwork/archive/1.2.1.zip">
                     <div class="icon">
                         <i class="icon-download"></i>
                     </div>
                     <div class="content">
                         <h3>Download</h3>
-                        <p>Version 1.2.0 (.zip)</p>
+                        <p>Version 1.2.1 (.zip)</p>
                     </div>
                 </a>
             </div>
@@ -139,6 +117,9 @@
             
             <div id="social">
                 <iframe src="http://ghbtns.com/github-btn.html?user=antecedent&amp;repo=patchwork&amp;type=watch&amp;count=true&amp;size=large"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="140" height="30"></iframe>
+
+                <iframe src="http://ghbtns.com/github-btn.html?user=antecedent&amp;repo=patchwork&amp;type=fork&amp;count=true&amp;size=large"
                   allowtransparency="true" frameborder="0" scrolling="0" width="140" height="30"></iframe>
               
                   <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://antecedent.github.com/patchwork" data-size="large">Tweet</a>
@@ -185,14 +166,14 @@ size<span class="noise">(</span><span class="keyword">array</span><span class="n
             <div class="separator"></div>            
             <h3>Warnings</h3>
 
-            <div class="caution-box">
+            <div class="important-box">
                 <div class="icon"><i class="icon-bullhorn"></i></div>
                 <div class="content">
                     <p>We advise you to <strong>always think twice</strong> before using Patchwork for unit testing. It does provide an alternate way to achieve testability, but achieving it the conventional way, that is, by refactoring your code to introduce a looser coupling of components, which is inherently prevented by public static method calls, often results in better quality of code as well. We suggest only considering using Patchwork in cases where refactoring code for natural testability results in unreasonable complexity or consumes an unreasonable amount of resources.</p>
                 </div>
             </div>
             
-            <div class="caution-box">
+            <div class="important-box">
                 <div class="icon"><i class="icon-bullhorn"></i></div>
                 <div class="content">
                     <p>It is strongly recommended to limit the use of Patchwork to <strong>testing and development environments only</strong>. There are several reasons for that: firstly, Patchwork was never intended for use in production, which means it could have some undiscovered security concerns; secondly, redefined functions can quickly make code unmaintainable; and lastly, it will very likely have a noticeable impact on any application's performance.</p>
@@ -203,7 +184,7 @@ size<span class="noise">(</span><span class="keyword">array</span><span class="n
             
             <h3>Further Reading</h3>
             
-            <p>Patchwork's documentation can be accessed <a href="docs/">here</a> and navigated using the top menu. If you have a question about Patchwork that the documentation doesn't answer, please don't hesitate to leave a comment on the documentation index.</p>
+            <p>Patchwork's documentation can be navigated using the top menu. If you have a question about Patchwork that the documentation doesn't answer, please don't hesitate to leave a comment on the documentation pages.</p>
             
             <div class="separator"></div>
             
@@ -214,7 +195,7 @@ size<span class="noise">(</span><span class="keyword">array</span><span class="n
             <div class="separator"></div>
             
             <div id="footer">
-                <p class="first">Patchwork is a creation of <a href="mailto:ignas.rudaitis@gmail.com"><i class="icon-envelope"></i> Ignas Rudaitis</a> aka  <a href="https://github.com/antecedent"><i class="icon-github"></i> antecedent</a>.</p>
+                <p>Patchwork is a creation of <a href="mailto:ignas.rudaitis@gmail.com"><i class="icon-envelope"></i> Ignas Rudaitis</a> aka  <a href="https://github.com/antecedent"><i class="icon-github"></i> antecedent</a>.</p>
                 <p>This page uses icons from <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.</p>
             </div>
             

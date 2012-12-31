@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Importing Patchwork - Patchwork</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.css" type="text/css">
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="../font-awesome/css/font-awesome-ie7.css" type="text/css">
+    <![endif]-->
+
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20483190-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>    
+</head>
+<body>
+    <div id="nav">
+        <a href="requirements.html">Requirements</a>
+        <a href="setup.html">Setup</a>
+        <a href="reference.html">Reference</a>
+        <a href="specifics-of-method-redefinition.html">Specifics of Method Redefinition</a>
+        <a href="applying-multiple-redefinitions.html">Applying Multiple Redefinitions</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="license.html">License</a>
+    </div>
+
+    <div id="top-outer" class="for-docs">
+        <div id="top">
+            <div id="square-pattern">
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,242);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+                <div style="background: rgb(191,195,245);"></div>
+                <div style="background: rgb(194,198,236);"></div>
+                <div style="background: rgb(184,192,249);"></div>
+                <div style="background: rgb(196,192,243);"></div>
+                <div style="background: rgb(184,200,249);"></div>
+                <div style="background: rgb(192,191,253);"></div>
+                <div style="background: rgb(193,192,245);"></div>
+                <div style="background: rgb(187,201,247);"></div>
+                <div style="background: rgb(188,197,246);"></div>
+                <div style="background: rgb(189,199,242);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,245);"></div>
+                <div style="background: rgb(187,200,243);"></div>
+                <div style="background: rgb(192,200,240);"></div>
+                <div style="background: rgb(192,201,250);"></div>
+                <div style="background: rgb(188,203,235);"></div>
+                <div style="background: rgb(185,195,250);"></div>
+                <div style="background: rgb(200,203,244);"></div>
+                <div style="background: rgb(181,195,243);"></div>
+                <div style="background: rgb(187,200,239);"></div>
+                <div style="background: rgb(187,197,238);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+            </div>
+            <div id="header">
+                <h1><a href="../">Patchwork</a></h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-outer">
+        <div id="main">
+            <h3>Requirements</h3>  
+            
+            <div class="separator"></div>
+
+            <h4>PHP Version</h3>
+            
+            <p>Patchwork requires <strong>at least version 5.3.0</strong> of PHP. If you're unsure which version of PHP you're running, you can check it by running <kbd>php -v</kbd> from the command line or checking the value of the <kbd>PHP_VERSION</kbd> constant.
+            
+            <h4>Opcode Caches</h3>
+            
+            <p>Patchwork hasn't been tested with any opcode cache, such as APC, XCache or eAccelerator, however, it has been proposed that they might cause PHP to bypass Patchwork's preprocessing mechanism and thus prevent function redefinition from working. Therefore, it is not recommended to use Patchwork with opcode caches enabled.</p>
+
+            <div class="separator"></div>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'antecedentgithub';
+                var disqus_identifier = '/patchwork/docs/requirements.html';
+                var disqus_url = 'http://antecedent.github.com/patchwork/docs/requirements.html';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>        
+        </div>
+    </div>
+</body>
+</html>

@@ -9,6 +9,7 @@
 #top-outer {
     padding-top: 30px;
     background: #BEC6F4;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 #top {
@@ -24,6 +25,10 @@
     position: absolute;
 }
 
+#top-outer.for-docs #top, #top-outer.for-docs #header, #top-outer.for-docs #square-pattern {
+    height: 128px;
+}
+
 h1 {
     font-family: Merriweather, Georgia, serif;
     font-weight: normal;
@@ -33,6 +38,18 @@ h1 {
     margin-top: 20px;
     text-align: center;
     height: 110px;
+}
+
+h1 a {
+    font-family: Merriweather, Georgia, serif;
+    color: white;
+    text-decoration: none;
+}
+
+#top-outer.for-docs h1 {
+    font-size: 90px;
+    height: 100px;
+    margin-top: 15px;
 }
 
 h2 {
@@ -136,6 +153,13 @@ a#download-button p {
     text-align: center;
 }
 
+#main h4 {
+    font-weight: bold;
+    font-size: 23px;
+    margin-top: 20px;
+    text-align: center;
+}
+
 #main .separator {
     height: 1px;
     background: #CCC;
@@ -150,7 +174,7 @@ a#download-button p {
 }
 
 #main p {
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 14px;
     line-height: 20px;
     text-align: justify;
@@ -259,16 +283,16 @@ pre .noise {
     color: #999;
 }
 
-.caution-box {
+.important-box {
     overflow: auto;
     padding: 10px;
     border: 1px solid #CCC;
     background: #EEE;
-    margin-top: 15px;
+    margin-top: 20px;
     padding-top: 0;
 }
 
-.caution-box .icon {
+.important-box .icon {
     font-size: 30px;
     padding-right: 20px;
     float: left;
@@ -276,14 +300,15 @@ pre .noise {
     width: 30px;
 }
 
-.caution-box .content {
+.important-box .content {
     float: left;
     width: 780px;
 }
 
-#main .caution-box .content p {
+#main .important-box .content p {
     font-size: 14px;
     line-height: 18px;
+    margin-top: 10px;
 }
 
 #social {
@@ -294,9 +319,63 @@ pre .noise {
 
 #footer p {
     text-align: center;
+}
+
+#disqus_thread {
+    margin-top: 20px;
+    padding: 20px;
+    background: #F4F4F4;
+    border: 1px solid #DDD;
+}
+
+.changed-behavior-notice {
+    background: #CDD5E4;
+    border: 1px solid #ACB9D2;
+    padding: 10px;
     margin-top: 10px;
 }
 
-#footer p.first {
+.changed-behavior-notice p {
+    margin-top: 0;
+}
+
+span.highlight {
+    border-radius: 7px;
+    padding: 2px;
+}
+
+table.files {
     margin-top: 20px;
+    border-collapse: collapse;
+    border: 1px solid #CCC;
+    width: 200px;
+}
+
+table.files tr, table.files td {
+    background: #EEE;
+    border-bottom: 1px solid #CCC;
+}
+
+table.files tr.highlight td {
+    background: #BBD3FF;
+}
+
+table.files td {
+    padding: 3px;
+}
+
+table.files td.icon {
+    width: 18px;
+    text-align: center;
+}
+
+kbd {
+    font-family: Consolas, Inconsolata, monospace;
+    line-height: 14px;
+}
+
+#main ul {
+    margin-left: 20px;
+    margin-top: 10px;
+    list-style-type: square;
 }
