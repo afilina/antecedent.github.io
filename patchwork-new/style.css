@@ -203,7 +203,7 @@ a#download-button p {
 
 #example {
     overflow: auto;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .example-box {
@@ -264,7 +264,7 @@ pre .noise {
     padding: 10px;
     border: 1px solid #CCC;
     background: #EEE;
-    margin-top: 20px;
+    margin-top: 15px;
     padding-top: 0;
 }
 
@@ -288,7 +288,7 @@ pre .noise {
 
 #social {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 15px;
     padding-left: 30px;
 }
 
