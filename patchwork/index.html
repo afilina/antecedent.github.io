@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Patchwork</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript">
     
       var _gaq = _gaq || [];
@@ -16,45 +17,137 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-    </script>    
+    </script>  
 </head>
+
 <body>
-    <div id="main">
-        <ul id="nav">
-            <li><a href=".">Home</a></li>
-            <li><a href="docs">Docs</a></li>
-            <li><a href="https://github.com/antecedent/patchwork">Source</a></li>
-            <li><a href="https://github.com/antecedent/patchwork/tags">Download</a></li>
-        </ul>          
-        <h1><a href=".">Patchwork</a><img src="bracket.png" alt="Logo"></h1>
-        <h2>A pure PHP library that lets you redefine user-defined functions.</h2>
-        
-        <div class="demos">
-        
-        
-        
-        
-        
-            <pre class="box top left">
-<span class="comment"># 1. Define a function
-</span>
-<span class="keyword">function</span> size<span class="noise">(</span><span class="variable">$x</span><span class="noise">)</span>
+    <a href="https://github.com/antecedent/patchwork"><img id="github-ribbon" style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <div id="nav">
+        <a href="docs/requirements.html">Requirements</a>
+        <a href="docs/setup.html">Setup</a>
+        <a href="docs/usage.html">Usage</a>
+        <a href="docs/implementation.html">Implementation</a>
+        <a href="docs/changelog.html">Changelog</a>
+        <a href="docs/license.html">License</a>
+    </div>
+    <div id="top-outer">
+        <div id="top">
+            <div id="square-pattern">
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,242);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+                <div style="background: rgb(191,195,245);"></div>
+                <div style="background: rgb(194,198,236);"></div>
+                <div style="background: rgb(184,192,249);"></div>
+                <div style="background: rgb(196,192,243);"></div>
+                <div style="background: rgb(184,200,249);"></div>
+                <div style="background: rgb(192,191,253);"></div>
+                <div style="background: rgb(193,192,245);"></div>
+                <div style="background: rgb(187,201,247);"></div>
+                <div style="background: rgb(188,197,246);"></div>
+                <div style="background: rgb(189,199,242);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,245);"></div>
+                <div style="background: rgb(187,200,243);"></div>
+                <div style="background: rgb(192,200,240);"></div>
+                <div style="background: rgb(192,201,250);"></div>
+                <div style="background: rgb(188,203,235);"></div>
+                <div style="background: rgb(185,195,250);"></div>
+                <div style="background: rgb(200,203,244);"></div>
+                <div style="background: rgb(181,195,243);"></div>
+                <div style="background: rgb(187,200,239);"></div>
+                <div style="background: rgb(187,197,238);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+                <div style="background: rgb(190,199,242);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(188,197,242);"></div>
+                <div style="background: rgb(189,200,244);"></div>
+                <div style="background: rgb(184,194,247);"></div>
+                <div style="background: rgb(196,190,242);"></div>
+                <div style="background: rgb(198,194,235);"></div>
+                <div style="background: rgb(191,189,254);"></div>
+                <div style="background: rgb(197,199,240);"></div>
+                <div style="background: rgb(191,191,238);"></div>
+                <div style="background: rgb(191,202,236);"></div>
+                <div style="background: rgb(186,198,240);"></div>
+                <div style="background: rgb(193,198,245);"></div>
+                <div style="background: rgb(190,199,243);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,199,244);"></div>
+                <div style="background: rgb(188,196,243);"></div>
+                <div style="background: rgb(187,196,238);"></div>
+                <div style="background: rgb(190,201,238);"></div>
+                <div style="background: rgb(187,192,235);"></div>
+                <div style="background: rgb(197,188,244);"></div>
+                <div style="background: rgb(179,196,238);"></div>
+                <div style="background: rgb(184,200,244);"></div>
+                <div style="background: rgb(193,198,238);"></div>
+                <div style="background: rgb(187,194,241);"></div>
+                <div style="background: rgb(189,195,243);"></div>
+                <div style="background: rgb(190,197,243);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(188,198,244);"></div>
+                <div style="background: rgb(189,198,240);"></div>
+                <div style="background: rgb(191,198,242);"></div>
+                <div style="background: rgb(191,192,249);"></div>
+                <div style="background: rgb(185,189,240);"></div>
+                <div style="background: rgb(188,204,236);"></div>
+                <div style="background: rgb(197,190,236);"></div>
+                <div style="background: rgb(197,201,252);"></div>
+                <div style="background: rgb(195,196,247);"></div>
+                <div style="background: rgb(193,195,243);"></div>
+                <div style="background: rgb(189,195,246);"></div>
+                <div style="background: rgb(190,198,243);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+            </div>
+            <div id="header">
+                <h1>Patchwork</h1>
+                <h2>Patchwork is a PHP library that makes it possible to <span>redefine</span> user-defined functions and methods <br>at runtime, replicating the functionality of <a href="http://php.net/runkit_function_redefine">runkit_function_redefine</a> in pure PHP 5.3 code, which,<br> among other things, enables you to replace <span>static and private</span> methods with test doubles.</h2>
+                <a id="download-button" href="https://github.com/antecedent/patchwork/archive/1.2.1.zip">
+                    <div class="icon">
+                        <img src="icons/save_diskette_floppy_disk.png" alt="Download">
+                    </div>
+                    <div class="content">
+                        <h3>Download</h3>
+                        <p>Version 1.2.1 (.zip)</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="main-outer">
+        <div id="main">
+            
+            <div id="social">
+                <iframe src="http://ghbtns.com/github-btn.html?user=antecedent&amp;repo=patchwork&amp;type=watch&amp;count=true&amp;size=large"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="140" height="30"></iframe>
+
+                <iframe src="http://ghbtns.com/github-btn.html?user=antecedent&amp;repo=patchwork&amp;type=fork&amp;count=true&amp;size=large"
+                  allowtransparency="true" frameborder="0" scrolling="0" width="140" height="30"></iframe>
+              
+                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://antecedent.github.com/patchwork" data-size="large">Tweet</a>
+                  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+             
+            <div class="separator"></div>
+            <div id="example">
+                <div class="example-box">
+                    <pre><span class="keyword">function</span> size<span class="noise">(</span><span class="variable">$x</span><span class="noise">)</span>
 <span class="noise">{</span>
     <span class="keyword">return</span> count<span class="noise">(</span><span class="variable">$x</span><span class="noise">)</span>;
 <span class="noise">}</span>
 
 size<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span><span class="number">1</span>, <span class="number">2</span><span class="noise">)</span><span class="noise">)</span>; <span class="comment"># => 2
-</span></pre>
-            
-            
-            
-            
-            
-            
-            <pre class="box top">
-<span class="comment"># 2. Replace it with a new one
-</span>
-<span class="keyword">use</span> Patchwork <span class="keyword">as</span> p;
+                    </span></pre>
+                    <p>1. Define a function</p>
+                </div>
+                <div class="example-box">
+                    <pre><span class="keyword">use</span> Patchwork <span class="keyword">as</span> p;
 
 p<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"size"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="variable">$x</span><span class="noise">)</span>
 <span class="noise">{</span>
@@ -63,54 +156,56 @@ p<span class="noise">\</span>replace<span class="noise">(</span><span class="str
 
 size<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span><span class="number">1</span>, <span class="number">2</span><span class="noise">)</span><span class="noise">)</span>; <span class="comment"># => "huge"
 </span></pre>
-            
-            
-            
-            
-            
-            
-            
-            <pre class="box top right">
-<span class="comment"># 3. Undo the replacement
-</span>    
-p<span class="noise">\</span>undoAll<span class="noise">(</span><span class="noise">)</span>;
+                    <p>2. Replace its definition</p>
+                </div>
+                <div class="example-box last">
+                    <pre>p<span class="noise">\</span>undoAll<span class="noise">(</span><span class="noise">)</span>;
 
 size<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span><span class="number">1</span>, <span class="number">2</span><span class="noise">)</span><span class="noise">)</span>; <span class="comment"># => 2
 </span>
 <span class="comment"># Note that all of these steps
-</span><span class="comment"># occur at the same runtime!</span></pre>
+# occur at the same runtime!
+</span></pre>
+                    <p>3. Undo the redefinition</p>
+                </div>
+            </div>
             
+            <div class="separator"></div>           
+
+            <div class="important-box">
+                <div class="icon"><img src="icons/attention.png" alt="Attention!"></div>
+                <div class="content">
+                    <p>We advise you to <strong>always think twice</strong> before using Patchwork for unit testing. It does provide an alternate way to achieve testability, but achieving it the conventional way, that is, by refactoring your code to introduce a looser coupling of components, which is inherently prevented by public static method calls, often results in better quality of code as well. We suggest only considering using Patchwork in cases where refactoring code for natural testability results in unreasonable complexity or consumes an unreasonable amount of resources.</p>
+                </div>
+            </div>
             
+            <div class="important-box">
+                <div class="icon"><img src="icons/attention.png" alt="Attention!"></div>
+                <div class="content">
+                    <p>It is strongly recommended to limit the use of Patchwork to <strong>testing and development environments only</strong>. There are several reasons for that: firstly, Patchwork was never intended for use in production, which means it could have some undiscovered security concerns; secondly, redefined functions can quickly make code unmaintainable; and lastly, it will very likely have a noticeable impact on any application's performance.</p>
+                </div>
+            </div>
             
+            <div class="separator"></div>
             
+            <h3 id="further-reading">Further Reading</h3>
             
-        
-        </div>
-        
-        <div class="box top left">
-            <h3>So what does Patchwork do?</h3>
-            <p>It lets you replace the definition of any named <a href="http://php.net/manual/en/functions.user-defined.php">user-defined</a> function or method at runtime, as shown above. This practice is commonly known as <a href="http://en.wikipedia.org/wiki/Monkey_patch">monkey patching</a>.</p>
-        </div>
-        <div class="box top">
-            <h3>Can't I do that by myself?</h3>
-            <p>Well, no. As of version 5.4.10, PHP won't let you compile multiple definitions of the same function, nor does its standard library have any facilities for modifying named functions at runtime.</p>
-        </div>
-        <div class="box top right">
-            <h3>Isn't that what Runkit is for?</h3>
-            <p>That's true, but unlike <a href="http://php.net/manual/en/book.runkit.php">Runkit</a>, Patchwork is not a core extension. Patchwork is written in pure PHP code for the sake of maximum portability. Sadly, it's also incapable of <a href="http://php.net/manual/en/runkit.configuration.php#ini.runkit.internal-override">redefining internal functions</a> for this exact reason.</p>
-        </div>
-        <div class="box bottom left">
-            <h3>What could that be useful for?</h3>
-            <p><a href="docs/static-methods.html">Testing all kinds of untestable code</a>. Other than that, not much. Tools like this should only be your last resort.</p>
-        </div>
-        <div class="box bottom">
-            <h3>Okay, so where do I get it?</h3>
-            <p><a href="https://github.com/antecedent/patchwork/tags">Here</a>. And <a href="docs">here's the documentation</a>: be sure to at least skim through it before you start!</p>
-        </div>
-        <div class="box bottom right">
-            <h3>Hey, it doesn't work!</h3>
-            <p>Well, sorry about that. If the documentation is of no help about the problem, please <a href="https://github.com/antecedent/patchwork/issues">report it</a>.</p>
+            <p>Patchwork's documentation can be navigated using the top menu. If you have a question about Patchwork that the documentation doesn't answer, please don't hesitate to leave a comment on the documentation pages.</p>
+            
+            <div class="separator"></div>
+            
+            <h3 id="reporting-issues">Reporting Issues</h3>
+            
+            <p>If you encounter any Patchwork-related problems on which the documentation is of no help, please review the <a href="https://github.com/antecedent/patchwork/issues">currently open issues</a> on Patchwork's GitHub site, and if you find none that would explain your problem, please <a href="https://github.com/antecedent/patchwork/issues/new">open a new one</a>.</p>
+            
+            <div class="separator"></div>
+            
+            <div id="footer">
+                <p>Patchwork is a creation of <a href="mailto:ignas.rudaitis@gmail.com">Ignas Rudaitis</a> aka  <a href="https://github.com/antecedent">antecedent</a>.</p>
+            </div>
+            
         </div>
     </div>
 </body>
+
 </html>

@@ -82,6 +82,7 @@
                     <td class="code">
                         <pre>$replacement = <span class="circled">1</span><span class="keyword">function</span><span class="noise">(<span class="circled">2</span></span>$name<span class="noise">)</span>
 <span class="noise">{</span>
+    <span class="comment"># Replacement code goes here</span>
     <span class="keyword">return</span> in_array<span class="noise">(</span>$name, <span class="keyword">array</span><span class="noise">(</span><span class="string">"foo.txt"</span>, <span class="string">"bar.bin"</span><span class="noise">)</span><span class="noise">)</span>;
 <span class="noise">}</span>;
 
@@ -124,6 +125,7 @@
                     <td class="code">
                         <pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="circled">1</span><span class="string">"Container::get"</span>, <span class="keyword">function</span><span class="noise">(</span>$key<span class="noise">)</span>
 <span class="noise">{</span>
+    <span class="comment"># Replacement code goes here</span>
     <span class="keyword">if</span> <span class="noise">(</span>$key === <span class="string">"cache"</span><span class="noise">)</span> <span class="noise">{</span>
         <span class="keyword">return</span> <span class="keyword">new</span> MockCache;
     <span class="noise">}</span>

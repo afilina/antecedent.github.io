@@ -4,7 +4,7 @@
     <title>Static Methods, Testability and Monkey Patching - Patchwork</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="../style.css" type="text/css">
-    <link rel="alternate" href="atom.xml" type="application/atom+xml">    
+
     <script type="text/javascript">
     
       var _gaq = _gaq || [];
@@ -20,15 +20,63 @@
     </script>    
 </head>
 <body>
-    <div id="main">
-        <ul id="nav">
-            <li><a href="..">Home</a></li>
-            <li><a href="../docs">Docs</a></li>
-            <li><a href="https://github.com/antecedent/patchwork">Source</a></li>
-            <li><a href="https://github.com/antecedent/patchwork/tags">Download</a></li>
-        </ul>         
-        <h1><a href="..">Patchwork</a><img src="../bracket.png" alt="Logo"></h1>
-        <h2 class="with-border">Static Methods, Testability and Monkey Patching</h2>  
+    <div id="nav">
+        <a href="requirements.html">Requirements</a>
+        <a href="setup.html">Setup</a>
+        <a href="usage.html">Usage</a>
+        <a href="implementation.html">Implementation</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="license.html">License</a>
+    </div>
+
+    <div id="top-outer" class="for-docs">
+        <div id="top">
+            <div id="square-pattern">
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,242);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+                <div style="background: rgb(191,195,245);"></div>
+                <div style="background: rgb(194,198,236);"></div>
+                <div style="background: rgb(184,192,249);"></div>
+                <div style="background: rgb(196,192,243);"></div>
+                <div style="background: rgb(184,200,249);"></div>
+                <div style="background: rgb(192,191,253);"></div>
+                <div style="background: rgb(193,192,245);"></div>
+                <div style="background: rgb(187,201,247);"></div>
+                <div style="background: rgb(188,197,246);"></div>
+                <div style="background: rgb(189,199,242);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,245);"></div>
+                <div style="background: rgb(187,200,243);"></div>
+                <div style="background: rgb(192,200,240);"></div>
+                <div style="background: rgb(192,201,250);"></div>
+                <div style="background: rgb(188,203,235);"></div>
+                <div style="background: rgb(185,195,250);"></div>
+                <div style="background: rgb(200,203,244);"></div>
+                <div style="background: rgb(181,195,243);"></div>
+                <div style="background: rgb(187,200,239);"></div>
+                <div style="background: rgb(187,197,238);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+            </div>
+            <div id="header">
+                <h1><a href="../">Patchwork</a></h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-outer">
+        <div id="main">
+            <h3>Static Methods, Testability and Monkey Patching</h4>  
+
+            <div class="separator"></div>
+
+            <div class="important-box">
+                <div class="icon"><img src="../icons/attention.png" alt="Attention!"></div>
+                <div class="content">
+                    <p class="one-liner">This article has been deprecated.</p>
+                </div>
+            </div>
 
 <p>Because of the way PHP works, static method calls are often seen as a <a href="http://googletesting.blogspot.com/2008/12/static-methods-are-death-to-testability.html">major testability obstacle</a> in PHP code. Unlike in Ruby or JavaScript, classes in PHP are completely closed upon definition, so static methods cannot be stubbed (that is, replaced with test stubs) in any natural way. Therefore, any cross-class static method call is essentially a hardcoded dependency in PHP.</p>
 
@@ -95,19 +143,21 @@ Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span cl
 <p>Happy testing!</p>
 
 
-        <h3 class="comments">Comments</h3>
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
+            <div class="separator"></div>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
             var disqus_shortname = 'antecedentgithub';
             var disqus_identifier = '/patchwork/blog/static-methods.html';
             var disqus_url = 'http://antecedent.github.com/patchwork/blog/static-methods.html';
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>        
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>        
+        </div>
     </div>
 </body>
 </html>
