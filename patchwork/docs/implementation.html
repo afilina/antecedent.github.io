@@ -83,7 +83,7 @@
 
             <p>This wrapper is attached to the <kbd>file</kbd> protocol, and thus can override any of PHP's basic filesystem routines, such as opening a filesystem node (e.g. using <kbd>fopen</kbd>) or deleting it (using <kbd>unlink</kbd>). However, Patchwork's wrapper preserves the original functionality of all routines except for file opening, which is handled by the wrapper's <kbd>stream_open</kbd> method.</p>
 
-            <p>This method first checks if the request to open a file comes from an <kbd>include</kbd> statement. This check is done by checking for a specific bit flag (128 or 0x80) in the <kbd>$mode</kbd> argument. Any mention of this flag is nowhere to be found in PHP's documentation, yet it being set always coincides with the request coming from a statement of the <kbd>include</kbd> family.</p>
+            <p>This method first checks if the request to open a file comes from an <kbd>include</kbd> statement. This check is done by checking for a specific bit flag (128 or 0x80) in the <kbd>$mode</kbd> argument. Any mention of this flag is nowhere to be found in PHP's documentation, yet it being set always coincides with the request coming from a statement of the <kbd>include</kbd> family (this has been tested on multiple PHP installations running on different platforms).</p>
 
             <p>If that turns out to be the case, Patchwork temporarily unwraps the <kbd>file</kbd> protocol to read the file being included, preprocesses its contents (more on that soon), writes the result to an <a href="http://php.net/manual/en/wrappers.php.php#refsect2-wrappers.php-unknown-unknown-unknown-unknown-unknown-descriptios">in-memory stream</a> and returns this stream's handle instead of a handle corresponding to the file being included.</p>
 
