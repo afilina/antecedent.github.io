@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Getting Started - Patchwork</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20483190-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>    
+</head>
+<body>
+    <div id="nav">
+        <a href="requirements.html">Requirements</a>
+        <a href="setup.html">Setup</a>
+        <a href="usage.html">Usage</a>
+        <a href="implementation.html">Implementation</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="license.html">License</a>
+    </div>
+
+    <div id="top-outer" class="for-docs">
+        <div id="top">
+            <div id="square-pattern">
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,242);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+                <div style="background: rgb(191,195,245);"></div>
+                <div style="background: rgb(194,198,236);"></div>
+                <div style="background: rgb(184,192,249);"></div>
+                <div style="background: rgb(196,192,243);"></div>
+                <div style="background: rgb(184,200,249);"></div>
+                <div style="background: rgb(192,191,253);"></div>
+                <div style="background: rgb(193,192,245);"></div>
+                <div style="background: rgb(187,201,247);"></div>
+                <div style="background: rgb(188,197,246);"></div>
+                <div style="background: rgb(189,199,242);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,245);"></div>
+                <div style="background: rgb(187,200,243);"></div>
+                <div style="background: rgb(192,200,240);"></div>
+                <div style="background: rgb(192,201,250);"></div>
+                <div style="background: rgb(188,203,235);"></div>
+                <div style="background: rgb(185,195,250);"></div>
+                <div style="background: rgb(200,203,244);"></div>
+                <div style="background: rgb(181,195,243);"></div>
+                <div style="background: rgb(187,200,239);"></div>
+                <div style="background: rgb(187,197,238);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+            </div>
+            <div id="header">
+                <h1><a href="../">Patchwork</a></h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-outer">
+        <div id="main">
+            <h3>Getting Started</h3>  
+
+            <div class="separator"></div>
+
+            <div class="important-box">
+                <div class="icon"><img src="../icons/attention.png" alt="Attention!"></div>
+                <div class="content">
+                    <p class="one-liner">This document has been deprecated in favor of the <a href="requirements.html">Requirements</a> and <a href="setup.html">Setup</a> documents.</p>
+                </div>
+            </div>
+
+        <h4>Requirements</h4>
+        <p class="attached">Patchwork requires PHP <strong>5.3.0</strong> or higher to run. Furthermore, <strong>no opcode caches</strong> should be enabled when using Patchwork.</p>
+        <h4>Importing Patchwork</h4>
+        <p class="attached">This step seems quite straightforward, as all you have to do is include <kbd>Patchwork.php</kbd>:</p>
+        <pre>
+<span class="keyword">require</span> __DIR__ . <span class="string">"/patchwork/Patchwork.php"</span>;</pre>
+        <p>However, the exact place from where Patchwork is included makes a great difference. The general rule is to do so at <strong>the very starting point</strong> of your application.</p>
+        <p>This is explained by the fact that Patchwork is unable to redefine any functions that are defined in files included earlier than <kbd>Patchwork.php</kbd> itself. These also include the file from which <kbd>Patchwork.php</kbd> is included, so any functions defined in it will not be eligible for redefinition either.</p>
+        <h4>Further Steps</h4>
+        <p class="attached">You can already start redefining functions now:</p>
+        <pre>
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"Post::delete"</span>, <span class="keyword">function</span><span class="noise">()</span>
+<span class="noise">{</span>
+    <span class="keyword">echo</span> <span class="string">"No, sorry. Won't do that. This post deserves to live."</span>;
+<span class="noise">})</span>;</pre>
+        <p>While Patchwork barely gets any more difficult than this, you might still want to study some more <a href="examples.html">examples</a> before starting off.</p>
+
+            <div class="separator"></div>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'antecedentgithub';
+                var disqus_identifier = '/patchwork/docs/getting-started.html';
+                var disqus_url = 'http://antecedent.github.com/patchwork/docs/getting-started.html';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>        
+        </div>
+    </div>
+</body>
+</html>

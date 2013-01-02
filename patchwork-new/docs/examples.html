@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Examples - Patchwork</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20483190-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>    
+</head>
+<body>
+    <div id="nav">
+        <a href="requirements.html">Requirements</a>
+        <a href="setup.html">Setup</a>
+        <a href="usage.html">Usage</a>
+        <a href="implementation.html">Implementation</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="license.html">License</a>
+    </div>
+
+    <div id="top-outer" class="for-docs">
+        <div id="top">
+            <div id="square-pattern">
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,242);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+                <div style="background: rgb(191,195,245);"></div>
+                <div style="background: rgb(194,198,236);"></div>
+                <div style="background: rgb(184,192,249);"></div>
+                <div style="background: rgb(196,192,243);"></div>
+                <div style="background: rgb(184,200,249);"></div>
+                <div style="background: rgb(192,191,253);"></div>
+                <div style="background: rgb(193,192,245);"></div>
+                <div style="background: rgb(187,201,247);"></div>
+                <div style="background: rgb(188,197,246);"></div>
+                <div style="background: rgb(189,199,242);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,245);"></div>
+                <div style="background: rgb(187,200,243);"></div>
+                <div style="background: rgb(192,200,240);"></div>
+                <div style="background: rgb(192,201,250);"></div>
+                <div style="background: rgb(188,203,235);"></div>
+                <div style="background: rgb(185,195,250);"></div>
+                <div style="background: rgb(200,203,244);"></div>
+                <div style="background: rgb(181,195,243);"></div>
+                <div style="background: rgb(187,200,239);"></div>
+                <div style="background: rgb(187,197,238);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+            </div>
+            <div id="header">
+                <h1><a href="../">Patchwork</a></h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-outer">
+        <div id="main">
+            <h3>Examples</h4>  
+
+            <div class="separator"></div>
+
+            <div class="important-box">
+                <div class="icon"><img src="../icons/attention.png" alt="Attention!"></div>
+                <div class="content">
+                    <p class="one-liner">This document has been deprecated in favor of the <a href="usage.html">Usage</a> document.</p>
+                </div>
+            </div>
+
+                    <h4>Conventions</h4>
+        
+        <p>Each of the following examples (i. e., separate code snippets, not whole sections) assumes that no redefinitions are in effect before running the code inside them, which can be imagined as each of them having an implicit <kbd>Patchwork\undoAll()</kbd> call at the beginning.</p>
+        
+        <p>On the other hand, all initial declarations and definitions of functions and classes are assumed to persist through all code snippets that contain or follow them.</p>
+        
+        <div class="separator"></div>
+        
+        <h4>Contents</h4>
+        
+        <ul>
+            <li><a href="#basic-redefinition">Basic Redefinition</a></li>
+            <li><a href="#delayed-redefinition">Delayed Redefinition</a></li>
+            <li><a href="#arguments-and-return-values">Arguments and Return Values</a></li>
+            <li><a href="#methods-and-inheritance">Methods and Inheritance</a></li>
+            <li><a href="#falling-back-to-the-original-definition">Falling Back to the Original Definition</a></li>
+            <li><a href="#magic-methods">Magic Methods</a></li>            
+            <li><a href="#undoing-all-redefinitions">Undoing All Redefinitions</a></li>            
+            <li><a href="#undoing-a-single-redefinition">Undoing a Single Redefinition</a></li>
+        </ul>
+
+        <div class="separator"></div>
+        <a class="top" href="#main">Contents &uarr;</a>
+
+        <h4 id="basic-redefinition">Basic Redefinition</h4>
+        
+        <p>You can replace any named user-defined function or method with any valid PHP callback, that is, an anonymous function, a named function, or a public method (either static or instance).
+        
+        <pre>
+<span class="keyword">function</span> babble<span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">echo</span> <span class="string">"foo"</span>;
+<span class="noise">}</span>            
+
+babble<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "foo"
+</span>
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"babble"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">echo</span> <span class="string">"bar"</span>;
+<span class="noise">}</span><span class="noise">)</span>;
+
+babble<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "bar"</span></pre>
+
+<pre>
+<span class="keyword">function</span> sayBaz<span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">echo</span> <span class="string">"baz"</span>;
+<span class="noise">}</span>    
+
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"babble"</span>, <span class="string">"sayBaz"</span><span class="noise">)</span>;
+
+babble<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "baz"</span></pre>
+
+<pre>
+<span class="keyword">class</span> Greeter
+<span class="noise">{</span>
+    <span class="keyword">private</span> <span class="variable">$name</span>;
+    
+    <span class="keyword">function</span> __construct<span class="noise">(</span><span class="variable">$name</span><span class="noise">)</span>
+    <span class="noise">{</span>
+        <span class="keyword">$this</span><span class="noise">-></span>name = <span class="variable">$name</span>;
+    <span class="noise">}</span>
+    
+    <span class="keyword">function</span> greet<span class="noise">(</span><span class="noise">)</span>
+    <span class="noise">{</span>
+        <span class="keyword">echo</span> <span class="string">"Hello "</span>, <span class="keyword">$this</span><span class="noise">-></span>name, <span class="string">"!"</span>;
+    <span class="noise">}</span>
+<span class="noise">}</span>
+
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"babble"</span>, <span class="keyword">array</span><span class="noise">(</span><span class="keyword">new</span> Greeter<span class="noise">(</span><span class="string">"World"</span><span class="noise">)</span>, <span class="string">"greet"</span><span class="noise">)</span><span class="noise">)</span>;
+
+babble<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "Hello World!"</span></pre>
+
+<pre>
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"babble"</span>, <span class="string">"babble"</span><span class="noise">)</span>;
+
+babble<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># Infinite recursion!</span></pre>
+
+        <div class="separator"></div>
+        <a class="top" href="#main">Contents &uarr;</a>
+
+        <h4 id="delayed-redefinition">Delayed Redefinition</h4>
+        
+        <p>Sometimes functions are defined and called in the same file. In such cases, we can use <kbd>Patchwork\replaceLater</kbd> to redefine the function in advance and catch these early calls.</p>
+        
+        <pre>
+<span class="comment"># File: first.php
+</span>
+Patchwork<span class="noise">\</span>replaceLater<span class="noise">(</span><span class="string">"sayNumber"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">echo</span> <span class="number">1337</span>;
+<span class="noise">}</span>;   
+
+require <span class="string">"second.php"</span>; <span class="comment"># prints 1337
+</span></pre>
+
+<pre>
+<span class="comment"># File: second.php
+</span>
+<span class="keyword">function</span> sayNumber<span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">echo</span> <span class="number">0</span>;
+<span class="noise">}</span>
+
+sayNumber<span class="noise">(</span><span class="noise">)</span>;</pre>
+
+        <div class="separator"></div>
+        <a class="top" href="#main">Contents &uarr;</a>
+            
+        <h4 id="arguments-and-return-values">Arguments and Return Values</h4>
+        
+        <p>Every replacement function receives the same arguments as the original function, and is also allowed to return any value on behalf of the latter.</p>
+        
+        <pre>
+<span class="keyword">function</span> size<span class="noise">(</span><span class="keyword">array</span> <span class="variable">$array</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">return</span> count<span class="noise">(</span><span class="variable">$array</span><span class="noise">)</span>;
+<span class="noise">}</span>
+
+size<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span><span class="number">1</span>, <span class="number">2</span><span class="noise">)</span><span class="noise">)</span>; <span class="comment"># => 2
+</span>
+<span class="keyword">const</span> EXAGGERATION_FACTOR = <span class="number">10</span>;
+
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"size"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="keyword">array</span> <span class="variable">$array</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">return</span> count<span class="noise">(</span><span class="variable">$array</span><span class="noise">)</span> * EXAGGERATION_FACTOR;
+<span class="noise">}</span><span class="noise">)</span>;
+
+size<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span><span class="number">1</span>, <span class="number">2</span><span class="noise">)</span><span class="noise">)</span>; <span class="comment"># => 20
+</span></pre>
+
+        <div class="separator"></div>
+        <a class="top" href="#main">Contents &uarr;</a>
+        
+        <h4 id="methods-and-inheritance">Methods and Inheritance</h4>
+
+        <p>As of version 1.2.0, Patchwork <strong>follows</strong> inheritance when redefining methods. This means that if <kbd>Y extends X</kbd>, then redefining <kbd>X::foo</kbd> also redefines <kbd>Y::foo</kbd>, <strong>unless</strong> the <kbd>foo</kbd> method is overridden in <kbd>Y</kbd>.
+        
+        <pre>
+<span class="keyword">class</span> A
+<span class="noise">{</span>
+    <span class="keyword">function</span> __toString<span class="noise">(</span><span class="noise">)</span>
+    <span class="noise">{</span>
+        <span class="keyword">return</span> <span class="string">"A"</span>;
+    <span class="noise">}</span>
+<span class="noise">}</span>
+
+<span class="keyword">class</span> B extends A
+<span class="noise">{</span>
+<span class="noise">}</span>
+
+<span class="keyword">class</span> C extends A
+<span class="noise">{</span>
+    <span class="keyword">function</span> __toString<span class="noise">(</span><span class="noise">)</span>
+    <span class="noise">{</span>
+        <span class="keyword">return</span> <span class="string">"C"</span>;
+    <span class="noise">}</span>
+<span class="noise">}</span>
+
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"A::__toString"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">return</span> <span class="string">"redefined"</span>;
+<span class="noise">}</span><span class="noise">)</span>;
+
+<span class="keyword">echo</span> <span class="keyword">new</span> A; <span class="comment"># prints "redefined"
+</span><span class="keyword">echo</span> <span class="keyword">new</span> B; <span class="comment"># prints "redefined"
+</span><span class="keyword">echo</span> <span class="keyword">new</span> C; <span class="comment"># prints "C"</span></pre>
+
+            <div class="important-box">
+                <div class="icon"><img src="../icons/attention.png" alt="Attention!"></div>
+                <div class="content">
+            <p>In Patchwork versions prior to 1.2.0, method redefinitions were not heritable. This means that if <kbd>Y extends X</kbd>, then redefining <kbd>X::foo</kbd> would <strong>not</strong> also redefine <kbd>Y::foo</kbd>, no matter if it were overridden in <kbd>Y</kbd> or not. In the example above, such behavior would present as the <kbd>echo new B</kbd> statement printing "A" and not "redefined".</p>
+                </div>
+            </div>
+
+        <div class="separator"></div>
+        <a class="top" href="#main">Contents &uarr;</a>
+        
+        <h4 id="falling-back-to-the-original-definition">Falling Back to the Original Definition</h4>
+        
+        <p>Using <kbd>Patchwork\pass</kbd>, you can request Patchwork to terminate a replacement function and let the original definition run instead. Note, however, that this does not reverse the replacement altogether.</p>
+        
+        <pre>
+<span class="keyword">function</span> sayBar<span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">echo</span> <span class="string">"bar"</span>;
+<span class="noise">}</span>
+
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"sayBar"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">echo</span> <span class="string">"foo"</span>;
+    Patchwork<span class="noise">\</span>pass<span class="noise">(</span><span class="noise">)</span>;
+    <span class="keyword">echo</span> <span class="string">"This will never be printed"</span>;
+<span class="noise">}</span><span class="noise">)</span>;
+
+sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "foobar"</span></pre>
+
+        <div class="separator"></div>
+        <a class="top" href="#main">Contents &uarr;</a>
+
+        <h4 id="magic-methods">Magic Methods</h4>
+        
+        <p>Method overloads, which are dispatched in <kbd>__call</kbd> and <kbd>__callStatic</kbd> magic methods, are not real named methods, so they cannot be redefined directly. In such cases, the respective "double-underscore" dispatchment methods should be redefined instead.</p>
+        
+        <pre>
+<span class="keyword">class</span> MagicEcho
+<span class="noise">{</span>
+    <span class="keyword">function</span> __call<span class="noise">(</span><span class="variable">$method</span>, <span class="variable">$args</span><span class="noise">)</span>
+    <span class="noise">{</span>
+        <span class="keyword">echo</span> <span class="variable">$method</span> . <span class="string">" "</span>;
+        <span class="keyword">return</span> <span class="keyword">$this</span>;
+    <span class="noise">}</span>
+<span class="noise">}</span>
+
+<span class="variable">$echo</span> = <span class="keyword">new</span> MagicEcho;
+
+<span class="variable">$echo</span><span class="noise">-></span>foo<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "foo "
+</span>
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span><span class="variable">$echo</span>, <span class="string">"__call"</span><span class="noise">)</span>, <span class="keyword">function</span><span class="noise">(</span><span class="variable">$method</span>, <span class="variable">$args</span><span class="noise">)</span> <span class="keyword">use</span> <span class="noise">(</span><span class="variable">$echo</span><span class="noise">)</span>
+<span class="noise">{</span>
+    if <span class="noise">(</span><span class="variable">$method</span> == <span class="string">"not"</span><span class="noise">)</span> <span class="noise">{</span>
+        <span class="comment"># Skip the word
+</span>        <span class="keyword">return</span> <span class="variable">$echo</span>;
+    <span class="noise">}</span>
+    Patchwork<span class="noise">\</span>pass<span class="noise">(</span><span class="noise">)</span>;
+<span class="noise">}</span><span class="noise">)</span>;
+
+<span class="variable">$echo</span><span class="noise">-></span>I<span class="noise">(</span><span class="noise">)</span><span class="noise">-></span>am<span class="noise">(</span><span class="noise">)</span><span class="noise">-></span>not<span class="noise">(</span><span class="noise">)</span><span class="noise">-></span>redefined<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "I am  redefined "
+</span>
+</pre>
+
+        <div class="separator"></div>
+        <a class="top" href="#main">Contents &uarr;</a>
+        
+        <h4 id="undoing-all-redefinitions">Undoing All Redefinitions</h4>
+        
+        <p>All redefinitions that have been performed since the beginning of runtime can be reversed at once by calling <kbd>Patchwork\undoAll()</kbd>.</p>
+        
+        <pre>
+sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "bar"
+</span>sayBaz<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "baz"
+</span>
+<span class="keyword">function</span> remainSilent<span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">echo</span> <span class="string">"..."</span>;
+<span class="noise">}</span>
+
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"sayBar"</span>, <span class="string">"remainSilent"</span><span class="noise">)</span>;
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"sayBaz"</span>, <span class="string">"remainSilent"</span><span class="noise">)</span>;
+
+sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "..."
+</span>sayBaz<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "..."
+</span>
+Patchwork<span class="noise">\</span>undoAll<span class="noise">(</span><span class="noise">)</span>;
+
+sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "bar"
+</span>sayBaz<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "baz"
+</span></pre>
+
+        <div class="separator"></div>
+        <a class="top" href="#main">Contents &uarr;</a>
+        
+        <h4 id="undoing-a-single-redefinition">Undoing a Single Redefinition</h4>
+        
+        <p>Separate redefinitions can be undone by using the <kbd>Patchwork\undo</kbd> function.</p>
+        
+        <pre>
+sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "bar"
+</span>
+<span class="variable">$censorship</span> = Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"sayBar"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">echo</span> <span class="string">"censored"</span>;
+<span class="noise">}</span><span class="noise">)</span>;
+
+sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "censored"
+</span>
+Patchwork<span class="noise">\</span>undo<span class="noise">(</span><span class="variable">$censorship</span><span class="noise">)</span>;
+
+sayBar<span class="noise">(</span><span class="noise">)</span>; <span class="comment"># prints "bar"</span></pre>
+
+            <div class="separator"></div>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'antecedentgithub';
+                var disqus_identifier = '/patchwork/docs/examples.html';
+                var disqus_url = 'http://antecedent.github.com/patchwork/docs/examples.html';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>        
+        </div>
+    </div>
+</body>
+</html>

@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Importing Patchwork - Patchwork</title>
+    <title>Setup - Patchwork</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="../style.css" type="text/css">
-    <link rel="stylesheet" href="../font-awesome/css/font-awesome.css" type="text/css">
-    <!--[if IE 7]>
-        <link rel="stylesheet" href="../font-awesome/css/font-awesome-ie7.css" type="text/css">
-    <![endif]-->
 
     <script type="text/javascript">
     
@@ -28,9 +24,8 @@
     <div id="nav">
         <a href="requirements.html">Requirements</a>
         <a href="setup.html">Setup</a>
-        <a href="reference.html">Reference</a>
-        <a href="specifics-of-method-redefinition.html">Specifics of Method Redefinition</a>
-        <a href="applying-multiple-redefinitions.html">Applying Multiple Redefinitions</a>
+        <a href="usage.html">Usage</a>
+        <a href="implementation.html">Implementation</a>
         <a href="changelog.html">Changelog</a>
         <a href="license.html">License</a>
     </div>
@@ -79,10 +74,10 @@
 
             <p>Technically, the process of integrating Patchwork into your code consists only of inserting a <kbd>require</kbd> statement somewhere in your code. However, it <strong>matters greatly where</strong> exactly this statement is placed.</p>
             
-            <p>This is because Patchwork preprocesses PHP code, and only those functions and methods that come from preprocessed files will be redefinable. A rule for finding out which files will be preprocessed and which won't could be formulated as follows:</p>
+            <p>This is because Patchwork <a href="implementation.html#preprocessing">preprocesses PHP code</a>, and only those functions and methods that come from preprocessed files will be redefinable. A rule for finding out which files will be preprocessed and which won't could be formulated as follows:</p>
 
             <div class="important-box">
-                <div class="icon"><i class="icon-bullhorn"></i></div>
+                <div class="icon"><img src="../icons/attention.png" alt="Attention!"></div>
                 <div class="content">
                     <ul>
                         <li>The entry script <strong>will not</strong> be preprocessed.</li>
@@ -95,19 +90,19 @@
             
             <p>The following graphic, where preprocessed files are colored <span class="highlight" style="background: #CCFFB3;">green</span> and non-preprocessed ones <span class="highlight" style="background: #FFCCB3;">red</span>, should help you understand this rule. The only functions that would be redefinable in such a setup would be <kbd>eggs()</kbd> and <kbd>bacon()</kbd>.</p>
             
-            <img src="importing/preprocessing.jpg" alt="Preprocessing rule graphic">
+            <img src="setup/preprocessing.jpg" alt="Preprocessing rule graphic">
             
             <p>Now that you've carefully decided where to place that <kbd>require</kbd> statement, the question is which file to <kbd>require</kbd>. It's <kbd>Patchwork.php</kbd>. Here it's shown in the context of all Patchwork's root folder's contents:</p>
             
             <table class="files">
-                <tr><td class="icon"><i class="icon-folder-close"></i></td><td>lib</td></tr>
-                <tr><td class="icon"><i class="icon-folder-close"></i></td><td>tests</td></tr>
-                <tr><td class="icon"><i class="icon-file"></i></td><td>LICENSE</td></tr>
-                <tr class="highlight"><td class="icon"><i class="icon-file"></i></td><td>Patchwork.php</td></tr>
-                <tr><td class="icon"><i class="icon-file"></i></td><td>README.md</td></tr>
+                <tr><td class="icon"><img src="../icons/folder.png" alt="Folder" height="16px" width="16px"></td><td>lib</td></tr>
+                <tr><td class="icon"><img src="../icons/folder.png" alt="Folder" height="16px" width="16px"></td><td>tests</td></tr>
+                <tr><td class="icon"><img src="../icons/document_file.png" alt="File" height="16px" width="16px"></td><td>LICENSE</td></tr>
+                <tr class="highlight"><td class="icon"><img src="../icons/document_file.png" alt="File" height="16px" width="16px"></td><td>Patchwork.php</td></tr>
+                <tr><td class="icon"><img src="../icons/document_file.png" alt="File" height="16px" width="16px"></td><td>README.md</td></tr>
             </table>
             
-            <p>By now you should already be able to start redefining functions, and the <a href="redefinition-basics.html">Reference</a> is here to help you with that.</p>
+            <p>By now you should already be able to start redefining functions, and the <a href="usage.html">Usage</a> document is here to help you with that.</p>
             
             <p>If you, however, are having problems with importing Patchwork, please first check if your PHP installation meets the <a href="requirements.html">requirements</a>. If the problem turns out to be unrelated, please <a href="https://github.com/antecedent/patchwork/issues">report it on GitHub</a>. Thank you!</p>
             

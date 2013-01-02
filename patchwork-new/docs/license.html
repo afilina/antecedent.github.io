@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Requirements - Patchwork</title>
+    <title>License - Patchwork</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="../style.css" type="text/css">
 
@@ -67,25 +67,43 @@
 
     <div id="main-outer">
         <div id="main">
-            <h3>Requirements</h3>  
-            
+            <h3>License</h3>
+
             <div class="separator"></div>
 
-            <h4 id="php-version">PHP Version</h4>
-            
-            <p>Patchwork requires <strong>at least version 5.3.0</strong> of PHP. If you're unsure which version of PHP you're running, you can check it by running <kbd>php -v</kbd> from the command line or checking the value of the <kbd>PHP_VERSION</kbd> constant.
-            
-            <h4 id="opcode-caches">Opcode Caches</h4>
+            <p>Patchwork is available under the terms of the MIT license. This license allows you to include Patchwork in your projects, both open-source and proprietary, given that the text of the license is preserved in them. This text is provided below and in the LICENSE file that comes with Patchwork.</p>  
 
-            <p>Patchwork hasn't been tested with any opcode cache, such as APC, XCache or eAccelerator. However, since Patchwork <a href="implementation.html#preprocessing">preprocesses PHP code</a>, it has been proposed that these caches might cause Patchwork to behave improperly by bypassing the preprocessing mechanism. Therefore, caution must be taken when using Patchwork with an opcode cache enabled.</p>
+            <div class="license-box">
+                <h4>The MIT License</h4>
+
+                <p class="center">Copyright (c) 2010-2013 Ignas Rudaitis</p>
+
+                <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:</p>
+
+                <p>The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.</p>
+
+                <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.</p>
+            </div>
 
             <div class="separator"></div>
 
             <div id="disqus_thread"></div>
             <script type="text/javascript">
                 var disqus_shortname = 'antecedentgithub';
-                var disqus_identifier = '/patchwork/docs/requirements.html';
-                var disqus_url = 'http://antecedent.github.com/patchwork/docs/requirements.html';
+                var disqus_identifier = '/patchwork/docs/license.html';
+                var disqus_url = 'http://antecedent.github.com/patchwork/docs/license.html';
                 (function() {
                     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                     dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

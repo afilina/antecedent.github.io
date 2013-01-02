@@ -88,8 +88,8 @@ a#download-button {
 
 a#download-button .icon {
     float: left;
-    font-size: 35px;
-    width: 30px;
+    width: 32px;
+    padding-top: 5px;
     padding-right: 15px;
     padding-left: 10px;
     cursor: pointer;
@@ -258,12 +258,15 @@ a#download-button p {
 
 .example-box pre, .example-box pre {
     height: 140px;
+}
+
+pre {
     background: #222;
     color: white;
     padding: 10px;
 }
 
-.example-box pre, .example-box pre span {
+pre, pre span {
     font-family: Consolas, Inconsolata, monospace;
 }
 
@@ -286,18 +289,17 @@ pre .noise {
 .important-box {
     overflow: auto;
     padding: 10px;
-    border: 1px solid #CCC;
-    background: #EEE;
+    border: 1px solid #E0C952;
+    background: #F7F1D4;
     margin-top: 20px;
     padding-top: 0;
 }
 
 .important-box .icon {
-    font-size: 30px;
     padding-right: 20px;
     float: left;
     padding-top: 10px;
-    width: 30px;
+    width: 20px;
 }
 
 .important-box .content {
@@ -375,7 +377,101 @@ kbd {
 }
 
 #main ul {
-    margin-left: 20px;
     margin-top: 10px;
     list-style-type: square;
+    margin-left: 30px;
+}
+
+img {
+    border: none;
+}
+
+.license-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: #F4F4F4;
+    border: 1px solid #DDD;
+}
+
+#main .license-box h4 {
+    margin-top: 0;
+}
+
+#main .center {
+    text-align: center;
+}
+
+#main pre {
+    margin-top: 20px;
+}
+
+#main .important-box p.one-liner {
+    margin-top: 17px;
+}
+
+#main a.top {
+    float: right;
+    display: block;
+    margin-top: 20px;
+}
+
+table.usage-example {
+    border: none;
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#main table.usage-example td.handle p {
+    border-radius: 10px 10px 0 0;
+    background: #1e5799;
+    background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8));
+    background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+    background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+    background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); 
+    background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+    text-align: center;
+    margin-top: 0;
+    padding: 7px;
+    color: white;
+    font-weight: bold;
+}
+
+#main table.usage-example td.code {
+    border-bottom: 1px solid #222;
+    background: #222;
+}
+
+#main table.usage-example td.code pre {
+    margin-top: 0;
+    text-align: left;
+}
+
+#main table.usage-example td.description {
+    border: 1px solid #CCC;
+    background: #EEE;
+    padding: 10px;
+    padding-top: 0;
+}
+
+#main table.usage-example td.description p {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.code .circled {
+    padding: 0px 5px;
+    margin: 0px 2px;
+    background: #CCC;
+    color: #222;
+    border-radius: 15px;
+}
+
+.description .circled {
+    padding: 0px 4px;
+    margin: 0px 2px;
+    background: #666;
+    color: white;
+    border-radius: 15px;    
 }

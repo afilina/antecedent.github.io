@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html>
 
-<!-- TODO: probably get rid of Font Awesome -->
-
 <head>
     <title>Patchwork</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css">
-    <!--[if IE 7]>
-        <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome-ie7.css">
-    <![endif]-->
 </head>
 
 <body>
+    <a href="https://github.com/you"><img id="github-ribbon" style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
     <div id="nav">
         <a href="docs/requirements.html">Requirements</a>
         <a href="docs/setup.html">Setup</a>
-        <a href="docs/reference.html">Reference</a>
-        <a href="docs/specifics-of-method-redefinition.html">Specifics of Method Redefinition</a>
-        <a href="docs/applying-multiple-redefinitions.html">Applying Multiple Redefinitions</a>
+        <a href="docs/usage.html">Usage</a>
+        <a href="docs/implementation.html">Implementation</a>
         <a href="docs/changelog.html">Changelog</a>
         <a href="docs/license.html">License</a>
     </div>
@@ -101,7 +96,7 @@
                 <h2>Patchwork is a PHP library that makes it possible to <span>redefine</span> user-defined functions and methods <br>at runtime, replicating the functionality of <a href="http://php.net/runkit_function_redefine">runkit_function_redefine</a> in pure PHP 5.3 code, which,<br> among other things, enables you to replace <span>static and private</span> methods with test doubles.</h2>
                 <a id="download-button" href="http://https://github.com/antecedent/patchwork/archive/1.2.1.zip">
                     <div class="icon">
-                        <i class="icon-download"></i>
+                        <img src="icons/save_diskette_floppy_disk.png" alt="Download">
                     </div>
                     <div class="content">
                         <h3>Download</h3>
@@ -127,7 +122,6 @@
             </div>
              
             <div class="separator"></div>
-            <h3 class="first">Basic Usage</h3>
             <div id="example">
                 <div class="example-box">
                     <pre><span class="keyword">function</span> size<span class="noise">(</span><span class="variable">$x</span><span class="noise">)</span>
@@ -163,18 +157,17 @@ size<span class="noise">(</span><span class="keyword">array</span><span class="n
                 </div>
             </div>
             
-            <div class="separator"></div>            
-            <h3>Warnings</h3>
+            <div class="separator"></div>           
 
             <div class="important-box">
-                <div class="icon"><i class="icon-bullhorn"></i></div>
+                <div class="icon"><img src="icons/attention.png" alt="Attention!"></div>
                 <div class="content">
                     <p>We advise you to <strong>always think twice</strong> before using Patchwork for unit testing. It does provide an alternate way to achieve testability, but achieving it the conventional way, that is, by refactoring your code to introduce a looser coupling of components, which is inherently prevented by public static method calls, often results in better quality of code as well. We suggest only considering using Patchwork in cases where refactoring code for natural testability results in unreasonable complexity or consumes an unreasonable amount of resources.</p>
                 </div>
             </div>
             
             <div class="important-box">
-                <div class="icon"><i class="icon-bullhorn"></i></div>
+                <div class="icon"><img src="icons/attention.png" alt="Attention!"></div>
                 <div class="content">
                     <p>It is strongly recommended to limit the use of Patchwork to <strong>testing and development environments only</strong>. There are several reasons for that: firstly, Patchwork was never intended for use in production, which means it could have some undiscovered security concerns; secondly, redefined functions can quickly make code unmaintainable; and lastly, it will very likely have a noticeable impact on any application's performance.</p>
                 </div>
@@ -182,21 +175,20 @@ size<span class="noise">(</span><span class="keyword">array</span><span class="n
             
             <div class="separator"></div>
             
-            <h3>Further Reading</h3>
+            <h3 id="further-reading">Further Reading</h3>
             
             <p>Patchwork's documentation can be navigated using the top menu. If you have a question about Patchwork that the documentation doesn't answer, please don't hesitate to leave a comment on the documentation pages.</p>
             
             <div class="separator"></div>
             
-            <h3>Reporting Issues</h3>
+            <h3 id="reporting-issues">Reporting Issues</h3>
             
             <p>If you encounter any Patchwork-related problems on which the documentation is of no help, please review the <a href="https://github.com/antecedent/patchwork/issues">currently open issues</a> on Patchwork's GitHub site, and if you find none that would explain your problem, please <a href="https://github.com/antecedent/patchwork/issues/new">open a new one</a>.</p>
             
             <div class="separator"></div>
             
             <div id="footer">
-                <p>Patchwork is a creation of <a href="mailto:ignas.rudaitis@gmail.com"><i class="icon-envelope"></i> Ignas Rudaitis</a> aka  <a href="https://github.com/antecedent"><i class="icon-github"></i> antecedent</a>.</p>
-                <p>This page uses icons from <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.</p>
+                <p>Patchwork is a creation of <a href="mailto:ignas.rudaitis@gmail.com">Ignas Rudaitis</a> aka  <a href="https://github.com/antecedent">antecedent</a>.</p>
             </div>
             
         </div>

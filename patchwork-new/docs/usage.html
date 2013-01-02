@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Usage - Patchwork</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-20483190-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>    
+</head>
+<body>
+    <div id="nav">
+        <a href="requirements.html">Requirements</a>
+        <a href="setup.html">Setup</a>
+        <a href="usage.html">Usage</a>
+        <a href="implementation.html">Implementation</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="license.html">License</a>
+    </div>
+
+    <div id="top-outer" class="for-docs">
+        <div id="top">
+            <div id="square-pattern">
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,242);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+                <div style="background: rgb(191,195,245);"></div>
+                <div style="background: rgb(194,198,236);"></div>
+                <div style="background: rgb(184,192,249);"></div>
+                <div style="background: rgb(196,192,243);"></div>
+                <div style="background: rgb(184,200,249);"></div>
+                <div style="background: rgb(192,191,253);"></div>
+                <div style="background: rgb(193,192,245);"></div>
+                <div style="background: rgb(187,201,247);"></div>
+                <div style="background: rgb(188,197,246);"></div>
+                <div style="background: rgb(189,199,242);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(190,198,244);"></div>
+                <div style="background: rgb(191,198,245);"></div>
+                <div style="background: rgb(187,200,243);"></div>
+                <div style="background: rgb(192,200,240);"></div>
+                <div style="background: rgb(192,201,250);"></div>
+                <div style="background: rgb(188,203,235);"></div>
+                <div style="background: rgb(185,195,250);"></div>
+                <div style="background: rgb(200,203,244);"></div>
+                <div style="background: rgb(181,195,243);"></div>
+                <div style="background: rgb(187,200,239);"></div>
+                <div style="background: rgb(187,197,238);"></div>
+                <div style="background: rgb(189,194,240);"></div>
+            </div>
+            <div id="header">
+                <h1><a href="../">Patchwork</a></h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-outer">
+        <div id="main">
+            <h3>Usage</h3>  
+
+            <div class="separator"></div>
+
+            <table class="usage-example" id="redefining-a-function">
+                <tr>
+                    <td class="handle">
+                        <p>Redefining a function</p>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="code">
+                        <pre>$replacement = <span class="circled">1</span><span class="keyword">function</span><span class="noise">(<span class="circled">2</span></span>$name<span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">return</span> in_array<span class="noise">(</span>$name, <span class="keyword">array</span><span class="noise">(</span><span class="string">"foo.txt"</span>, <span class="string">"bar.bin"</span><span class="noise">)</span><span class="noise">)</span>;
+<span class="noise">}</span>;
+
+<span class="comment"># If Utils\fileExists is already defined:
+</span>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="circled">3</span><span class="string">'Utils\fileExists'</span>, $replacement<span class="noise">)</span>;
+
+<span class="comment"># If it's yet to be defined
+# (also applies to other examples):
+</span>Patchwork<span class="noise">\</span>replaceLater<span class="noise">(</span><span class="circled">3</span><span class="string">'Utils\fileExists'</span>, $replacement<span class="noise">)</span>;</pre>
+                    </td>
+                    <td class="description">
+                        <p>After running this code, all calls to <kbd>Utils\fileExists</kbd> will be forwarded to the function after the <span class="circled">1</span>.</p>
+                        <p><span class="circled">1</span> doesn't have to be an anonymous function, it can be any valid PHP <a href="http://php.net/manual/en/language.types.callable.php">callback</a>.</p>
+                        <p><span class="circled">2</span> marks the replacement function's argument list, which must be compatible with the argument list of the function being replaced.</p>
+                        <p><span class="circled">3</span> must be a fully qualified name; a leading backslash is optional.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="usage-example" id="redefining-a-static-method">
+                <tr>   
+                     <td></td>
+                    <td class="handle">
+                        <p>Redefining a static method</p>
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td class="description">
+            <div class="important-box">
+                <div class="content" style="width: 370px;">
+                    <p><img style="float: left; margin-right: 10px;" src="../icons/attention.png" alt="Attention!">Method redefinitions are heritable, meaning that this will also redefine the <kbd>get</kbd> method in all subclasses of <kbd>Container</kbd> that don't override the method. This applies to instance methods as well.</p>
+
+                </div>
+            </div>
+                    <p><span class="circled">1</span> can also be in the form of <kbd>array("Cache", "store")</kbd>.</p>
+                    <p><span class="circled">2</span> marks a call to <kbd>Patchwork\pass</kbd>, which returns control to the original definition of <kbd>Container::get</kbd>.</p>
+                    </td>
+                    <td class="code">
+                        <pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="circled">1</span><span class="string">"Container::get"</span>, <span class="keyword">function</span><span class="noise">(</span>$key<span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">if</span> <span class="noise">(</span>$key === <span class="string">"cache"</span><span class="noise">)</span> <span class="noise">{</span>
+        <span class="keyword">return</span> <span class="keyword">new</span> MockCache;
+    <span class="noise">}</span>
+    <span class="circled">2</span>Patchwork<span class="noise">\</span>pass<span class="noise">(</span><span class="noise">)</span>;
+    <span class="keyword">echo</span> <span class="string">"This will never be printed"</span>;
+<span class="noise">}</span><span class="noise">)</span>;</pre>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="usage-example" id="redefining-an-instance-method-for-all-instances">
+                <tr>
+                    <td class="handle">
+                        <p>Redefining an instance method for all instances</p>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="code">
+                        <pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"Post::__construct"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="circled">1</span>Patchwork<span class="noise">\</span>Stack<span class="noise">\</span>top<span class="noise">(</span><span class="string">"object"</span><span class="noise">)</span><span class="noise">
+        -></span><span class="circled">2</span>initialized = <span class="keyword">true</span>;
+<span class="noise">}</span><span class="noise">)</span>;</pre>
+                    </td>
+                    <td class="description">
+                        <p>This is done identically to redefining static methods.</p>
+                        <p><span class="circled">1</span>: <kbd>Patchwork\Stack\top("object")</kbd> can be used to retrieve the object that received the forwarded call.</p>
+                        <p><span class="circled">2</span> will only work if <kbd>Post::$initialized</kbd> is public. Note, however, that <a href="http://php.net/manual/en/reflectionproperty.setaccessible.php">Reflection</a> can be used to change the accessibility of properties and methods.</p>
+                    </td>
+                </tr>
+            </table>
+
+                        <table class="usage-example" id="redefining-a-method-for-a-single-instance">
+                <tr>   
+                     <td></td>
+                    <td class="handle">
+                        <p>Redefining a method for a single instance</p>
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td class="description">
+                        <p>This is equivalent to checking the instance manually and calling <kbd>Patchwork\pass</kbd> if necessary (see previous examples).</p>
+
+
+                    </td>
+                    <td class="code">
+                        <pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span>$post, <span class="string">"save"</span><span class="noise">)</span>, <span class="keyword">function</span><span class="noise">(</span><span class="noise">)</span> <span class="keyword">use</span> <span class="noise">(</span>$post<span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">throw</span> <span class="keyword">new</span> LogicException<span class="noise">(</span>"<span class="string">Post #</span>{$post<span class="noise">-></span>id<span class="noise">}</span><span class="string"> is read-only</span>"<span class="noise">)</span>;
+<span class="noise">}</span><span class="noise">)</span>;</pre>
+                    </td>
+                </tr>
+            </table>
+
+
+            <table class="usage-example" id="applying-multiple-redefinitions">
+                <tr>
+                    <td class="handle">
+                        <p>Applying multiple redefinitions</p>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="code">
+                        <pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"Cache::fetch"</span>, <span class="keyword">function</span><span class="noise">(</span>$key<span class="noise">)</span>
+<span class="noise">{</span>
+    Log<span class="noise">::</span>write<span class="noise">(</span>"<span class="string">About to fetch </span>$key<span class="string"> from cache</span>"<span class="noise">)</span>;
+    <span class="circled">1</span>Patchwork<span class="noise">\</span>pass<span class="noise">(</span><span class="noise">)</span>;
+<span class="noise">}</span><span class="noise">)</span>;
+
+Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"Cache::fetch"</span>, <span class="keyword">function</span><span class="noise">(</span>$key<span class="noise">)</span>
+<span class="noise">{</span>
+    <span class="keyword">if</span> <span class="noise">(</span>$key === <span class="string">"posts"</span><span class="noise">)</span> <span class="noise">{</span>
+        <span class="keyword">return</span> null;
+    <span class="noise">}</span>
+    Patchwork<span class="noise">\</span>pass<span class="noise">(</span><span class="noise">)</span>;
+<span class="noise">}</span><span class="noise">)</span>;</pre>
+                    </td>
+                    <td class="description">
+                        <p>If there are multiple redefinitions of the same function or method, then each call to it causes all of them to run. The order in which they are run is the same to the one they were applied in.</p>
+                        <p>The return value that reaches the caller is the one provided last.</p>
+                        <p><span class="circled">1</span> marks a call to <kbd>Patchwork\pass</kbd> which, in this case, transfers control to the next redefinition, not to the original definition.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="usage-example" id="undoing-all-redefinitions">
+                <tr>
+                    <td></td> 
+                   <td class="handle" style="width: 400px;">
+                        <p>Undoing all redefinitions</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="description">
+                        <p>Redefinitions can be applied and removed to the same function or method as many times as needed.</p>
+                    </td>
+                    <td class="code">
+                        <pre>Patchwork<span class="noise">\</span>undoAll<span class="noise">(</span><span class="noise">)</span>;</pre>
+                    </td>
+                </tr>
+            </table>
+
+
+            <table class="usage-example" id="undoing-a-single-redefinition">
+                <tr>
+                    <td class="handle" style="width: 400px;">
+                        <p>Undoing a single redefinition</p>
+                    </td>
+                    <td></td> 
+                </tr>
+                <tr>
+                    <td class="code">
+                        <pre>Patchwork<span class="noise">\</span>undo<span class="noise">(</span><span class="circled">1</span>$handle<span class="noise">)</span>;</pre>
+                    </td>
+                    <td class="description">
+                        <p><span class="circled">1</span> is the value returned by a call to <kbd>Patchwork\replace</kbd> or <kbd>Patchwork\replaceLater</kbd>.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="separator"></div>
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                var disqus_shortname = 'antecedentgithub';
+                var disqus_identifier = '/patchwork/docs/usage.html';
+                var disqus_url = 'http://antecedent.github.com/patchwork/docs/usage.html';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>        
+        </div>
+    </div>
+</body>
+</html>
