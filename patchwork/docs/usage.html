@@ -80,24 +80,19 @@
                 </tr>
                 <tr>
                     <td class="code">
-                        <pre>$replacement = <span class="circled">1</span><span class="keyword">function</span><span class="noise">(<span class="circled">2</span></span>$name<span class="noise">)</span>
+                        <pre>Patchwork<span class="noise">\</span><span class="circled">1</span>replace<span class="noise">(</span><span class="circled">2</span><span class="string">'Utils\fileExists'</span>, <span class="circled">3</span><span class="keyword">function</span><span class="noise">(<span class="circled">4</span></span>$name<span class="noise">)</span>
 <span class="noise">{</span>
-    <span class="comment"># Replacement code goes here</span>
+    <span class="comment"># Redefinition code goes here</span>
     <span class="keyword">return</span> in_array<span class="noise">(</span>$name, <span class="keyword">array</span><span class="noise">(</span><span class="string">"foo.txt"</span>, <span class="string">"bar.bin"</span><span class="noise">)</span><span class="noise">)</span>;
-<span class="noise">}</span>;
-
-<span class="comment"># If Utils\fileExists is already defined:
-</span>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="circled">3</span><span class="string">'Utils\fileExists'</span>, $replacement<span class="noise">)</span>;
-
-<span class="comment"># If it's yet to be defined
-# (also applies to other examples):
-</span>Patchwork<span class="noise">\</span>replaceLater<span class="noise">(</span><span class="circled">3</span><span class="string">'Utils\fileExists'</span>, $replacement<span class="noise">)</span>;</pre>
+<span class="noise">}</span><span class="noise">)</span>;</pre>
                     </td>
                     <td class="description">
                         <p>After running this code, all calls to <kbd>Utils\fileExists</kbd> will be forwarded to the function after the <span class="circled">1</span>.</p>
-                        <p><span class="circled">1</span> doesn't have to be an anonymous function, it can be any valid PHP <a href="http://php.net/manual/en/language.types.callable.php">callback</a>.</p>
-                        <p><span class="circled">2</span> marks the replacement function's argument list, which must be compatible with the argument list of the function being replaced.</p>
-                        <p><span class="circled">3</span> must be a fully qualified name; a leading backslash is optional.</p>
+                        <p><span class="circled">1</span> should be changed to <kbd>replaceLater</kbd> if the function is not yet defined at the point of redefinition. (This applies to methods as well.)</p>
+                        <p><span class="circled">2</span> must be a fully qualified name; a leading backslash is optional.</p>
+                        <p><span class="circled">3</span> doesn't have to be an anonymous function, it can be any valid PHP <a href="http://php.net/manual/en/language.types.callable.php">callback</a>.</p>
+                        <p><span class="circled">4</span> marks the replacement function's argument list, which must be compatible with the argument list of the function being replaced.</p>
+
                     </td>
                 </tr>
             </table>
@@ -125,7 +120,7 @@
                     <td class="code">
                         <pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="circled">1</span><span class="string">"Container::get"</span>, <span class="keyword">function</span><span class="noise">(</span>$key<span class="noise">)</span>
 <span class="noise">{</span>
-    <span class="comment"># Replacement code goes here</span>
+    <span class="comment"># Redefinition code goes here</span>
     <span class="keyword">if</span> <span class="noise">(</span>$key === <span class="string">"cache"</span><span class="noise">)</span> <span class="noise">{</span>
         <span class="keyword">return</span> <span class="keyword">new</span> MockCache;
     <span class="noise">}</span>
