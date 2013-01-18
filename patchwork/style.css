@@ -74,7 +74,7 @@ a#download-button {
     background: #DEE6FF;
     background: rgba(255, 255, 255, 0.3);
     display: block;
-    width: 170px;
+    width: 180px;
     margin: 0 auto;
     text-align: center;
     padding: 5px;
@@ -89,7 +89,7 @@ a#download-button {
 a#download-button .icon {
     float: left;
     width: 32px;
-    padding-top: 5px;
+    padding-top: 4px;
     padding-right: 15px;
     padding-left: 10px;
     cursor: pointer;
@@ -111,7 +111,7 @@ a#download-button:hover {
 }
 
 a#download-button h3 {
-    font-size: 22px;
+    font-size: 23px;
     font-weight: bold;
     padding-bottom: 0;
     margin-top: 0;
