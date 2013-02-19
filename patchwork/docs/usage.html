@@ -67,18 +67,7 @@
 
     <div id="main-outer">
         <div id="main">
-            <h3>Usage</h3>  
-
-            <div class="separator"></div>
-
-            <div class="info-box">
-                <div class="icon">
-                    <img src="../icons/lamp_active.png" alt="Information">
-                </div>
-                <div class="content">
-                    <p>Patchwork does not in any way alter functions' source code or the opcodes produced from it. Please be aware that referring to its functionality as &ldquo;redefinition&rdquo; is <a href="implementation.html">merely a metaphor</a>. However, this document tries to remain faithful to the metaphor whenever possible, and formulates all descriptions of Patchwork's behavior accordingly.</p>
-                </div>
-            </div>
+            <h3>Usage</h3>
 
             <div class="separator"></div>
 
@@ -164,7 +153,7 @@ Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span cl
                 <h4>Redefining inherited methods</h4>
             </th>
             <td class="right">
-                <p class="first">A valid PHP callback, such as <kbd>Foo\Bar::baz</kbd>, might refer to a method that has no &ldquo;physical&rdquo; definition of its own, but instead inherits it from a parent class or a trait.</p>
+                <p class="first">A valid PHP callback, such as <kbd>Foo\Bar::baz</kbd>, might sometimes refer to a method that has no &ldquo;physical&rdquo; definition of its own, but instead inherits it from a parent class or a trait.</p>
                 <p>The result that Patchwork produces when asked to redefine such a method is equivalent to inserting the redefinition as a new definition of the method into the class, overriding the inherited one. This kind of behavior can be thought as akin to <a href="http://php.net/runkit_method_add">runkit_method_add</a>.</p>
                 <p>However, it is impossible to make <kbd>Patchwork\replace</kbd> &ldquo;insert&rdquo; a method that is not already defined by any of the class's ancestors.</p>
             </td>
@@ -197,14 +186,15 @@ Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span cl
                 <h4>Passing the call to the original definition</h4>
             </th>
             <td class="right">
-                <p class="first">By calling <kbd>Patchwork\pass</kbd> from inside a redefinition, it is possible to &ldquo;give up&rdquo; the current call and pass it to the original definition:</p>
+                <p class="first">By calling <kbd>Patchwork\pass</kbd>, a redefinition can request to be immediately terminated, and let the original definition dispatch the call instead:</p>
                 <pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">'Cache::store'</span>, <span class="keyword">function</span><span class="noise">(</span>$key<span class="noise">) {</span>
     <span class="comment"># Print some debugging output</span>
     <span class="keyword">echo</span> <span class="string">"Writing an item with the key '</span>$key<span class="string">' to cache"</span>;
     <span class="comment"># Let the original definition perform the caching</span>
     Patchwork<span class="noise">\</span>pass<span class="noise">()</span>;
 <span class="noise">})</span>;</pre>
-                <p>Aside from possible uses in debugging, it can also be used to craft redefinitions that only handle specific argument sets, and let the original definitions respond to the rest:</p>
+                <p>This can be used to attach &ldquo;pre-filters&rdquo; to functions and methods, which might prove useful in some debugging tasks.</p>
+                <p>However, a much more important use for this is crafting redefinitions that only handle specific argument sets, letting the original redefinition respond to the rest:</p>
                 <pre>Patchwork<span class="noise">\</span>replace<span class="noise">(</span><span class="string">'File::exists'</span>, <span class="keyword">function</span><span class="noise">(</span>$name<span class="noise">)</span> <span class="noise">{</span>
     <span class="keyword">if</span> <span class="noise">(</span>$name === <span class="string">'inexistent.php'</span><span class="noise">)</span> <span class="noise">{</span>
         <span class="keyword">return false</span>;
