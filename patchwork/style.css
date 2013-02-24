@@ -74,7 +74,7 @@ a#download-button {
     background: #DEE6FF;
     background: rgba(255, 255, 255, 0.3);
     display: block;
-    width: 180px;
+    width: 155px;
     margin: 0 auto;
     text-align: center;
     padding: 5px;
@@ -90,8 +90,8 @@ a#download-button .icon {
     float: left;
     width: 32px;
     padding-top: 4px;
-    padding-right: 15px;
-    padding-left: 10px;
+    padding-right: 12px;
+    padding-left: 8px;
     cursor: pointer;
 }
 
@@ -111,10 +111,10 @@ a#download-button:hover {
 }
 
 a#download-button h3 {
-    font-size: 23px;
+    font-size: 20px;
     font-weight: bold;
     padding-bottom: 0;
-    margin-top: 0;
+    margin-top: 4px;
     text-decoration: none;
     border-bottom: none;
 }
@@ -175,8 +175,11 @@ a#download-button p {
 
 #main p {
     margin-top: 20px;
-    line-height: 20px;
     text-align: justify;
+}
+
+#main p, #main ul li {
+    line-height: 20px;
 }
 
 #main a {
@@ -445,6 +448,7 @@ img {
 
 span.fixed {
     padding: 3px;
+    padding-bottom: 1px;
     background: #70CC00;
     color: white;
 }
@@ -457,7 +461,7 @@ span.fixed {
 }
 
 #main ul.changes li {
-    margin-top: 7px;
+    margin-top: 5px;
 }
 
 #main table.usage-section {
