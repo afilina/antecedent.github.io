@@ -72,11 +72,20 @@
             <div class="separator"></div>
 
             <h4 class="minor version">
-                <span>1.2.4</span> Minor Release
+                <span>1.2.5</span> Minor Release
             </h4>
 
             <ul class="changes">
                 <li><span class="fixed">Fixed:</span> <a href="https://github.com/antecedent/patchwork/issues/6"><kbd>Patchwork\Preprocessor\Stream::stream_set_option</kbd> was left unimplemented</a>.</li>
+            </ul>
+
+            <h4 class="minor version">
+                <span>1.2.4</span> Minor Release
+            </h4>
+
+            <ul class="changes">
+                <li><span class="fixed">Fixed:</span> <a href="https://github.com/antecedent/patchwork/issues/7"><kbd>Patchwork\Preprocessor\Stream::rmdir</kbd> passes a wrong parameter to <kbd>rmdir</kbd></a>.</li>
+                <li>The stream wrapper now has <a href="http://www.php.net/manual/en/streamwrapper.stream-metadata.php"><kbd>stream_metadata</kbd></a> and <a href="http://www.php.net/manual/en/streamwrapper.stream-truncate.php"><kbd>stream_truncate</kbd></a> methods.</li>
             </ul>
 
             <h4 class="minor version">
