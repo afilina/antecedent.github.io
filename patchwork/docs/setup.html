@@ -80,7 +80,7 @@
 
             <p>This is because using Patchwork, it is only possible to redefine functions and methods residing in files that are run by PHP <strong>later</strong> than <kbd>patchwork.phar</kbd> (or <kbd>Patchwork.php</kbd>) is.</p>
 
-            <p>Please note that this also means that functions and methods defined in your entry script will <strong>not</strong> be eligible for redefinition.</p>
+            <p>Please note that this also means that functions and methods defined in your <strong>entry script</strong> will <strong>not</strong> be eligible for redefinition.</p>
 
             <p>The following graphic should help you familiarize yourself with the constraints described above, which are a direct consequence of the <a href="implementation.html">preprocessing</a> mechanism employed by Patchwork. Here, functions defined in <span class="highlight" style="background: #CCFFB3;">green</span> files are redefinable, and ones in <span class="highlight" style="background: #FFCCB3;">red</span> files are not.</p>
 
