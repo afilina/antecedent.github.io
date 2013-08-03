@@ -72,33 +72,33 @@
             
             <div class="separator"></div>
 
-            <p>Technically, the process of integrating Patchwork into your code consists only of inserting a <kbd>require</kbd> statement somewhere in your code:</p>
+            <p>Technically, once you've obtained Patchwork, in the form of a <a href="../patchwork.phar">PHAR</a> or <a href="#using-composer">using Composer</a>, all that is left to do is placing an <kbd>include</kbd> or <kbd>require</kbd> statement:</p>
             
-            <pre><span class="keyword">require</span> <span class="string">"Patchwork.phar"</span>;</pre>
+            <pre><span class="keyword">require</span> <span class="string">"patchwork.phar"</span>;</pre>
             
-            <p>However, it <strong>matters greatly where</strong> exactly this statement is placed.</p>
-            
-            <p>This is because Patchwork <a href="implementation.html">preprocesses PHP code</a>, and only those functions and methods that come from preprocessed files will be redefinable. A rule for finding out which files will be preprocessed and which won't could be formulated as follows:</p>
+            <p>However, the exact place where this <kbd>require</kbd> statement is inserted <strong>is of great importance.</strong></p>
 
-            <div class="important-box">
-                <div class="icon"><img src="../icons/attention.png" alt="Attention!"></div>
-                <div class="content">
-                    <ul>
-                        <li>The entry script <strong>will not</strong> be preprocessed.</li>
-                        <li>The file containing the statement that imports Patchwork <strong>will not</strong> be preprocessed.</li>
-                        <li>All files imported (using an <kbd>include</kbd>/<kbd>require</kbd> statement) earlier than Patchwork <strong>will not</strong> be preprocessed.</li>
-                        <li>All files imported after Patchwork <strong>will</strong> be preprocessed.</li>
-                    </ul>
-                </div>
-            </div>
+            <p>This is because using Patchwork, it is only possible to redefine functions and methods residing in files that are run by PHP <strong>later</strong> than <kbd>patchwork.phar</kbd> (or <kbd>Patchwork.php</kbd>) is.</p>
+
+            <p>Please note that this also means that functions and methods defined in your entry script will <strong>not</strong> be eligible for redefinition.</p>
+
+            <p>The following graphic should help you familiarize yourself with the constraints described above, which are a direct consequence of the <a href="implementation.html">preprocessing</a> mechanism employed by Patchwork. Here, functions defined in <span class="highlight" style="background: #CCFFB3;">green</span> files are redefinable, and ones in <span class="highlight" style="background: #FFCCB3;">red</span> files are not.</p>
+
+            <img src="setup/preprocessing.jpg" alt="Illustration of redefinability constraints">
             
-            <p>The following graphic, where preprocessed files are colored <span class="highlight" style="background: #CCFFB3;">green</span> and non-preprocessed ones <span class="highlight" style="background: #FFCCB3;">red</span>, should help you understand this rule. The only functions that would be redefinable in such a setup would be <kbd>eggs()</kbd> and <kbd>bacon()</kbd>.</p>
+            <h4 id="using-composer">Using Composer</h4>
+
+            <p>Patchwork can be obtained using <a href="http://getcomposer.org/">Composer</a>. A <kbd>composer.json</kbd> with Patchwork as the only required package would look like this:</p>
+
+            <pre><span class="noise">{</span>
+    "require-dev": <span class="noise">{</span>
+        <span class="string">"antecedent/patchwork"</span>: <span class="string">"*"</span>
+    <span class="noise">}</span>
+}</pre>
             
-            <img src="setup/preprocessing.jpg" alt="Preprocessing rule graphic">
-            
-            <p>And that's it. By now you should already be able to start redefining functions, and the <a href="usage.html">Usage</a> document is here to help you with that.</p>
-            
-            <p>If you, however, are having problems with importing Patchwork, please first check if your PHP installation meets the <a href="requirements.html">requirements</a>. If the problem turns out to be unrelated, please <a href="https://github.com/antecedent/patchwork/issues">report it on GitHub</a>. Thank you!</p>
+            <p>After running Composer, you should be able to import Patchwork by placing a <kbd>require</kbd> statement for <kbd>vendor/antecedent/patchwork/Patchwork.php</kbd>.</p>
+
+            <p>It must, however, be noted that the exact place of this statement has the same consequences (described above) as it does for a PHAR installation.</p>
             
             <div class="separator"></div>
 
