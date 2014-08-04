@@ -70,11 +70,13 @@
 
             <h4 id="php-version">PHP Version</h4>
 
-            <p>Patchwork requires <strong>at least version 5.3.0</strong> of PHP. If you're unsure which version of PHP you're running, you can check it by running <kbd>php -v</kbd> from the command line or checking the value of the <kbd>PHP_VERSION</kbd> constant.
+            <p>Patchwork requires <strong>at least version 5.3.0</strong> of Zend's PHP. If you're unsure which version of PHP you're running, you can check it by running <kbd>php -v</kbd> from the command line or evaluating the <kbd>PHP_VERSION</kbd> constant.
 
-            <h4 id="opcode-caches">Opcode Caches</h4>
+            <h4 id="opcode-caches">Opcode Caches and HHVM</h4>
 
-            <p>Patchwork hasn't been tested with any opcode cache, such as APC, XCache or eAccelerator. However, since Patchwork <a href="implementation.html">preprocesses PHP code</a>, it has been proposed that these caches might cause Patchwork to behave improperly by bypassing the preprocessing mechanism. Therefore, caution must be taken when using Patchwork with an opcode cache enabled.</p>
+            <p>Patchwork might break when an opcode cache (<a href="http://php.net/manual/en/book.opcache.php">OPCache</a>, <a href="http://php.net/manual/en/book.apc.php">APC</a> etc.) is in use; the same also goes for running it on <a href="http://hhvm.com/">HHVM</a>.</p>
+
+            <p>This claim, however, has been neither verified nor falsified by the developer of Patchwork; that is planned for near future. In the meantime, you are encouraged to experiment and report your findings.</p>
 
             <div class="separator"></div>
 
