@@ -6,18 +6,18 @@
     <link rel="stylesheet" href="../style.css" type="text/css">
 
     <script type="text/javascript">
-    
+
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-20483190-1']);
       _gaq.push(['_trackPageview']);
-    
+
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-    </script>    
+    </script>
 </head>
 <body>
 
@@ -33,32 +33,32 @@
     <div id="top-outer" class="for-docs">
         <div id="top">
             <div id="square-pattern">
-                <div style="background: rgb(190,198,244);"></div>
-                <div style="background: rgb(191,198,242);"></div>
-                <div style="background: rgb(189,194,240);"></div>
-                <div style="background: rgb(191,195,245);"></div>
-                <div style="background: rgb(194,198,236);"></div>
-                <div style="background: rgb(184,192,249);"></div>
-                <div style="background: rgb(196,192,243);"></div>
-                <div style="background: rgb(184,200,249);"></div>
-                <div style="background: rgb(192,191,253);"></div>
-                <div style="background: rgb(193,192,245);"></div>
-                <div style="background: rgb(187,201,247);"></div>
-                <div style="background: rgb(188,197,246);"></div>
-                <div style="background: rgb(189,199,242);"></div>
-                <div style="background: rgb(190,198,244);"></div>
-                <div style="background: rgb(190,198,244);"></div>
-                <div style="background: rgb(191,198,245);"></div>
-                <div style="background: rgb(187,200,243);"></div>
-                <div style="background: rgb(192,200,240);"></div>
-                <div style="background: rgb(192,201,250);"></div>
-                <div style="background: rgb(188,203,235);"></div>
-                <div style="background: rgb(185,195,250);"></div>
-                <div style="background: rgb(200,203,244);"></div>
-                <div style="background: rgb(181,195,243);"></div>
-                <div style="background: rgb(187,200,239);"></div>
-                <div style="background: rgb(187,197,238);"></div>
-                <div style="background: rgb(189,194,240);"></div>
+                <div style="background: rgb(190,216,244);"></div>
+                <div style="background: rgb(191,216,242);"></div>
+                <div style="background: rgb(189,212,240);"></div>
+                <div style="background: rgb(191,213,245);"></div>
+                <div style="background: rgb(194,216,236);"></div>
+                <div style="background: rgb(184,210,249);"></div>
+                <div style="background: rgb(196,210,243);"></div>
+                <div style="background: rgb(184,218,249);"></div>
+                <div style="background: rgb(192,209,253);"></div>
+                <div style="background: rgb(193,210,245);"></div>
+                <div style="background: rgb(187,219,247);"></div>
+                <div style="background: rgb(188,215,246);"></div>
+                <div style="background: rgb(189,217,242);"></div>
+                <div style="background: rgb(190,216,244);"></div>
+                <div style="background: rgb(190,216,244);"></div>
+                <div style="background: rgb(191,216,245);"></div>
+                <div style="background: rgb(187,218,243);"></div>
+                <div style="background: rgb(192,218,240);"></div>
+                <div style="background: rgb(192,219,250);"></div>
+                <div style="background: rgb(188,221,235);"></div>
+                <div style="background: rgb(185,213,250);"></div>
+                <div style="background: rgb(200,221,244);"></div>
+                <div style="background: rgb(181,213,243);"></div>
+                <div style="background: rgb(187,218,239);"></div>
+                <div style="background: rgb(187,215,238);"></div>
+                <div style="background: rgb(189,212,240);"></div>
             </div>
             <div id="header">
                 <h1><a href="../">Patchwork</a></h1>
@@ -68,14 +68,14 @@
 
     <div id="main-outer">
         <div id="main">
-            <h3>Setup</h3>  
-            
+            <h3>Setup</h3>
+
             <div class="separator"></div>
 
             <p>Technically, once you've obtained Patchwork, in the form of a <a href="../patchwork.phar">PHAR</a> or <a href="#using-composer">using Composer</a>, all that is left to do is placing a <kbd>require</kbd> statement:</p>
-            
+
             <pre><span class="keyword">require</span> <span class="string">"patchwork.phar"</span>;</pre>
-            
+
             <p>However, the exact place where this statement is inserted <strong>is of great importance.</strong></p>
 
             <p>This is because using Patchwork, it is only possible to redefine functions and methods residing in files that are run by PHP <strong>later</strong> than <kbd>patchwork.phar</kbd> (or <kbd>Patchwork.php</kbd>) is.</p>
@@ -85,7 +85,7 @@
             <p>The following graphic should help you familiarize yourself with the constraints described above, which are a direct consequence of the <a href="implementation.html">preprocessing</a> mechanism employed by Patchwork. Here, functions defined in <span class="highlight" style="background: #CCFFB3;">green</span> files are redefinable, and ones in <span class="highlight" style="background: #FFCCB3;">red</span> files are not.</p>
 
             <img src="setup/preprocessing.jpg" alt="Illustration of redefinability constraints">
-            
+
             <h4 id="using-composer">Using Composer</h4>
 
             <p>Patchwork can be obtained using <a href="http://getcomposer.org/">Composer</a>. A <kbd>composer.json</kbd> with Patchwork as the only required package would look like this:</p>
@@ -95,13 +95,13 @@
         <span class="string">"antecedent/patchwork"</span>: <span class="string">"*"</span>
     <span class="noise">}</span>
 <span class="noise">}</span></pre>
-            
-            <p>After running Composer, you should be able to import Patchwork by placing a <kbd>require</kbd> statement in your code:</p> 
+
+            <p>After running Composer, you should be able to import Patchwork by placing a <kbd>require</kbd> statement in your code:</p>
 
             <pre><span class="keyword">require</span> <span class="string">"vendor/antecedent/patchwork/Patchwork.php"</span>;</pre>
 
             <p>It must, however, be noted that the exact place of this statement has the same consequences (described above) as it does for a PHAR installation.</p>
-            
+
             <div class="separator"></div>
 
             <div id="disqus_thread"></div>
@@ -115,7 +115,7 @@
                     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
                 })();
             </script>
-            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>        
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>
     </div>
 </body>
