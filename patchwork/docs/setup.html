@@ -17,16 +17,14 @@
     </script>
 </head>
 <body>
-
     <div id="nav">
-        <a href="requirements.html">Requirements</a>
         <a href="setup.html">Setup</a>
         <a href="usage.html">Usage</a>
         <a href="implementation.html">Implementation</a>
         <a href="changelog.html">Changelog</a>
         <a href="license.html">License</a>
+        <a href="https://github.com/antecedent/patchwork">GitHub</a>
     </div>
-
     <div id="top-outer" class="for-docs">
         <div id="top">
             <div id="square-pattern">
@@ -69,11 +67,21 @@
 
             <div class="separator"></div>
 
-            <p>Technically, once you've obtained Patchwork, in the form of a <a href="../patchwork.phar">PHAR</a> or <a href="#using-composer">using Composer</a>, all that is left to do is placing a <kbd>require</kbd> statement:</p>
+            <p>After obtaining Patchwork as a <a href="../patchwork.phar">PHAR</a> or <a href="#using-composer">using Composer</a>, some steps are necessary to set it up.</p>
 
-            <pre><span class="keyword">require</span> <span class="string">"patchwork.phar"</span>;</pre>
+            <p>While Patchwork is picky about setup conditions, in most cases either one of the following two patterns will suffice:</p>
 
-            <p>However, the exact place where this statement is inserted <strong>is of great importance.</strong></p>
+            <ul>
+                <li><p>For PHPUnit tests, simply add this command line flag: <kbd>--bootstrap vendor/antecedent/patchwork/Patchwork.php</kbd>, with the path adjusted if necessary.</p></li>
+                <li>
+                    <p>For other use cases, use a dummy entry script:</p>
+                    <pre><span class="keyword">require</span> <span class="string">"vendor/antecedent/patchwork/Patchwork.php"</span>;<br><span class="keyword">require</span> <span class="string">"actualEntryScript.php"</span>;</pre>
+                </li>
+            </ul>
+
+            <h4 id="detailed-setup">Detailed Setup</h4>
+
+            <p>The exact place where an <kbd>include</kbd> statement referring to Patchwork is inserted <strong>is of great importance.</strong></p>
 
             <p>This is because using Patchwork, it is only possible to redefine functions and methods residing in files that are run by PHP <strong>later</strong> than <kbd>patchwork.phar</kbd> (or <kbd>Patchwork.php</kbd>) is.</p>
 
