@@ -16,13 +16,28 @@
 
     </script>
 
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/highlight.js/8.3/styles/monokai_sublime.min.css">
+    <script src="http://cdn.jsdelivr.net/highlight.js/8.3/highlight.min.js"></script>
+    <script>
+        window.onload = function() {
+            var E = document.getElementsByTagName("pre");
+            for (var i = E.length - 1; i >= 0; i--) {
+                var e = E[i];
+                hljs.highlightBlock(e);
+            }
+        };
+    </script>
+
 <body>
+    <div class="ribbon">
+      <div>Now with support for<br> global internal functions!</div>
+    </div>
     <div id="nav">
         <a href="docs/setup.html">Setup</a>
-        <a href="docs/usage.html">Usage</a>
+        <a href="docs/examples.html">Examples</a>
+        <a href="docs/showcase.html">Showcase</a>
         <a href="docs/implementation.html">Implementation</a>
         <a href="docs/changelog.html">Changelog</a>
-        <a href="docs/license.html">License</a>
         <a href="https://github.com/antecedent/patchwork">GitHub</a>
     </div>
     <div id="top-outer">
@@ -101,14 +116,14 @@
             </div>
             <div id="header">
                 <h1>Patchwork</h1>
-                <h2>Patchwork is a PHP library that makes it possible to <span>redefine</span> user-defined functions and methods <br>at runtime, loosely replicating the functionality <a href="http://php.net/runkit_function_redefine">runkit_function_redefine</a> in pure PHP 5.3 code,<br> which, among other things, enables you to replace <span>static and private</span> methods with test doubles.</h2>
+                <h2><span>Function redefinition</span> and <span>call interception</span> for PHP. No extensions required.<br>For creating test doubles of nearly anything, including <span>static, private and internal</span> callables,<br>as well as for debugging, profiling and aspect-oriented programming.</h2>
                 <a id="download-button" href="patchwork.phar">
                     <div class="icon">
                         <img src="icons/save_diskette_floppy_disk.png" alt="Download">
                     </div>
                     <div class="content">
                         <h3>Download</h3>
-                        <p>v1.3.2 (.phar)</p>
+                        <p>v1.4.0 (.phar)</p>
                     </div>
                 </a>
             </div>
@@ -132,44 +147,39 @@
             <div class="separator"></div>
             <div id="example">
                 <div class="example-box">
-                    <pre><span class="keyword">function</span> size<span class="noise">(</span><span class="variable">$x</span><span class="noise">)</span>
-<span class="noise">{</span>
-    <span class="keyword">return</span> count<span class="noise">(</span><span class="variable">$x</span><span class="noise">)</span>;
-<span class="noise">}</span>
+                    <pre class="php">function size($x)
+{
+    return count($x);
+}
 
-size<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span><span class="number">1</span>, <span class="number">2</span><span class="noise">)</span><span class="noise">)</span>; <span class="comment"># => 2
-                    </span></pre>
+size(array(1, 2)); # => 2</pre>
                     <p>1. Define a function</p>
                 </div>
                 <div class="example-box">
-                    <pre><span class="keyword">use</span> Patchwork <span class="keyword">as</span> p;
+                    <pre class="php">use Patchwork as p;
 
-p<span class="noise">\</span>replace<span class="noise">(</span><span class="string">"size"</span>, <span class="keyword">function</span><span class="noise">(</span><span class="variable">$x</span><span class="noise">)</span>
-<span class="noise">{</span>
-    <span class="keyword">return</span> <span class="string">"huge"</span>;
-<span class="noise">}</span><span class="noise">)</span>;
+p\replace("size", function($x)
+{
+    return "huge";
+});
 
-size<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span><span class="number">1</span>, <span class="number">2</span><span class="noise">)</span><span class="noise">)</span>; <span class="comment"># => "huge"
-</span></pre>
+size(array(1, 2)); # => "huge"</pre>
                     <p>2. Replace its definition</p>
                 </div>
                 <div class="example-box last">
-                    <pre>p<span class="noise">\</span>undoAll<span class="noise">(</span><span class="noise">)</span>;
+                    <pre class="php">p\undoAll();
 
-size<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span><span class="number">1</span>, <span class="number">2</span><span class="noise">)</span><span class="noise">)</span>; <span class="comment"># => 2
-</span>
-<span class="comment"># Note that all of these steps
-# occur at the same runtime!
-</span></pre>
+size(array(1, 2)); # => 2
+
+# Note that all of these steps
+# occur at the same runtime!</pre>
                     <p>3. Undo the redefinition</p>
                 </div>
             </div>
 
             <div class="separator"></div>
 
-            <p class="precaution">We make the assumption of a responsible developer, of one that will continue writing maintainable code despite the hurdle of testability being lowered, meaning that a major motivator for maintainablity is eliminated.</p>
-
-            <p class="precaution">As of now, it is strongly recommended to limit the use of Patchwork to testing and development environments only.</p>
+            <p class="precaution">We make the assumption of a responsible developer, of one that will continue writing maintainable code despite the hurdle of testability being lowered, meaning that a major motivator for maintainablity is no longer present.</p>
 
             <div class="separator"></div>
 

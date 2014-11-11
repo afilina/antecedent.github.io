@@ -263,16 +263,21 @@ a#download-button p {
 }
 
 .example-box pre {
-    height: 132px;
+    height: 140px;
     font-size: 15px;
     line-height: 17px;
+    border-radius: 0;
 }
 
 pre {
     background: #222;
     color: white;
-    padding: 10px;
     font-size: 15px;
+    border-radius: 5px;
+}
+
+pre, pre.hljs {
+    padding: 10px;    
 }
 
 pre .keyword {
@@ -528,4 +533,39 @@ span.fixed {
     margin-top: 20px;
     font-size: 16px;
     color: #8a6d3b;
+}
+
+/* http://unindented.org/articles/github-ribbon-using-css-transforms/ */
+.ribbon {
+  width: 300px;
+  z-index: 10000;
+  background-color: #62a800;
+  overflow: hidden;
+  white-space: nowrap;
+  /* top left corner */
+  position: fixed;
+  left: -75px;
+  top: 45px;
+  /* 45 deg ccw rotation */
+  -webkit-transform: rotate(-45deg);
+     -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+       -o-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  /* shadow */
+  -webkit-box-shadow: 0 0 10px #888;
+     -moz-box-shadow: 0 0 10px #888;
+          box-shadow: 0 0 10px #888;
+}
+.ribbon div {
+  border: 1px solid #dbffa8;
+  color: #fff;
+  margin: 1px 0;
+  padding: 10px 50px;
+  text-align: center;
+  text-decoration: none;
+  /* shadow */
+  text-shadow: 0 0 5px #444;
+  font-size: 14px;
+  letter-spacing: 0.5px;
 }

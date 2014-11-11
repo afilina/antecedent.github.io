@@ -15,14 +15,29 @@
       ga('send', 'pageview');
 
     </script>
+
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/highlight.js/8.3/styles/monokai_sublime.min.css">
+    <script src="http://cdn.jsdelivr.net/highlight.js/8.3/highlight.min.js"></script>
+    <script>
+        window.onload = function() {
+            var E = document.getElementsByTagName("pre");
+            for (var i = E.length - 1; i >= 0; i--) {
+                var e = E[i];
+                hljs.highlightBlock(e);
+            }
+        };
+    </script>
 </head>
 <body>
+    <div class="ribbon">
+      <div>Now with support for<br> global internal functions!</div>
+    </div>
     <div id="nav">
         <a href="setup.html">Setup</a>
-        <a href="usage.html">Usage</a>
+        <a href="examples.html">Examples</a>
+        <a href="showcase.html">Showcase</a>
         <a href="implementation.html">Implementation</a>
         <a href="changelog.html">Changelog</a>
-        <a href="license.html">License</a>
         <a href="https://github.com/antecedent/patchwork">GitHub</a>
     </div>
     <div id="top-outer" class="for-docs">
@@ -63,7 +78,7 @@
 
     <div id="main-outer">
         <div id="main">
-            <h3>Implementation</h3>
+            <h3>Implementation Notes</h3>
 
             <div class="separator"></div>
 
@@ -75,7 +90,7 @@
 
             <p>The following line from <a href="https://github.com/antecedent/patchwork/blob/1.2.1/Patchwork.php#L46"><kbd>Patchwork.php</kbd></a> registers the stream wrapper, whose code is located in <a href="https://github.com/antecedent/patchwork/blob/1.2.1/lib/Preprocessor/Stream.php"><kbd>lib/Preprocessor/Stream.php</kbd></a>:</p>
 
-            <pre>Preprocessor<span class="noise">\</span>Stream<span class="noise">::</span>wrap<span class="noise">(</span><span class="noise">)</span>;</pre>
+            <pre>Preprocessor\Stream::wrap();</pre>
 
             <p>This wrapper is attached to the <kbd>file</kbd> protocol, and thus can override any of PHP's basic filesystem routines, such as opening a filesystem node (e.g. using <kbd>fopen</kbd>) or deleting it (using <kbd>unlink</kbd>). However, Patchwork's wrapper preserves the original functionality of all routines except for file opening, which is handled by the wrapper's <kbd>stream_open</kbd> method.</p>
 
@@ -89,12 +104,12 @@
 
             <p>Patchwork by default attaches <a href="https://github.com/antecedent/patchwork/blob/1.2.1/Patchwork.php#L48">four callbacks</a> that are responsible for code preprocessing:</p>
 
-            <pre>Preprocessor<span class="noise">\</span>attach<span class="noise">(</span><span class="keyword">array</span><span class="noise">(</span>
-    Preprocessor<span class="noise">\</span>Callbacks<span class="noise">\</span>Preprocessor<span class="noise">\</span>propagateThroughEval<span class="noise">(</span><span class="noise">)</span>,
-    Preprocessor<span class="noise">\</span>Callbacks<span class="noise">\</span>Interceptor<span class="noise">\</span>markPreprocessedFiles<span class="noise">(</span><span class="noise">)</span>,
-    Preprocessor<span class="noise">\</span>Callbacks<span class="noise">\</span>Interceptor<span class="noise">\</span>injectCallInterceptionCode<span class="noise">(</span><span class="noise">)</span>,
-    Preprocessor<span class="noise">\</span>Callbacks<span class="noise">\</span>Interceptor<span class="noise">\</span>injectScheduledPatchApplicationCode<span class="noise">(</span><span class="noise">)</span>,
-<span class="noise">)</span><span class="noise">)</span>;</pre>
+            <pre class="php">Preprocessor\attach(array(
+    Preprocessor\Callbacks\Preprocessor\propagateThroughEval(),
+    Preprocessor\Callbacks\Interceptor\markPreprocessedFiles(),
+    Preprocessor\Callbacks\Interceptor\injectCallInterceptionCode(),
+    Preprocessor\Callbacks\Interceptor\injectScheduledPatchApplicationCode(),
+));</pre>
 
             <p>The most important of them is <kbd>injectCallInterceptionCode</kbd>, which, as the name suggests, injects code to the beginning of each function and method, and this code makes it possible to intercept any call to a function that resides in a preprocessed PHP file.</p>
 
